@@ -1,0 +1,28 @@
+{
+  "name": "leetcode-solutions",
+  "version": "1.0.0",
+  "description": "Leetcode solutions in typescript",
+  "keywords": [],
+  "author": "James Uang",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsx watch ./src/$FILE.ts",
+    "start": "tsx ./src/$FILE.ts"
+  },
+  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a",
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "tsx": "^4.20.6",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "@datastructures-js/deque": "^1.0.8",
+    "@datastructures-js/priority-queue": "^6.3.5",
+    "@datastructures-js/stack": "^3.1.6"
+  },
+  "engines": {
+    "node": ">=22.17.0"
+  }
+}
