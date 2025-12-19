@@ -64,12 +64,12 @@ function search3(nums: number[], target: number): number {
     const middle = left + Math.floor((right - left) / 2)
 
     if (nums[middle]! >= target) {
-      // If `mid == target` or `mid > target`, the lower bound is on mid's left.
-      // Discard right half and mid 
+      // If `mid >= target`, the lower bound is on mid's left.
+      // Discard right half but keep mid
       right = middle
     } else {
-      // If mid < target, the lower bound is on mid's right.
-      // Discard left half while keeping mid
+      // If `mid < target`, the lower bound is on mid's right.
+      // Discard left half and mid
       left = middle + 1
     }
   }
