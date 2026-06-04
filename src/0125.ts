@@ -32,8 +32,15 @@ function isPalindrome2(s: string): boolean {
   let right = s.length - 1
 
   // Helper fn to check if string is alphanumeric
+  // const isalnum = (str: string): boolean => {
+  //   return /[a-zA-Z0-9]/.test(str)
+  // }
   const isalnum = (str: string): boolean => {
-    return /[a-zA-Z0-9]/.test(str)
+    return (
+      (str >= 'a' && str <= 'z') ||
+      (str >= 'A' && str <= 'Z') ||
+      (str >= '0' && str <= '9')
+    )
   }
 
   while (left < right) {
