@@ -144,6 +144,66 @@ function findDuplicate5(nums: number[]): number {
   return finder
 }
 
+/**
+ * Negative Marking
+ * T: O(n); S: O(1);
+ * 
+ * Failed: Input modified
+ */
+function findDuplicate6(nums: number[]): number {
+  // Set nums[nums[i] - 1] = -1
+  // If a position is already -1, a duplicate is found.
+
+  // [1,2,3,2,2]
+  // [-1, -1, -1]
+  // i = 4 -> nums[1] = -1 -> Found duplicate
+
+  for (let i = 0; i < nums.length; i++) {
+    const val = nums[i]!
+
+    if (nums[val - 1] === -1) return val
+
+    nums[val - 1] = -1
+  }
+
+  return -1
+};
+
+/**
+ * Bit Manipulation (mask)
+ * T: O(32 * n); S: O(1);
+ */
+function findDuplicate7(nums: number[]): number {
+  let n = nums.length
+  let res = 0
+
+  // Loop through all 32 bits of int
+  for (let bit = 0; bit < 32; bit++) {
+    let x = 0
+    let y = 0
+    // Create a bit mask for the current bit position (0001, 0010, 0100, ...)
+    let mask = 1 << bit
+
+    // Count bits in the actual array
+    for (let num of nums) {
+      if (num & mask) x++
+    }
+
+    // Count bits in the expected sequence [1, 2, ..., n-1]
+    for (let i = 1; i < n; i++) {
+      if (i & mask) y++
+    }
+
+    // A duplicate will make x has an extra bit
+    if (x > y) {
+      // Extract the extra to result
+      res |= mask
+    }
+  }
+
+  return res
+};
+
 const nums = [1, 3, 4, 2, 2]
 const expected = 2
 // const nums = [3, 1, 3, 4, 2]
