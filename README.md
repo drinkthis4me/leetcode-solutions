@@ -27,15 +27,15 @@ All solution files are located in `/src/` folder.
 
 ### Running a Solution
 
-Use the script to execute `tsx` on any TypeScript file. You need to provide the full file path as argument.
+Use the script to execute `tsx` on any TypeScript file.
 
 To run `0001.ts`:
 
 ```bash
-pnpm start ./src/0001.ts
+pnpm check 0001
 ```
 
 To watch file change on `0001.ts`:
 ```bash
-pnpm watch ./src/0001.ts
+pnpm watch 0001
 ```
