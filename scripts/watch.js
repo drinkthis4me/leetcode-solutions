@@ -8,7 +8,7 @@ if (!target || !/^\d{4}$/.test(target)) {
 }
 
 // spawn keeps the process alive and streams output
-const child = spawn("pnpx", ["tsx", "watch", `src/${target}.ts`], {
+const child = spawn("pnpm", ["tsx", "watch", `src/${target}.ts`], {
   stdio: 'inherit',
   shell: process.platform === 'win32' // Allows command-line syntax handling
 });
