@@ -39,21 +39,21 @@ function hasCycle(head: ListNode | null): boolean {
  * @param pos - The index to which the last node points (cycle). -1 means no cycle.
  */
 function createLinkedList(arr: number[], pos: number): ListNode | null {
-  if (arr.length === 0) return null;
+  if (arr.length === 0) return null
 
-  const nodes = arr.map(val => new ListNode(val));
+  const nodes = arr.map(val => new ListNode(val))
 
   // Connect nodes
   for (let i = 0; i < nodes.length - 1; i++) {
-    nodes[i]!.next = nodes[i + 1]!;
+    nodes[i]!.next = nodes[i + 1]!
   }
 
   // Create cycle if pos is valid
   if (pos !== -1 && pos < nodes.length) {
-    nodes[nodes.length - 1]!.next = nodes[pos]!;
+    nodes[nodes.length - 1]!.next = nodes[pos]!
   }
 
-  return nodes[0] as ListNode | null;
+  return nodes[0] as ListNode | null
 }
 
 /**
@@ -65,17 +65,17 @@ function runTests() {
     { arr: [1, 2], pos: 0, expected: true },
     { arr: [1], pos: -1, expected: false },
     { arr: [], pos: -1, expected: false }
-  ];
+  ]
 
   testCases.forEach((test, index) => {
-    const head = createLinkedList(test.arr, test.pos);
-    const result = hasCycle(head);
-    const passed = result === test.expected;
+    const head = createLinkedList(test.arr, test.pos)
+    const result = hasCycle(head)
+    const passed = result === test.expected
 
-    console.log(`Test Case #${index + 1}: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
-    console.log(`   Input: arr=${JSON.stringify(test.arr)}, pos=${test.pos}`);
-    console.log(`   Output: ${result} | Expected: ${test.expected}\n`);
-  });
+    console.log(`Test Case #${index + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}`)
+    console.log(`   Input: arr=${JSON.stringify(test.arr)}, pos=${test.pos}`)
+    console.log(`   Output: ${result} | Expected: ${test.expected}\n`)
+  })
 }
 
-runTests();
+runTests()

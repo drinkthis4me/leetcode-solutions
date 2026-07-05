@@ -19,7 +19,7 @@ class ListNode {
 function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
   let dummy = new ListNode()
   // Store original head for answer
-  let head = dummy
+  const head = dummy
 
   while (list1 && list2) {
     // Compare current values
@@ -77,51 +77,51 @@ function mergeTwoLists2(list1: ListNode | null, list2: ListNode | null): ListNod
  * Converts an array into a Linked List.
  */
 function arrayToList(arr: number[]): ListNode | null {
-  if (arr.length === 0) return null;
-  const head = new ListNode(arr[0]);
-  let current = head;
+  if (arr.length === 0) return null
+  const head = new ListNode(arr[0])
+  let current = head
   for (let i = 1; i < arr.length; i++) {
-    current.next = new ListNode(arr[i]);
-    current = current.next;
+    current.next = new ListNode(arr[i])
+    current = current.next
   }
-  return head;
+  return head
 }
 
 /**
  * Converts a Linked List back into an array for easy comparison.
  */
 function listToArray(head: ListNode | null): number[] {
-  const result: number[] = [];
-  let current = head;
+  const result: number[] = []
+  let current = head
   while (current !== null) {
-    result.push(current.val);
-    current = current.next;
+    result.push(current.val)
+    current = current.next
   }
-  return result;
+  return result
 }
 
 /**
  * Runs a test case and logs the result.
  */
 function runTest(input: [number[], number[]], expected: number[]) {
-  const list1ToList = arrayToList(input[0]);
-  const list2ToList = arrayToList(input[1]);
-  const mergedList = mergeTwoLists(list1ToList, list2ToList);
-  const result = listToArray(mergedList);
+  const list1ToList = arrayToList(input[0])
+  const list2ToList = arrayToList(input[1])
+  const mergedList = mergeTwoLists(list1ToList, list2ToList)
+  const result = listToArray(mergedList)
 
-  const passed = JSON.stringify(result) === JSON.stringify(expected);
+  const passed = JSON.stringify(result) === JSON.stringify(expected)
 
-  console.log(`Input: [[${input[0]}], [${input[1]}]]`);
-  console.log(`Expected: [${expected}]`);
-  console.log(`Result:   [${result}]`);
-  console.log(passed ? "✅ Test Passed" : "❌ Test Failed");
-  console.log("---");
+  console.log(`Input: [[${input[0]}], [${input[1]}]]`)
+  console.log(`Expected: [${expected}]`)
+  console.log(`Result:   [${result}]`)
+  console.log(passed ? '✅ Test Passed' : '❌ Test Failed')
+  console.log('---')
 }
 
 // --- Running Tests ---
 
-console.log("Running LeetCode 206: Reverse Linked List Tests...\n");
+console.log('Running LeetCode 206: Reverse Linked List Tests...\n')
 
-runTest([[1, 2, 4], [1, 3, 4]], [1, 1, 2, 3, 4, 4]);
-runTest([[], []], []);
-runTest([[], [0]], [0]);
+runTest([[1, 2, 4], [1, 3, 4]], [1, 1, 2, 3, 4, 4])
+runTest([[], []], [])
+runTest([[], [0]], [0])

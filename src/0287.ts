@@ -174,7 +174,7 @@ function findDuplicate6(nums: number[]): number {
  * T: O(32 * n); S: O(1);
  */
 function findDuplicate7(nums: number[]): number {
-  let n = nums.length
+  const n = nums.length
   let res = 0
 
   // Loop through all 32 bits of int
@@ -182,10 +182,10 @@ function findDuplicate7(nums: number[]): number {
     let x = 0
     let y = 0
     // Create a bit mask for the current bit position (0001, 0010, 0100, ...)
-    let mask = 1 << bit
+    const mask = 1 << bit
 
     // Count bits in the actual array
-    for (let num of nums) {
+    for (const num of nums) {
       if (num & mask) x++
     }
 

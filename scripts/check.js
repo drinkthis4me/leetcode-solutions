@@ -1,10 +1,10 @@
-import { execSync } from "child_process";
+import { execSync } from 'child_process'
 
-const target = process.argv[2];
+const target = process.argv[2]
 
 if (!target) {
-  console.error("Please provide a file name (e.g., 0001)");
-  process.exit(1);
+  console.error('Please provide a file name (e.g., 0001)')
+  process.exit(1)
 }
 
-execSync(`tsx src/${target}.ts`, { stdio: 'inherit' });
+execSync(`tsx src/${target}.ts`, { stdio: 'inherit' })

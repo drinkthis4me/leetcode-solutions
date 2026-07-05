@@ -1,6 +1,6 @@
 // 1046. Last Stone Weight
 
-import { MaxPriorityQueue } from "@datastructures-js/priority-queue";
+import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * Max Heap
@@ -10,8 +10,8 @@ function lastStoneWeight(stones: number[]): number {
   const maxHeap = new MaxPriorityQueue<number>(null, stones)
 
   while (maxHeap.size() > 1) {
-    const top1 = maxHeap.pop()!;
-    const top2 = maxHeap.pop()!;
+    const top1 = maxHeap.pop()!
+    const top2 = maxHeap.pop()!
 
     const diff = top1 - top2
     if (diff !== 0) {
@@ -82,22 +82,22 @@ function runTests(fn: (stones: number[]) => number) {
     { stones: [1, 3], expected: 2 },
     { stones: [7, 6, 7, 6, 9], expected: 3 },
     { stones: [3, 7, 2], expected: 2 },
-  ];
+  ]
 
-  console.log("--- Running Tests ---");
+  console.log('--- Running Tests ---')
 
   testCases.forEach((test, index) => {
-    const result = fn([...test.stones]);
+    const result = fn([...test.stones])
 
     if (result === test.expected) {
-      console.log(`Test ${index + 1}: Passed`);
+      console.log(`Test ${index + 1}: Passed`)
     } else {
-      console.log(`Test ${index + 1}: Failed`);
-      console.log(`   Input:    [${test.stones}]`);
-      console.log(`   Expected: ${test.expected}`);
-      console.log(`   Received: ${result}`);
+      console.log(`Test ${index + 1}: Failed`)
+      console.log(`   Input:    [${test.stones}]`)
+      console.log(`   Expected: ${test.expected}`)
+      console.log(`   Received: ${result}`)
     }
-  });
+  })
 }
 
-runTests(lastStoneWeight2);
+runTests(lastStoneWeight2)

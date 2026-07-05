@@ -62,14 +62,14 @@ function isBalanced2(root: TreeNode | null): boolean {
       curr = curr.left
     } else {
       // Peak the top. Only pop when children are processed.
-      let node = stack.at(-1)!;
+      let node = stack.at(-1)!
 
       if (node.right !== null && node.right !== lastVisited) {
         // Traverse to unvisited right child
         curr = node.right
       } else {
         // Both children are processed
-        node = stack.pop()!;
+        node = stack.pop()!
 
         // Check balance condition
         const leftH = map.get(node.left) ?? 0
@@ -91,38 +91,38 @@ function isBalanced2(root: TreeNode | null): boolean {
     }
   }
 
-  return map.get(root) !== -1;
+  return map.get(root) !== -1
 };
 
 /**
  * Builds a binary tree from a LeetCode array representation (level-order).
  */
 function buildTree(arr: (number | null)[]): TreeNode | null {
-  if (arr.length === 0 || arr[0] === null) return null;
+  if (arr.length === 0 || arr[0] === null) return null
 
-  const root = new TreeNode(arr[0]);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  const root = new TreeNode(arr[0])
+  const queue: TreeNode[] = [root]
+  let i = 1
 
   while (queue.length > 0 && i < arr.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
 
     // Left child
     if (i < arr.length && arr[i] !== null) {
-      curr.left = new TreeNode(arr[i]!);
-      queue.push(curr.left);
+      curr.left = new TreeNode(arr[i]!)
+      queue.push(curr.left)
     }
-    i++;
+    i++
 
     // Right child
     if (i < arr.length && arr[i] !== null) {
-      curr.right = new TreeNode(arr[i]!);
-      queue.push(curr.right);
+      curr.right = new TreeNode(arr[i]!)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
 
-  return root;
+  return root
 }
 
 interface TestCase {
@@ -136,62 +136,62 @@ const testCases: TestCase[] = [
   {
     input: [],
     expected: true,
-    description: "Empty Tree"
+    description: 'Empty Tree'
   },
   {
     input: [1],
     expected: true,
-    description: "Single Node"
+    description: 'Single Node'
   },
   {
     input: [1, 2, 2, 3, 3, 3, 3],
     expected: true,
-    description: "Perfectly Balanced"
+    description: 'Perfectly Balanced'
   },
   {
     input: [1, 2, 3, 4, 5],
     expected: true,
-    description: "Slightly Unbalanced"
+    description: 'Slightly Unbalanced'
   },
   {
     input: [1, 2, null, 3, null, 4, null],
     expected: false,
-    description: "Unbalanced (Root)"
+    description: 'Unbalanced (Root)'
   },
   {
     input: [1, 2, null, 3, null, 4],
     expected: false,
-    description: "Skewed Tree"
+    description: 'Skewed Tree'
   },
   {
     input: [1, 2, 3, 4, null, null, 5],
     expected: true,
-    description: "Balanced Deep Tree"
+    description: 'Balanced Deep Tree'
   },
-];
+]
 
 function runTests() {
-  console.log("=== Running LeetCode 543 Tester ===\n");
-  let passedCount = 0;
+  console.log('=== Running LeetCode 543 Tester ===\n')
+  let passedCount = 0
 
   testCases.forEach((tc, index) => {
-    const tree = buildTree(tc.input);
-    const result = isBalanced2(tree);
-    const passed = result === tc.expected;
+    const tree = buildTree(tc.input)
+    const result = isBalanced2(tree)
+    const passed = result === tc.expected
 
     if (passed) {
-      passedCount++;
-      console.log(`✅ Test ${index + 1} Passed: ${tc.description}`);
+      passedCount++
+      console.log(`✅ Test ${index + 1} Passed: ${tc.description}`)
     } else {
-      console.log(`❌ Test ${index + 1} Failed: ${tc.description}`);
-      console.log(`   Input array:  ${JSON.stringify(tc.input)}`);
-      console.log(`   Expected:     ${tc.expected}`);
-      console.log(`   Got:          ${result}\n`);
+      console.log(`❌ Test ${index + 1} Failed: ${tc.description}`)
+      console.log(`   Input array:  ${JSON.stringify(tc.input)}`)
+      console.log(`   Expected:     ${tc.expected}`)
+      console.log(`   Got:          ${result}\n`)
     }
-  });
+  })
 
-  console.log(`\n=== Results: ${passedCount}/${testCases.length} Passed ===`);
+  console.log(`\n=== Results: ${passedCount}/${testCases.length} Passed ===`)
 }
 
 // Execute the tests
-runTests();
+runTests()

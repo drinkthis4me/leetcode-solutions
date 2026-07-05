@@ -48,24 +48,24 @@ function maxPathSum(root: TreeNode | null): number {
 
 // --- Helper ---
 function buildTree(nodes: (number | null)[]): TreeNode | null {
-  if (!nodes.length) return null;
-  const root = new TreeNode(nodes[0] as number);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  if (!nodes.length) return null
+  const root = new TreeNode(nodes[0] as number)
+  const queue: TreeNode[] = [root]
+  let i = 1
   while (i < nodes.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
     if (nodes[i] !== null) {
-      curr.left = new TreeNode(nodes[i] as number);
-      queue.push(curr.left);
+      curr.left = new TreeNode(nodes[i] as number)
+      queue.push(curr.left)
     }
-    i++;
+    i++
     if (i < nodes.length && nodes[i] !== null) {
-      curr.right = new TreeNode(nodes[i] as number);
-      queue.push(curr.right);
+      curr.right = new TreeNode(nodes[i] as number)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
-  return root;
+  return root
 }
 
 // --- The Test Suite ---
@@ -76,16 +76,16 @@ function runTests(maxPathSumFn: (root: TreeNode | null) => number) {
     { input: [1, -2, 3], expected: 4 },
     { input: [-3], expected: -3 },
     { input: [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1], expected: 48 }
-  ];
+  ]
 
   testCases.forEach(({ input, expected }, index) => {
-    const root = buildTree(input);
-    const result = maxPathSumFn(root);
-    console.log(`Test ${index + 1}: ${result === expected ? "PASSED" : "FAILED"}`);
+    const root = buildTree(input)
+    const result = maxPathSumFn(root)
+    console.log(`Test ${index + 1}: ${result === expected ? 'PASSED' : 'FAILED'}`)
     if (result !== expected) {
-      console.log(`   Expected ${expected}, but got ${result}`);
+      console.log(`   Expected ${expected}, but got ${result}`)
     }
-  });
+  })
 }
 
 runTests(maxPathSum)

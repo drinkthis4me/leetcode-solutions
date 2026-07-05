@@ -106,7 +106,7 @@ function exist2(board: string[][], word: string): boolean {
       backtrack(r + 1, c, i + 1) ||
       backtrack(r - 1, c, i + 1) ||
       backtrack(r, c + 1, i + 1) ||
-      backtrack(r, c - 1, i + 1);
+      backtrack(r, c - 1, i + 1)
 
     board[r][c] = word[i]
 
@@ -167,20 +167,20 @@ function testWordSearch(solve: (board: string[][], word: string) => boolean) {
       word: 'abcd',
       expected: false
     }
-  ];
+  ]
 
-  console.log(`Running tests for: ${solve.name || 'Anonymous Function'}\n`);
+  console.log(`Running tests for: ${solve.name || 'Anonymous Function'}\n`)
 
   testCases.forEach((tc, index) => {
-    const result = solve(tc.board, tc.word);
-    const passed = result === tc.expected;
+    const result = solve(tc.board, tc.word)
+    const passed = result === tc.expected
 
-    console.log(`Test Case #${index + 1}:`);
-    console.log(`  Word: "${tc.word}"`);
-    console.log(`  Expected: ${tc.expected}, Got: ${result}`);
-    console.log(`  Status: ${passed ? '✅ PASSED' : '❌ FAILED'}`);
-    console.log('-----------------------------------');
-  });
+    console.log(`Test Case #${index + 1}:`)
+    console.log(`  Word: "${tc.word}"`)
+    console.log(`  Expected: ${tc.expected}, Got: ${result}`)
+    console.log(`  Status: ${passed ? '✅ PASSED' : '❌ FAILED'}`)
+    console.log('-----------------------------------')
+  })
 }
 
-testWordSearch(exist2);
+testWordSearch(exist2)

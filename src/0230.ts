@@ -123,24 +123,24 @@ function kthSmallest3(root: TreeNode | null, k: number): number {
 
 // --- Helper ---
 function buildTree(arr: (number | null)[]): TreeNode | null {
-  if (!arr.length || arr[0] === null) return null;
-  const root = new TreeNode(arr[0] as number);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  if (!arr.length || arr[0] === null) return null
+  const root = new TreeNode(arr[0] as number)
+  const queue: TreeNode[] = [root]
+  let i = 1
   while (i < arr.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
     if (i < arr.length && arr[i] !== null) {
-      curr.left = new TreeNode(arr[i] as number);
-      queue.push(curr.left);
+      curr.left = new TreeNode(arr[i] as number)
+      queue.push(curr.left)
     }
-    i++;
+    i++
     if (i < arr.length && arr[i] !== null) {
-      curr.right = new TreeNode(arr[i] as number);
-      queue.push(curr.right);
+      curr.right = new TreeNode(arr[i] as number)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
-  return root;
+  return root
 }
 
 // --- Tester ---
@@ -148,20 +148,20 @@ function runTests() {
   const testCases = [
     { root: [3, 1, 4, null, 2], k: 1, expected: 1 },
     { root: [5, 3, 6, 2, 4, null, null, 1], k: 3, expected: 3 }
-  ];
+  ]
 
   testCases.forEach(({ root, k, expected }, index) => {
-    const treeRoot = buildTree(root);
-    const result = kthSmallest3(treeRoot, k);
+    const treeRoot = buildTree(root)
+    const result = kthSmallest3(treeRoot, k)
 
     if (result === expected) {
-      console.log(`Test Case ${index + 1}: PASSED`);
+      console.log(`Test Case ${index + 1}: PASSED`)
     } else {
       console.error(
         `Test Case ${index + 1}: FAILED. Expected ${expected}, got ${result}`
-      );
+      )
     }
-  });
+  })
 }
 
-runTests();
+runTests()

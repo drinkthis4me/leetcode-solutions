@@ -7,7 +7,7 @@
 function smallestDistancePair(nums: number[], k: number): number {
   const n = nums.length
   // Find the max element in the array
-  let maxElement = Math.max(...nums)
+  const maxElement = Math.max(...nums)
   // Initialize a bucket array to store counts of each distance
   const distanceBucket: number[] = new Array(maxElement + 1).fill(0)
 
@@ -57,13 +57,13 @@ function smallestDistancePair2(nums: number[], k: number): number {
 
   // Compute value counts
   for (const num of nums) {
-    valueCount[num]!++;
+    valueCount[num]!++
   }
   // Compute prefix counts
-  let runningCount = 0;
+  let runningCount = 0
   for (let value = 0; value < prefixCountSize; ++value) {
-    runningCount += valueCount[value]!;
-    prefixCount[value] = runningCount;
+    runningCount += valueCount[value]!
+    prefixCount[value] = runningCount
   }
 
   // Helper fn for counting the number of pairs `(i, j)` with `i < j` such that `nums[j] - nums[i] <= maxDistance`.

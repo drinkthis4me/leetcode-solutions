@@ -72,7 +72,7 @@ function lengthOfLongestSubstring2(s: string): number {
   return maxLength
 };
 
-const s = "abcabcbb"
+const s = 'abcabcbb'
 const expected = 3
 // const s = "bbbbb"
 // const expected = 1

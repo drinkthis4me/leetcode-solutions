@@ -118,89 +118,89 @@ function inorderTraversal3(root: TreeNode | null): number[] {
 
   while (curr != null) {
     if (curr.left == null) {
-      res.push(curr.val);
-      curr = curr.right; // move to next right node
+      res.push(curr.val)
+      curr = curr.right // move to next right node
     } else {
-      pre = curr.left;
+      pre = curr.left
       while (pre.right != null && pre.right !== curr) { // find rightmost
-        pre = pre.right;
+        pre = pre.right
       }
 
       if (pre.right === null) {
         // establish a link back to the current node
-        pre.right = curr;
-        curr = curr.left;
+        pre.right = curr
+        curr = curr.left
       } else {
         // restore the tree structure
-        pre.right = null;
-        res.push(curr.val);
-        curr = curr.right;
+        pre.right = null
+        res.push(curr.val)
+        curr = curr.right
       }
     }
   }
 
-  return res;
+  return res
 };
 
 // Helper function to build a binary tree from a LeetCode-style array
 function buildTree(arr: (number | null)[]): TreeNode | null {
-  if (arr.length === 0 || arr[0] === null) return null;
+  if (arr.length === 0 || arr[0] === null) return null
 
-  const root = new TreeNode(arr[0]);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  const root = new TreeNode(arr[0])
+  const queue: TreeNode[] = [root]
+  let i = 1
 
   while (queue.length > 0 && i < arr.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
 
     // Left child
     if (i < arr.length && arr[i] !== null) {
-      curr.left = new TreeNode(arr[i]!);
-      queue.push(curr.left);
+      curr.left = new TreeNode(arr[i]!)
+      queue.push(curr.left)
     }
-    i++;
+    i++
 
     // Right child
     if (i < arr.length && arr[i] !== null) {
-      curr.right = new TreeNode(arr[i]!);
-      queue.push(curr.right);
+      curr.right = new TreeNode(arr[i]!)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
 
-  return root;
+  return root
 }
 
 // Helper function to run and log test cases
 function runTest(testId: number, input: (number | null)[], expected: number[]) {
-  const root = buildTree(input);
-  const result = inorderTraversal3(root);
+  const root = buildTree(input)
+  const result = inorderTraversal3(root)
 
-  const passed = JSON.stringify(result) === JSON.stringify(expected);
+  const passed = JSON.stringify(result) === JSON.stringify(expected)
 
-  console.log(`Test Case ${testId}: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
+  console.log(`Test Case ${testId}: ${passed ? '✅ PASSED' : '❌ FAILED'}`)
   if (!passed) {
-    console.log(`   Input:    ${JSON.stringify(input)}`);
-    console.log(`   Expected: ${JSON.stringify(expected)}`);
-    console.log(`   Got:      ${JSON.stringify(result)}`);
+    console.log(`   Input:    ${JSON.stringify(input)}`)
+    console.log(`   Expected: ${JSON.stringify(expected)}`)
+    console.log(`   Got:      ${JSON.stringify(result)}`)
   }
 }
 
 // --- TEST SUITE ---
-console.log("Running LeetCode 94 Tester...");
-console.log("----------------------------");
+console.log('Running LeetCode 94 Tester...')
+console.log('----------------------------')
 
 // Test 1: Standard case from LeetCode
-runTest(1, [1, null, 2, 3], [1, 3, 2]);
+runTest(1, [1, null, 2, 3], [1, 3, 2])
 
 // Test 2: Empty tree
-runTest(2, [], []);
+runTest(2, [], [])
 
 // Test 3: Single node
-runTest(3, [1], [1]);
+runTest(3, [1], [1])
 
 // Test 4: Full balanced tree
-runTest(4, [1, 2, 3, 4, 5, 6, 7], [4, 2, 5, 1, 6, 3, 7]);
+runTest(4, [1, 2, 3, 4, 5, 6, 7], [4, 2, 5, 1, 6, 3, 7])
 
 // Test 5: Left-skewed tree
-runTest(5, [3, 2, null, 1], [1, 2, 3]);
+runTest(5, [3, 2, null, 1], [1, 2, 3])

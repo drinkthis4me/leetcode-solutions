@@ -11,7 +11,7 @@
  * Binary Search
  * T: O(log n); S: O(1);
  */
-var solution = function (isBadVersion: any) {
+const solution = function (isBadVersion: any) {
 
   return function (n: number): number {
     // Binary Search
@@ -35,8 +35,8 @@ var solution = function (isBadVersion: any) {
     // left === right
     // Edge Case: `n == 0` or no bad version exists
     return left <= n ? left : -1
-  };
-};
+  }
+}
 
 const n = 5, bad = 4
 

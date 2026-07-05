@@ -145,29 +145,29 @@ function maximalSquare4(matrix: string[][]): number {
 function runTests(maximalSquareFn: (matrix: string[][]) => number) {
   const testCases = [
     {
-      input: [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]],
+      input: [['1', '0', '1', '0', '0'], ['1', '0', '1', '1', '1'], ['1', '1', '1', '1', '1'], ['1', '0', '0', '1', '0']],
       expected: 4
     },
     {
-      input: [["0", "1"], ["1", "0"]],
+      input: [['0', '1'], ['1', '0']],
       expected: 1
     },
     {
-      input: [["0"]],
+      input: [['0']],
       expected: 0
     },
     {
-      input: [["1", "1"], ["1", "1"]],
+      input: [['1', '1'], ['1', '1']],
       expected: 4
     },
-  ];
+  ]
   testCases.forEach((test, index) => {
-    const result = maximalSquareFn(test.input);
-    console.log(`Test Case ${index + 1}: ${result === test.expected ? "PASSED" : "FAILED"}`);
+    const result = maximalSquareFn(test.input)
+    console.log(`Test Case ${index + 1}: ${result === test.expected ? 'PASSED' : 'FAILED'}`)
     if (result !== test.expected) {
-      console.log(`   Expected ${test.expected}, but got ${result}`);
+      console.log(`   Expected ${test.expected}, but got ${result}`)
     }
-  });
+  })
 };
 
-runTests(maximalSquare3);
+runTests(maximalSquare3)

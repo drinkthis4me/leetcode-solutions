@@ -1,6 +1,6 @@
 // 199. Binary Tree Right Side View
 
-import { Queue } from "@datastructures-js/queue"
+import { Queue } from '@datastructures-js/queue'
 
 /**
  * Definition for a binary tree node.
@@ -80,24 +80,24 @@ function rightSideView2(root: TreeNode | null): number[] {
  * Helper to build tree from array (Level-Order)
  */
 function buildTree(arr: (number | null)[]): TreeNode | null {
-  if (arr.length === 0 || arr[0] === null) return null;
-  const root = new TreeNode(arr[0]);
-  const queue = [root];
-  let i = 1;
+  if (arr.length === 0 || arr[0] === null) return null
+  const root = new TreeNode(arr[0])
+  const queue = [root]
+  let i = 1
   while (i < arr.length) {
-    const node = queue.shift()!;
+    const node = queue.shift()!
     if (arr[i] !== null) {
-      node.left = new TreeNode(arr[i] as number);
-      queue.push(node.left);
+      node.left = new TreeNode(arr[i] as number)
+      queue.push(node.left)
     }
-    i++;
+    i++
     if (i < arr.length && arr[i] !== null) {
-      node.right = new TreeNode(arr[i] as number);
-      queue.push(node.right);
+      node.right = new TreeNode(arr[i] as number)
+      queue.push(node.right)
     }
-    i++;
+    i++
   }
-  return root;
+  return root
 }
 
 /**
@@ -109,17 +109,17 @@ function runTests() {
     { input: [1, null, 3], expected: [1, 3] },
     { input: [], expected: [] },
     { input: [1, 2, 3, 4], expected: [1, 3, 4] }
-  ];
+  ]
 
   testCases.forEach(({ input, expected }, index) => {
-    const root = buildTree(input);
-    const result = rightSideView(root);
-    const passed = JSON.stringify(result) === JSON.stringify(expected);
-    console.log(`Test Case ${index + 1}: ${passed ? "PASSED" : "FAILED"}`);
+    const root = buildTree(input)
+    const result = rightSideView(root)
+    const passed = JSON.stringify(result) === JSON.stringify(expected)
+    console.log(`Test Case ${index + 1}: ${passed ? 'PASSED' : 'FAILED'}`)
     if (!passed) {
-      console.log(`   Expected: ${JSON.stringify(expected)}, Got: ${JSON.stringify(result)}`);
+      console.log(`   Expected: ${JSON.stringify(expected)}, Got: ${JSON.stringify(result)}`)
     }
-  });
+  })
 }
 
-runTests();
+runTests()

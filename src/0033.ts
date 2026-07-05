@@ -34,7 +34,7 @@ function search(nums: number[], target: number): number {
   }
 
   // l pointer is now at pivot index
-  let pivot = l
+  const pivot = l
   l = 0
   r = n - 1
   // Decide which half to discard

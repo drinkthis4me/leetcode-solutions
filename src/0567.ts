@@ -221,7 +221,7 @@ function checkInclusion4(s1: string, s2: string): any {
 }
 
 
-const s1 = "ab", s2 = "eidbaooo"
+const s1 = 'ab', s2 = 'eidbaooo'
 const expected = true
 // const s1 = "ab", s2 = "eidboaoo"
 // const expected = false

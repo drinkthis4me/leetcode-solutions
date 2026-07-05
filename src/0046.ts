@@ -90,11 +90,11 @@ function permute3(nums: number[]): number[][] {
     }
 
     for (let j = i; j < n; j++) {
-      [nums[j], nums[i]] = [nums[i], nums[j]];
+      [nums[j], nums[i]] = [nums[i], nums[j]]
 
       backtrack(i + 1);
 
-      [nums[i], nums[j]] = [nums[j], nums[i]];
+      [nums[i], nums[j]] = [nums[j], nums[i]]
     }
   }
 
@@ -113,49 +113,49 @@ function runTests(solution: (nums: number[]) => number[][]) {
     { input: [0, 1], expectedCount: 2 },
     { input: [1], expectedCount: 1 },
     { input: [], expectedCount: 1 } // Permutation of empty is [[]]
-  ];
+  ]
 
   /**
 * Validates if the result contains all unique permutations
 */
   function validatePermutations(input: number[], result: number[][], expectedCount: number): boolean {
-    if (result.length !== expectedCount) return false;
+    if (result.length !== expectedCount) return false
 
-    const seen = new Set<string>();
+    const seen = new Set<string>()
     for (const p of result) {
-      if (p.length !== input.length) return false;
+      if (p.length !== input.length) return false
 
       // Check if all elements in p are present in input (basic constraint check)
-      const sortedP = [...p].sort((a, b) => a - b);
-      const sortedInput = [...input].sort((a, b) => a - b);
+      const sortedP = [...p].sort((a, b) => a - b)
+      const sortedInput = [...input].sort((a, b) => a - b)
 
       for (let i = 0; i < sortedP.length; i++) {
-        if (sortedP[i] !== sortedInput[i]) return false;
+        if (sortedP[i] !== sortedInput[i]) return false
       }
 
-      seen.add(p.join(","));
+      seen.add(p.join(','))
     }
 
-    return seen.size === expectedCount;
+    return seen.size === expectedCount
   }
 
 
-  console.log(`--- Testing: ${solution.name || "Anonymous Function"} ---`);
+  console.log(`--- Testing: ${solution.name || 'Anonymous Function'} ---`)
 
   testCases.forEach(({ input, expectedCount }, index) => {
-    const result = solution([...input]);
+    const result = solution([...input])
 
     // Validation logic
-    const passed = validatePermutations(input, result, expectedCount);
+    const passed = validatePermutations(input, result, expectedCount)
 
-    console.log(`Test Case ${index + 1}: Input [${input}]`);
-    console.log(`  Expected ${expectedCount} permutations, got ${result.length}`);
-    console.log(`  Status: ${passed ? "PASSED" : "FAILED"}`);
+    console.log(`Test Case ${index + 1}: Input [${input}]`)
+    console.log(`  Expected ${expectedCount} permutations, got ${result.length}`)
+    console.log(`  Status: ${passed ? 'PASSED' : 'FAILED'}`)
     if (!passed) {
-      console.log(`  Result: ${JSON.stringify(result)}`);
+      console.log(`  Result: ${JSON.stringify(result)}`)
     }
-  });
-  console.log("------------------------------------------\n");
+  })
+  console.log('------------------------------------------\n')
 }
 
-runTests(permute3);
+runTests(permute3)

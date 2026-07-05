@@ -139,58 +139,58 @@ function solveNQueens3(n: number): string[][] {
   return res
 };
 
-type SolveNQueens = (n: number) => string[][];
+type SolveNQueens = (n: number) => string[][]
 
 function runTester(solveFn: SolveNQueens) {
   const testCases = [
     {
       n: 1,
-      expected: [["Q"]]
+      expected: [['Q']]
     },
     {
       n: 4,
       expected: [
-        [".Q..", "...Q", "Q...", "..Q."],
-        ["..Q.", "Q...", "...Q", ".Q.."]
+        ['.Q..', '...Q', 'Q...', '..Q.'],
+        ['..Q.', 'Q...', '...Q', '.Q..']
       ]
     }
-  ];
+  ]
 
   /**
    * Helper to normalize and compare results.
    * Since order doesn't matter, we sort the boards and the internal rows.
    */
   function areResultsEqual(result: string[][], expected: string[][]): boolean {
-    if (result.length !== expected.length) return false;
+    if (result.length !== expected.length) return false
 
     const serialize = (arr: string[][]) =>
-      arr.map(board => board.join('')).sort();
+      arr.map(board => board.join('')).sort()
 
-    const resSorted = serialize(result);
-    const expSorted = serialize(expected);
+    const resSorted = serialize(result)
+    const expSorted = serialize(expected)
 
-    return resSorted.every((val, idx) => val === expSorted[idx]);
+    return resSorted.every((val, idx) => val === expSorted[idx])
   }
 
-  console.log(`Running tests for: ${solveFn.name || 'Anonymous Function'}\n`);
+  console.log(`Running tests for: ${solveFn.name || 'Anonymous Function'}\n`)
 
   testCases.forEach(({ n, expected }, index) => {
-    const start = performance.now();
-    const result = solveFn(n);
-    const end = performance.now();
+    const start = performance.now()
+    const result = solveFn(n)
+    const end = performance.now()
 
-    const passed = areResultsEqual(result, expected);
+    const passed = areResultsEqual(result, expected)
 
-    console.log(`Test Case ${index + 1} (n=${n}):`);
-    console.log(`  Status: ${passed ? '✅ PASSED' : '❌ FAILED'}`);
-    console.log(`  Time: ${(end - start).toFixed(4)}ms`);
+    console.log(`Test Case ${index + 1} (n=${n}):`)
+    console.log(`  Status: ${passed ? '✅ PASSED' : '❌ FAILED'}`)
+    console.log(`  Time: ${(end - start).toFixed(4)}ms`)
 
     if (!passed) {
-      console.log(`  Expected:`, JSON.stringify(expected));
-      console.log(`  Received:`, JSON.stringify(result));
+      console.log('  Expected:', JSON.stringify(expected))
+      console.log('  Received:', JSON.stringify(result))
     }
-    console.log('-----------------------------------');
-  });
+    console.log('-----------------------------------')
+  })
 }
 
-runTester(solveNQueens3);
+runTester(solveNQueens3)

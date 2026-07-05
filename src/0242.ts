@@ -10,8 +10,8 @@ function isAnagram(s: string, t: string): boolean {
   const tNormalized = t.normalize()
 
   // Array.from() or spreading to get the true length
-  const charsS = [...sNormalized];
-  const charsT = [...tNormalized];
+  const charsS = [...sNormalized]
+  const charsT = [...tNormalized]
 
   // Edge Case: Different length
   if (charsS.length !== charsT.length) return false
@@ -66,7 +66,7 @@ function isAnagram2(s: string, t: string): boolean {
   return count.every(c => c === 0)
 };
 
-const s = "anagram", t = "nagaram"
+const s = 'anagram', t = 'nagaram'
 const expected = true
 
 // const s = "rat", t = "car"

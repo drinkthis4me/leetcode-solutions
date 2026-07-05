@@ -70,7 +70,7 @@ function maxVowels(s: string, k: number): number {
   return maxVowels
 };
 
-const s = "abciiidef", k = 3
+const s = 'abciiidef', k = 3
 
 const expected = 3
 

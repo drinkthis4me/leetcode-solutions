@@ -1,6 +1,6 @@
 // 297. Serialize and Deserialize Binary Tree
 
-import { Queue } from "@datastructures-js/queue"
+import { Queue } from '@datastructures-js/queue'
 
 /**
  * Definition for a binary tree node.
@@ -77,7 +77,7 @@ class Codec2 implements ICodec {
   serialize(root: TreeNode | null): string {
     if (root === null) return 'N'
     const q = new Queue<TreeNode | null>([root])
-    let res: (number | 'N')[] = []
+    const res: (number | 'N')[] = []
 
     while (!q.isEmpty()) {
       const node = q.pop()!
@@ -135,54 +135,54 @@ function runAllTests(CodecClass: new () => ICodec) {
   // Define an array of test scenarios
   const testCases: { name: string; root: TreeNode | null }[] = [
     {
-      name: "Standard Tree [1,2,3,null,null,4,5]",
+      name: 'Standard Tree [1,2,3,null,null,4,5]',
       root: new TreeNode(1, new TreeNode(2), new TreeNode(3, new TreeNode(4), new TreeNode(5)))
     },
     {
-      name: "Empty Tree []",
+      name: 'Empty Tree []',
       root: null
     },
     {
-      name: "Single Node [1]",
+      name: 'Single Node [1]',
       root: new TreeNode(1)
     },
     {
-      name: "Left-Skewed Tree [1,2,null,3]",
+      name: 'Left-Skewed Tree [1,2,null,3]',
       root: new TreeNode(1, new TreeNode(2, new TreeNode(3), null), null)
     },
     {
-      name: "Tree with Negative Values [1,-2,3]",
+      name: 'Tree with Negative Values [1,-2,3]',
       root: new TreeNode(1, new TreeNode(-2), new TreeNode(3))
     }
-  ];
+  ]
 
   /**
    * Utility to compare two trees for structural and value equality.
    */
   function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    if (!p && !q) return true;
-    if (!p || !q || p.val !== q.val) return false;
-    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    if (!p && !q) return true
+    if (!p || !q || p.val !== q.val) return false
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
   }
 
-  console.log("--- Starting LeetCode 297 Test Suite ---\n");
+  console.log('--- Starting LeetCode 297 Test Suite ---\n')
 
-  const codec = new CodecClass();
+  const codec = new CodecClass()
   testCases.forEach((tc) => {
-    const serialized = codec.serialize(tc.root);
-    const deserialized = codec.deserialize(serialized);
+    const serialized = codec.serialize(tc.root)
+    const deserialized = codec.deserialize(serialized)
 
-    const passed = isSameTree(tc.root, deserialized);
+    const passed = isSameTree(tc.root, deserialized)
 
-    console.log(`[${passed ? "PASSED" : "FAILED"}] ${tc.name}`);
+    console.log(`[${passed ? 'PASSED' : 'FAILED'}] ${tc.name}`)
     if (!passed) {
-      console.log(`  Input:      ${JSON.stringify(tc.root)}`);
-      console.log(`  Serialized: ${serialized}`);
+      console.log(`  Input:      ${JSON.stringify(tc.root)}`)
+      console.log(`  Serialized: ${serialized}`)
     }
-  });
+  })
 
-  console.log("\n--- Testing Complete ---");
+  console.log('\n--- Testing Complete ---')
 }
 
 // Execute the suite
-runAllTests(Codec2);
+runAllTests(Codec2)

@@ -72,38 +72,38 @@ function isSubtree2(root: TreeNode | null, subRoot: TreeNode | null): boolean {
 function runTests() {
   const tests = [
     {
-      name: "Standard Case: Subtree exists",
+      name: 'Standard Case: Subtree exists',
       root: new TreeNode(3, new TreeNode(4, new TreeNode(1), new TreeNode(2)), new TreeNode(5)),
       sub: new TreeNode(4, new TreeNode(1), new TreeNode(2)),
       expected: true
     },
     {
-      name: "False Case: Same values but different structure",
+      name: 'False Case: Same values but different structure',
       root: new TreeNode(3, new TreeNode(4, new TreeNode(1), new TreeNode(2, new TreeNode(0))), new TreeNode(5)),
       sub: new TreeNode(4, new TreeNode(1), new TreeNode(2)),
       expected: false
     },
     {
-      name: "Edge Case: Empty Subtree",
+      name: 'Edge Case: Empty Subtree',
       root: new TreeNode(1),
       sub: null,
       expected: true
     },
     {
-      name: "Edge Case: Root smaller than Subtree",
+      name: 'Edge Case: Root smaller than Subtree',
       root: new TreeNode(1),
       sub: new TreeNode(1, new TreeNode(2)),
       expected: false
     }
-  ];
+  ]
 
   tests.forEach(({ name, root, sub, expected }) => {
-    const result = isSubtree2(root, sub);
-    console.log(`[${result === expected ? 'PASS' : 'FAIL'}] ${name}`);
+    const result = isSubtree2(root, sub)
+    console.log(`[${result === expected ? 'PASS' : 'FAIL'}] ${name}`)
     if (result !== expected) {
-      console.log(`   Expected ${expected}, got ${result}`);
+      console.log(`   Expected ${expected}, got ${result}`)
     }
-  });
+  })
 }
 
 runTests()

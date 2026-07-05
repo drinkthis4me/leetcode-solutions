@@ -20,12 +20,12 @@ function twoSum(nums: number[], target: number): number[] {
   }
 
   // No solution found
-  return [-1, -1];
+  return [-1, -1]
 }
 
 const nums = [2, 7, 11, 15]
 const target = 9
-const output = twoSum(nums, target);
+const output = twoSum(nums, target)
 
 console.log('Input: ', nums)
 console.log('expected: ', target)

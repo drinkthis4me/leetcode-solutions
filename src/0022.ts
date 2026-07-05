@@ -73,30 +73,30 @@ function generateParenthesis3(n: number): string[] {
   // i ranges from [0, n-1]
 
   // dp[i] will store all valid combinations for i pairs
-  const dp: string[][] = Array.from({ length: n + 1 }, () => []);
+  const dp: string[][] = Array.from({ length: n + 1 }, () => [])
 
   // Base case: 0 pairs is an empty string
-  dp[0] = [""];
+  dp[0] = ['']
 
   for (let i = 1; i <= n; i++) {
     // To form i pairs, we fix one '(' and one ')'
     // This leaves i-1 pairs to be distributed between the two sets
     // i-1 = leftCount + rightCount
     for (let leftCount = 0; leftCount < i; leftCount++) {
-      const rightCount = i - 1 - leftCount;
+      const rightCount = i - 1 - leftCount
 
-      const leftOptions = dp[leftCount];
-      const rightOptions = dp[rightCount];
+      const leftOptions = dp[leftCount]
+      const rightOptions = dp[rightCount]
 
       for (const left of leftOptions) {
         for (const right of rightOptions) {
-          dp[i].push(`(${left})${right}`);
+          dp[i].push(`(${left})${right}`)
         }
       }
     }
   }
 
-  return dp[n];
+  return dp[n]
 }
 
 /**
@@ -105,32 +105,32 @@ function generateParenthesis3(n: number): string[] {
  */
 function runTests(fn: (n: number) => string[]) {
   const testCases = [
-    { n: 1, expected: ["()"] },
-    { n: 2, expected: ["(())", "()()"] },
-    { n: 3, expected: ["((()))", "(()())", "(())()", "()(())", "()()()"] },
-    { n: 0, expected: [""] }
-  ];
+    { n: 1, expected: ['()'] },
+    { n: 2, expected: ['(())', '()()'] },
+    { n: 3, expected: ['((()))', '(()())', '(())()', '()(())', '()()()'] },
+    { n: 0, expected: [''] }
+  ]
 
-  console.log(`--- Testing function: ${fn.name || "anonymous"} ---`);
+  console.log(`--- Testing function: ${fn.name || 'anonymous'} ---`)
 
   testCases.forEach(({ n, expected }, index) => {
-    const result = fn(n);
+    const result = fn(n)
 
     // Sort both arrays to ensure order-independent comparison
-    const sortedResult = [...result].sort();
-    const sortedExpected = [...expected].sort();
+    const sortedResult = [...result].sort()
+    const sortedExpected = [...expected].sort()
 
-    const passed = JSON.stringify(sortedResult) === JSON.stringify(sortedExpected);
+    const passed = JSON.stringify(sortedResult) === JSON.stringify(sortedExpected)
 
     if (passed) {
-      console.log(`Test Case ${index + 1} (n=${n}): PASSED`);
+      console.log(`Test Case ${index + 1} (n=${n}): PASSED`)
     } else {
-      console.error(`Test Case ${index + 1} (n=${n}): FAILED`);
-      console.error(`  Expected: ${JSON.stringify(sortedExpected)}`);
-      console.error(`  Received: ${JSON.stringify(sortedResult)}`);
+      console.error(`Test Case ${index + 1} (n=${n}): FAILED`)
+      console.error(`  Expected: ${JSON.stringify(sortedExpected)}`)
+      console.error(`  Received: ${JSON.stringify(sortedResult)}`)
     }
-  });
-  console.log("------------------------------------------\n");
+  })
+  console.log('------------------------------------------\n')
 }
 
-runTests(generateParenthesis2);
+runTests(generateParenthesis2)

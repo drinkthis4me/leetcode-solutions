@@ -8,7 +8,7 @@ function isPalindrome(s: string): boolean {
   // Convert to lowercase and remove all non-alphanumeric characters
   const converted = s.toLowerCase().replace(/[^0-9a-z]/g, '')
 
-  let n = converted.length
+  const n = converted.length
   let left = 0
   let right = n - 1
 
@@ -73,7 +73,7 @@ function isPalindrome2(s: string): boolean {
 // const expected = false
 // const s = " "
 // const expected = true
-const s = "ab_a"
+const s = 'ab_a'
 const expected = true
 
 const output = isPalindrome2(s)

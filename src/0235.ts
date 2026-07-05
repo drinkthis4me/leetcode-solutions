@@ -77,28 +77,28 @@ interface TestCase {
 
 const testCases: TestCase[] = [
   {
-    name: "Standard LCA in middle",
+    name: 'Standard LCA in middle',
     root: new TreeNode(6, new TreeNode(2, new TreeNode(0), new TreeNode(4, new TreeNode(3), new TreeNode(5))), new TreeNode(8, new TreeNode(7), new TreeNode(9))),
     p: new TreeNode(2),
     q: new TreeNode(8),
     expected: 6
   },
   {
-    name: "LCA is one of the nodes",
+    name: 'LCA is one of the nodes',
     root: new TreeNode(6, new TreeNode(2, new TreeNode(0), new TreeNode(4)), new TreeNode(8)),
     p: new TreeNode(2),
     q: new TreeNode(4),
     expected: 2
   }
-];
+]
 
 function runTests() {
   testCases.forEach(({ name, root, p, q, expected }) => {
-    const result = lowestCommonAncestor2(root, p, q);
-    const passed = result?.val === expected;
-    console.log(`[${passed ? 'PASS' : 'FAIL'}] ${name}`);
-    if (!passed) console.log(`   Expected: ${expected}, Got: ${result?.val}`);
-  });
+    const result = lowestCommonAncestor2(root, p, q)
+    const passed = result?.val === expected
+    console.log(`[${passed ? 'PASS' : 'FAIL'}] ${name}`)
+    if (!passed) console.log(`   Expected: ${expected}, Got: ${result?.val}`)
+  })
 }
 
-runTests();
+runTests()

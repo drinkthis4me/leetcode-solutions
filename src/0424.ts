@@ -43,7 +43,7 @@ function characterReplacement(s: string, k: number) {
   return maxLength
 };
 
-const s = "ABAB", k = 2
+const s = 'ABAB', k = 2
 const expected = 4
 // const s = "AABABBA", k = 1
 // const expected = 4

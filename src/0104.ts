@@ -1,6 +1,6 @@
 // 104. Maximum Depth of Binary Tree
 
-import { Queue } from "@datastructures-js/queue"
+import { Queue } from '@datastructures-js/queue'
 
 /**
  * Definition for a binary tree node.
@@ -105,31 +105,31 @@ function maxDepth4(root: TreeNode | null): number {
 };
 
 function buildTree(array: (number | null)[]): TreeNode | null {
-  if (array.length === 0 || array[0] === null) return null;
+  if (array.length === 0 || array[0] === null) return null
 
-  const root = new TreeNode(array[0]);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  const root = new TreeNode(array[0])
+  const queue: TreeNode[] = [root]
+  let i = 1
 
   while (queue.length > 0 && i < array.length) {
-    const current = queue.shift()!;
+    const current = queue.shift()!
 
     // Left child
     if (i < array.length && array[i] !== null) {
-      current.left = new TreeNode(array[i]!);
-      queue.push(current.left);
+      current.left = new TreeNode(array[i]!)
+      queue.push(current.left)
     }
-    i++;
+    i++
 
     // Right child
     if (i < array.length && array[i] !== null) {
-      current.right = new TreeNode(array[i]!);
-      queue.push(current.right);
+      current.right = new TreeNode(array[i]!)
+      queue.push(current.right)
     }
-    i++;
+    i++
   }
 
-  return root;
+  return root
 }
 
 // 4. Test Runner
@@ -138,40 +138,40 @@ function runTests() {
     {
       input: [3, 9, 20, null, null, 15, 7],
       expected: 3,
-      description: "Standard balanced tree"
+      description: 'Standard balanced tree'
     },
     {
       input: [1, null, 2],
       expected: 2,
-      description: "Skewed tree (right child only)"
+      description: 'Skewed tree (right child only)'
     },
     {
       input: [],
       expected: 0,
-      description: "Empty tree"
+      description: 'Empty tree'
     },
     {
       input: [0],
       expected: 1,
-      description: "Single node tree"
+      description: 'Single node tree'
     }
-  ];
+  ]
 
-  console.log("--- Running LeetCode 104 Tests --- \n");
+  console.log('--- Running LeetCode 104 Tests --- \n')
 
   testCases.forEach((tc, index) => {
-    const tree = buildTree(tc.input);
-    const result = maxDepth2(tree);
-    const passed = result === tc.expected;
+    const tree = buildTree(tc.input)
+    const result = maxDepth2(tree)
+    const passed = result === tc.expected
 
-    console.log(`Test ${index + 1}: ${tc.description}`);
-    console.log(`Input:    [${tc.input.join(", ")}]`);
-    console.log(`Expected: ${tc.expected}`);
-    console.log(`Result:   ${result}`);
-    console.log(`Status:   ${passed ? "✅ PASSED" : "❌ FAILED"}`);
-    console.log("-----------------------------------");
-  });
+    console.log(`Test ${index + 1}: ${tc.description}`)
+    console.log(`Input:    [${tc.input.join(', ')}]`)
+    console.log(`Expected: ${tc.expected}`)
+    console.log(`Result:   ${result}`)
+    console.log(`Status:   ${passed ? '✅ PASSED' : '❌ FAILED'}`)
+    console.log('-----------------------------------')
+  })
 }
 
 // Execute the tests
-runTests();
+runTests()

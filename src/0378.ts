@@ -107,10 +107,10 @@ function kthSmallest2(matrix: number[][], k: number): number {
 }
 
 const matrix = [
-  [1, 5, 9],
-  [10, 11, 13],
-  [12, 13, 15]
-], k = 8
+    [1, 5, 9],
+    [10, 11, 13],
+    [12, 13, 15]
+  ], k = 8
 const expected = 13
 
 // const matrix = [

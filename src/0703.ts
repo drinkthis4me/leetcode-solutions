@@ -43,57 +43,57 @@ class KthLargest implements IKthLargest {
 
 
 // Constructor type
-type KthLargestConstructor = new (k: number, nums: number[]) => IKthLargest;
+type KthLargestConstructor = new (k: number, nums: number[]) => IKthLargest
 
 function runAllTests(KthLargestClass: KthLargestConstructor) {
-  console.log(`--- Running Tests for ${KthLargestClass.name} ---`);
+  console.log(`--- Running Tests for ${KthLargestClass.name} ---`)
 
   const tests = [
     {
-      name: "LeetCode Example",
+      name: 'LeetCode Example',
       k: 3,
       nums: [4, 5, 8, 2],
       ops: [3, 5, 10, 9, 4],
       expected: [4, 5, 5, 8, 8]
     },
     {
-      name: "k=1 (Max element)",
+      name: 'k=1 (Max element)',
       k: 1,
       nums: [1],
       ops: [2, 0, 5],
       expected: [2, 2, 5]
     },
     {
-      name: "Increasing sequence",
+      name: 'Increasing sequence',
       k: 2,
       nums: [1, 2],
       ops: [3, 4, 5],
       expected: [2, 3, 4]
     },
     {
-      name: "Duplicates",
+      name: 'Duplicates',
       k: 2,
       nums: [5, 5, 5],
       ops: [5, 5],
       expected: [5, 5]
     }
-  ];
+  ]
 
   for (const test of tests) {
-    const stream = new KthLargestClass(test.k, test.nums);
-    let passed = true;
+    const stream = new KthLargestClass(test.k, test.nums)
+    let passed = true
 
     for (let i = 0; i < test.ops.length; i++) {
-      const actual = stream.add(test.ops[i]!);
+      const actual = stream.add(test.ops[i]!)
       if (actual !== test.expected[i]) {
-        console.error(`❌ [FAIL] ${test.name} - Op ${i}: Expected ${test.expected[i]}, got ${actual}`);
-        passed = false;
-        break;
+        console.error(`❌ [FAIL] ${test.name} - Op ${i}: Expected ${test.expected[i]}, got ${actual}`)
+        passed = false
+        break
       }
     }
-    if (passed) console.log(`✅ [PASS] ${test.name}`);
+    if (passed) console.log(`✅ [PASS] ${test.name}`)
   }
-  console.log("--- Tests Finished ---\n");
+  console.log('--- Tests Finished ---\n')
 }
 
-runAllTests(KthLargest);
+runAllTests(KthLargest)

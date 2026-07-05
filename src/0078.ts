@@ -122,28 +122,28 @@ function runTests(solutionFn: (nums: number[]) => number[][]) {
     { nums: [1, 2, 3], expected: [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]] },
     { nums: [0], expected: [[], [0]] },
     { nums: [], expected: [[]] }
-  ];
+  ]
 
   // Helper to normalize subsets for comparison
   const sortSubsets = (arr: number[][]): string => {
-    return JSON.stringify(arr.map(sub => [...sub].sort((a, b) => a - b)).sort());
-  };
+    return JSON.stringify(arr.map(sub => [...sub].sort((a, b) => a - b)).sort())
+  }
 
-  console.log(`--- Starting tests for: ${solutionFn.name || 'Anonymous Function'} ---`);
+  console.log(`--- Starting tests for: ${solutionFn.name || 'Anonymous Function'} ---`)
 
   testCases.forEach(({ nums, expected }, index) => {
-    const result = solutionFn([...nums]);
-    const isMatch = sortSubsets(result) === sortSubsets(expected);
+    const result = solutionFn([...nums])
+    const isMatch = sortSubsets(result) === sortSubsets(expected)
 
-    console.log(`Test Case ${index + 1}: ${JSON.stringify(nums)}`);
-    console.log(`Result: ${isMatch ? "PASSED" : "FAILED"}`);
+    console.log(`Test Case ${index + 1}: ${JSON.stringify(nums)}`)
+    console.log(`Result: ${isMatch ? 'PASSED' : 'FAILED'}`)
 
     if (!isMatch) {
-      console.log(`  Expected: ${JSON.stringify(expected)}`);
-      console.log(`  Got:      ${JSON.stringify(result)}`);
+      console.log(`  Expected: ${JSON.stringify(expected)}`)
+      console.log(`  Got:      ${JSON.stringify(result)}`)
     }
-    console.log('---------------------------');
-  });
+    console.log('---------------------------')
+  })
 }
 
-runTests(subsets3);
+runTests(subsets3)

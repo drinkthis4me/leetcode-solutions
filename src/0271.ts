@@ -56,7 +56,7 @@ class Solution {
   }
 }
 
-const input = ["neet", "code", "love", "you"]
+const input = ['neet', 'code', 'love', 'you']
 
 const expected = input
 

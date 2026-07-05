@@ -59,7 +59,7 @@ function scoreOfParentheses(s: string): number {
   return score
 };
 
-const s = "(()(()))"
+const s = '(()(()))'
 
 const expected = 6
 

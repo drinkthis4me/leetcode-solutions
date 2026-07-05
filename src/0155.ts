@@ -9,7 +9,7 @@ class MinStack {
   stack: [number, number][]
 
   constructor() {
-    this.stack = new Array()
+    this.stack = []
   }
 
   push(val: number): void {
@@ -49,18 +49,18 @@ class MinStack {
 
 
 function runLeetCodeTest(commands: string[], args: any[][], expected: (number | null)[]) {
-  let instance: MinStack | null = null;
-  const results: (number | null)[] = [];
+  let instance: MinStack | null = null
+  const results: (number | null)[] = []
 
   commands.forEach((cmd, i) => {
-    if (cmd === "MinStack") {
-      instance = new MinStack();
-      results.push(null);
+    if (cmd === 'MinStack') {
+      instance = new MinStack()
+      results.push(null)
     } else {
-      const res = (instance as any)[cmd](...args[i] ?? []);
-      results.push(res !== undefined ? res : null);
+      const res = (instance as any)[cmd](...args[i] ?? [])
+      results.push(res !== undefined ? res : null)
     }
-  });
+  })
 
   // ---Print to console---
   console.log('Input:')
@@ -68,13 +68,13 @@ function runLeetCodeTest(commands: string[], args: any[][], expected: (number | 
   console.log(args)
   console.log('expected:')
   console.log(expected)
-  console.log("Output:")
+  console.log('Output:')
   console.log(results)
 }
 
 // Run the specific case
 runLeetCodeTest(
-  ["MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"],
+  ['MinStack', 'push', 'push', 'push', 'getMin', 'pop', 'top', 'getMin'],
   [[], [-2], [0], [-3], [], [], [], []],
   [null, null, null, null, -3, null, 0, -2]
-);
+)

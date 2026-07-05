@@ -27,7 +27,7 @@ function nextGreatestLetter(letters: string[], target: string): string {
   return idx === -1 ? letters[0]! : letters[idx]!
 };
 
-const letters = ["c", "f", "j"], target = "a"
+const letters = ['c', 'f', 'j'], target = 'a'
 const expected = 'c'
 // const letters = ["c", "f", "j"], target = "c"
 // const expected = 'f'

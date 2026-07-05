@@ -1,4 +1,4 @@
-import { MinPriorityQueue } from "@datastructures-js/priority-queue"
+import { MinPriorityQueue } from '@datastructures-js/priority-queue'
 
 // 23. Merge k Sorted Lists
 
@@ -164,67 +164,67 @@ function mergeKLists3(lists: Array<ListNode | null>): ListNode | null {
 // Test Helper
 // Convert an array to a linked list
 function arrayToList(arr: number[]): ListNode | null {
-  let dummy = new ListNode();
-  let curr = dummy;
-  for (let val of arr) {
-    curr.next = new ListNode(val);
-    curr = curr.next;
+  const dummy = new ListNode()
+  let curr = dummy
+  for (const val of arr) {
+    curr.next = new ListNode(val)
+    curr = curr.next
   }
-  return dummy.next;
+  return dummy.next
 }
 
 // Convert a linked list back to an array for easy comparison
 function listToArray(node: ListNode | null): number[] {
-  let result: number[] = [];
+  const result: number[] = []
   while (node) {
-    result.push(node.val);
-    node = node.next;
+    result.push(node.val)
+    node = node.next
   }
-  return result;
+  return result
 }
 
 // Tester
 function runTests() {
   const testCases = [
     {
-      name: "Standard case",
+      name: 'Standard case',
       input: [[1, 4, 5], [1, 3, 4], [2, 6]],
       expected: [1, 1, 2, 3, 4, 4, 5, 6]
     },
     {
-      name: "Empty lists",
+      name: 'Empty lists',
       input: [],
       expected: []
     },
     {
-      name: "Lists with empty/null",
+      name: 'Lists with empty/null',
       input: [[], [1]],
       expected: [1]
     },
     {
-      name: "Single list",
+      name: 'Single list',
       input: [[1, 2, 3]],
       expected: [1, 2, 3]
     }
-  ];
+  ]
 
   testCases.forEach(({ name, input, expected }) => {
     // Transform arrays into linked list nodes
-    const lists = input.map(arr => arrayToList(arr));
+    const lists = input.map(arr => arrayToList(arr))
 
     // Execute your function (Assuming it's imported or defined in scope)
-    const resultNode = mergeKLists3(lists);
-    const resultArr = listToArray(resultNode);
+    const resultNode = mergeKLists3(lists)
+    const resultArr = listToArray(resultNode)
 
     // Compare
-    const passed = JSON.stringify(resultArr) === JSON.stringify(expected);
-    console.log(`${passed ? "✅" : "❌"} ${name}`);
+    const passed = JSON.stringify(resultArr) === JSON.stringify(expected)
+    console.log(`${passed ? '✅' : '❌'} ${name}`)
     if (!passed) {
-      console.log(`   Expected: ${JSON.stringify(expected)}`);
-      console.log(`   Got:      ${JSON.stringify(resultArr)}`);
+      console.log(`   Expected: ${JSON.stringify(expected)}`)
+      console.log(`   Got:      ${JSON.stringify(resultArr)}`)
     }
-  });
+  })
 }
 
 // Run the suite
-runTests();
+runTests()

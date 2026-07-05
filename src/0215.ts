@@ -1,6 +1,6 @@
 // 215. Kth Largest Element in an Array
 
-import { MinPriorityQueue } from "@datastructures-js/priority-queue";
+import { MinPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * Min Heap
@@ -50,14 +50,14 @@ function findKthLargest2(nums: number[], k: number): number {
 
   while (l <= r) {
     // Partition and get pivot index
-    const pivotIdx = partition(nums, l, r);
+    const pivotIdx = partition(nums, l, r)
 
     if (pivotIdx === targetIdx) {
-      return nums[pivotIdx];
+      return nums[pivotIdx]
     } else if (pivotIdx < targetIdx) {
-      l = pivotIdx + 1;
+      l = pivotIdx + 1
     } else {
-      r = pivotIdx - 1;
+      r = pivotIdx - 1
     }
   }
 
@@ -81,8 +81,8 @@ function findKthLargest3(nums: number[], k: number): number {
     //  - (left + 1) is the median
     //  - right is the smallest
     // [largest, median, ..., smallest]
-    const mid = (l + r) >> 1;
-    swap(mid, l + 1);
+    const mid = (l + r) >> 1
+    swap(mid, l + 1)
 
     if (nums[l] < nums[r]) {
       swap(l, r)
@@ -90,47 +90,47 @@ function findKthLargest3(nums: number[], k: number): number {
     if (nums[l + 1] < nums[r]) {
       swap(l + 1, r)
     }
-    if (nums[l] < nums[l + 1]) [
+    if (nums[l] < nums[l + 1]) {
       swap(l, l + 1)
-    ]
+    }
 
     // Hoare Partition
-    const pivot = nums[l + 1];
-    let i = l + 1;
-    let j = r;
+    const pivot = nums[l + 1]
+    let i = l + 1
+    let j = r
 
     while (true) {
       while (nums[++i] > pivot);
       while (nums[--j] < pivot);
-      if (i > j) break;
-      swap(i, j);
+      if (i > j) break
+      swap(i, j)
     }
 
-    nums[l + 1] = nums[j];
-    nums[j] = pivot;
-    return j;
+    nums[l + 1] = nums[j]
+    nums[j] = pivot
+    return j
   }
 
   function quickSelect(k: number) {
-    let l = 0;
-    let r = nums.length - 1;
+    let l = 0
+    let r = nums.length - 1
 
     while (true) {
       if (r <= l + 1) {
         if (r == l + 1 && nums[r] > nums[l]) {
-          swap(l, r);
+          swap(l, r)
         }
-        return nums[k];
+        return nums[k]
       }
 
-      const j = partition(l, r);
+      const j = partition(l, r)
 
-      if (j >= k) r = j - 1;
-      if (j <= k) l = j + 1;
+      if (j >= k) r = j - 1
+      if (j <= k) l = j + 1
     }
   }
 
-  return quickSelect(k - 1);
+  return quickSelect(k - 1)
 }
 
 /**
@@ -143,22 +143,22 @@ function runTests(fn: (nums: number[], k: number) => number) {
     { nums: [1], k: 1, expected: 1 },
     { nums: [7, 6, 5, 4, 3, 2, 1], k: 2, expected: 6 },
     { nums: [1, 2, 3, 4, 5], k: 5, expected: 1 }
-  ];
+  ]
 
-  console.log(`--- Testing Function: ${fn.name} ---`);
+  console.log(`--- Testing Function: ${fn.name} ---`)
 
   testCases.forEach(({ nums, k, expected }, index) => {
     // Copy array to prevent mutations affecting subsequent tests
-    const result = fn([...nums], k);
-    const passed = result === expected;
+    const result = fn([...nums], k)
+    const passed = result === expected
 
     console.log(
-      `Test ${index + 1}: ${passed ? "PASSED" : "FAILED"} ` +
+      `Test ${index + 1}: ${passed ? 'PASSED' : 'FAILED'} ` +
       `| Input: [${nums}], k=${k} ` +
       `| Expected: ${expected}, Got: ${result}`
-    );
-  });
-  console.log("");
+    )
+  })
+  console.log('')
 }
 
-runTests(findKthLargest2);
+runTests(findKthLargest2)

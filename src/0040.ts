@@ -167,30 +167,30 @@ function runTests(solutionFn: (candidates: number[], target: number) => number[]
       target: 1,
       expected: [[1]]
     }
-  ];
+  ]
 
   // Helper to normalize arrays for deep comparison
   const normalize = (arr: number[][]) =>
     arr.map(sub => sub.slice().sort((a, b) => a - b))
-      .sort((a, b) => a.length - b.length || a[0] - b[0]);
+      .sort((a, b) => a.length - b.length || a[0] - b[0])
 
-  console.log(`--- Starting Tests for: ${solutionFn.name || 'Anonymous Function'} ---\n`);
+  console.log(`--- Starting Tests for: ${solutionFn.name || 'Anonymous Function'} ---\n`)
 
   testCases.forEach((tc, index) => {
-    const result = solutionFn([...tc.candidates], tc.target);
+    const result = solutionFn([...tc.candidates], tc.target)
 
-    const normalizedResult = JSON.stringify(normalize(result));
-    const normalizedExpected = JSON.stringify(normalize(tc.expected));
+    const normalizedResult = JSON.stringify(normalize(result))
+    const normalizedExpected = JSON.stringify(normalize(tc.expected))
 
-    const passed = normalizedResult === normalizedExpected;
+    const passed = normalizedResult === normalizedExpected
 
-    console.log(`Test Case #${index + 1}:`);
-    console.log(`  Input: [${tc.candidates}], Target: ${tc.target}`);
-    console.log(`  Expected: ${JSON.stringify(tc.expected)}`);
-    console.log(`  Actual:   ${JSON.stringify(result)}`);
-    console.log(`  Status:   ${passed ? "✅ PASS" : "❌ FAIL"}`);
-    console.log('--------------------------------------------------');
-  });
+    console.log(`Test Case #${index + 1}:`)
+    console.log(`  Input: [${tc.candidates}], Target: ${tc.target}`)
+    console.log(`  Expected: ${JSON.stringify(tc.expected)}`)
+    console.log(`  Actual:   ${JSON.stringify(result)}`)
+    console.log(`  Status:   ${passed ? '✅ PASS' : '❌ FAIL'}`)
+    console.log('--------------------------------------------------')
+  })
 }
 
-runTests(combinationSumTwo3);
+runTests(combinationSumTwo3)

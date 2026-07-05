@@ -143,10 +143,10 @@ function minWindow2(s: string, t: string): string {
   return minLength > s.length ? '' : s.slice(minStart, minStart + minLength)
 }
 
-const s = "ADOBECODEBANC"
-const t = "ABC"
+const s = 'ADOBECODEBANC'
+const t = 'ABC'
 
-const expected = "BANC"
+const expected = 'BANC'
 
 const output = minWindow(s, t)
 

@@ -1,6 +1,6 @@
 // 295. Find Median from Data Stream
 
-import { PriorityQueue } from "@datastructures-js/priority-queue"
+import { PriorityQueue } from '@datastructures-js/priority-queue'
 
 interface IMedianFinder {
   addNum(num: number): void;
@@ -11,20 +11,20 @@ interface IMedianFinder {
  * Array Sort
  */
 class MedianFinder implements IMedianFinder {
-  private small: number[] = []; // Max-heap (simplified for example)
-  private large: number[] = []; // Min-heap
+  private small: number[] = [] // Max-heap (simplified for example)
+  private large: number[] = [] // Min-heap
 
   /**
    * T: O(m); S: O(n)
    */
   addNum(num: number): void {
-    this.small.push(num);
-    this.small.sort((a, b) => b - a);
-    this.large.push(this.small.shift()!);
-    this.large.sort((a, b) => a - b);
+    this.small.push(num)
+    this.small.sort((a, b) => b - a)
+    this.large.push(this.small.shift()!)
+    this.large.sort((a, b) => a - b)
     if (this.large.length > this.small.length) {
-      this.small.push(this.large.shift()!);
-      this.small.sort((a, b) => b - a);
+      this.small.push(this.large.shift()!)
+      this.small.sort((a, b) => b - a)
     }
   }
 
@@ -34,7 +34,7 @@ class MedianFinder implements IMedianFinder {
   findMedian(): number {
     return this.small.length > this.large.length
       ? this.small[0]
-      : (this.small[0] + this.large[0]) / 2;
+      : (this.small[0] + this.large[0]) / 2
   }
 }
 
@@ -97,59 +97,59 @@ class MedianFinder2 implements IMedianFinder {
  * @param Implementation The class to test
  */
 function runTests(Implementation: new () => IMedianFinder) {
-  console.log(`--- Running Tests for ${Implementation.name} ---`);
+  console.log(`--- Running Tests for ${Implementation.name} ---`)
 
   const testCases = [
     {
-      name: "Standard sequence",
-      actions: ["addNum", "addNum", "findMedian", "addNum", "findMedian"],
+      name: 'Standard sequence',
+      actions: ['addNum', 'addNum', 'findMedian', 'addNum', 'findMedian'],
       params: [[1], [2], [], [3], []],
       expected: [null, null, 1.5, null, 2.0]
     },
     {
-      name: "Single element",
-      actions: ["addNum", "findMedian"],
+      name: 'Single element',
+      actions: ['addNum', 'findMedian'],
       params: [[10], []],
       expected: [null, 10.0]
     },
     {
-      name: "Even/Odd transitions",
-      actions: ["addNum", "addNum", "addNum", "findMedian", "addNum", "findMedian"],
+      name: 'Even/Odd transitions',
+      actions: ['addNum', 'addNum', 'addNum', 'findMedian', 'addNum', 'findMedian'],
       params: [[5], [10], [15], [], [20], []],
       expected: [null, null, null, 10.0, null, 12.5]
     }
-  ];
+  ]
 
   testCases.forEach((tc, index) => {
-    const solver = new Implementation();
-    let passed = true;
+    const solver = new Implementation()
+    let passed = true
 
     for (let i = 0; i < tc.actions.length; i++) {
-      const action = tc.actions[i] as keyof IMedianFinder;
-      const param = tc.params[i][0];
+      const action = tc.actions[i] as keyof IMedianFinder
+      const param = tc.params[i][0]
       // Execute based on method name to satisfy TS type checking
-      let result: number | null;
-      if (action === "addNum") {
+      let result: number | null
+      if (action === 'addNum') {
         solver.addNum(param)
         result = null
       } else {
-        result = solver.findMedian();
+        result = solver.findMedian()
       }
 
       if (result !== tc.expected[i]) {
-        console.error(`  Test ${index + 1} ("${tc.name}") FAILED at step ${i}: Expected ${tc.expected[i]}, got ${result}`);
-        passed = false;
-        break;
+        console.error(`  Test ${index + 1} ("${tc.name}") FAILED at step ${i}: Expected ${tc.expected[i]}, got ${result}`)
+        passed = false
+        break
       }
     }
 
     if (passed) {
-      console.log(`  Test ${index + 1} ("${tc.name}"): PASSED`);
+      console.log(`  Test ${index + 1} ("${tc.name}"): PASSED`)
     }
-  });
-  console.log("");
+  })
+  console.log('')
 }
 
 
 // Execution
-runTests(MedianFinder2);
+runTests(MedianFinder2)

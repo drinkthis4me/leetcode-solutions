@@ -1,6 +1,6 @@
 // 1448. Count Good Nodes in Binary Tree
 
-import { Queue } from "@datastructures-js/queue"
+import { Queue } from '@datastructures-js/queue'
 
 /**
  * Definition for a binary tree node.
@@ -75,24 +75,24 @@ function goodNodes2(root: TreeNode | null): number {
  * Helper to build a binary tree from LeetCode array format
  */
 function buildTree(nodes: (number | null)[]): TreeNode | null {
-  if (nodes.length === 0) return null;
-  const root = new TreeNode(nodes[0]!);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  if (nodes.length === 0) return null
+  const root = new TreeNode(nodes[0]!)
+  const queue: TreeNode[] = [root]
+  let i = 1
   while (i < nodes.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
     if (nodes[i] !== null) {
-      curr.left = new TreeNode(nodes[i]!);
-      queue.push(curr.left);
+      curr.left = new TreeNode(nodes[i]!)
+      queue.push(curr.left)
     }
-    i++;
+    i++
     if (i < nodes.length && nodes[i] !== null) {
-      curr.right = new TreeNode(nodes[i]!);
-      queue.push(curr.right);
+      curr.right = new TreeNode(nodes[i]!)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
-  return root;
+  return root
 }
 
 // --- TESTER ---
@@ -102,16 +102,16 @@ function runTests() {
     { input: [3, 3, null, 4, 2], expected: 3 },
     { input: [1], expected: 1 },
     { input: [9, null, 3, 6], expected: 1 }
-  ];
+  ]
 
   testCases.forEach(({ input, expected }, index) => {
-    const root = buildTree(input);
-    const result = goodNodes2(root);
-    console.log(`Test ${index + 1}: ${result === expected ? "PASSED" : "FAILED"}`);
+    const root = buildTree(input)
+    const result = goodNodes2(root)
+    console.log(`Test ${index + 1}: ${result === expected ? 'PASSED' : 'FAILED'}`)
     if (result !== expected) {
-      console.log(`   Expected ${expected}, but got ${result}`);
+      console.log(`   Expected ${expected}, but got ${result}`)
     }
-  });
+  })
 }
 
-runTests();
+runTests()

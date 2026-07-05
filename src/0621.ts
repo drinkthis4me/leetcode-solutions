@@ -1,7 +1,7 @@
 // 621. Task Scheduler
 
-import { MaxPriorityQueue } from "@datastructures-js/priority-queue";
-import { Queue } from "@datastructures-js/queue";
+import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
+import { Queue } from '@datastructures-js/queue'
 
 // Always process the most frequent task 
 // because they need to cool down and require more overall time to complete.
@@ -166,50 +166,50 @@ function leastInterval3(tasks: string[], n: number): number {
 function runTaskSchedulerTests(solutionFn: (tasks: string[], n: number) => number) {
   const testCases = [
     {
-      tasks: ["A", "A", "A", "B", "B", "B"],
+      tasks: ['A', 'A', 'A', 'B', 'B', 'B'],
       n: 2,
       expected: 8,
-      description: "Standard case with idle periods"
+      description: 'Standard case with idle periods'
     },
     {
-      tasks: ["A", "A", "A", "B", "B", "B"],
+      tasks: ['A', 'A', 'A', 'B', 'B', 'B'],
       n: 0,
       expected: 6,
-      description: "No cooldown required"
+      description: 'No cooldown required'
     },
     {
-      tasks: ["A", "A", "A", "A", "A", "A", "B", "C", "D", "E", "F", "G"],
+      tasks: ['A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'],
       n: 2,
       expected: 16,
-      description: "High frequency task dominating the schedule"
+      description: 'High frequency task dominating the schedule'
     },
     {
-      tasks: ["A", "B", "C"],
+      tasks: ['A', 'B', 'C'],
       n: 1,
       expected: 3,
-      description: "Tasks are unique, no cooldown needed"
+      description: 'Tasks are unique, no cooldown needed'
     },
     {
-      tasks: ["A", "A", "B", "B"],
+      tasks: ['A', 'A', 'B', 'B'],
       n: 2,
       expected: 5,
-      description: "Short cooldown buffer"
+      description: 'Short cooldown buffer'
     }
-  ];
+  ]
 
-  console.log(`--- Testing Function: ${solutionFn.name || 'Anonymous Function'} ---`);
+  console.log(`--- Testing Function: ${solutionFn.name || 'Anonymous Function'} ---`)
 
   testCases.forEach((tc, index) => {
-    const result = solutionFn([...tc.tasks], tc.n);
-    const passed = result === tc.expected;
+    const result = solutionFn([...tc.tasks], tc.n)
+    const passed = result === tc.expected
 
-    console.log(`Test ${index + 1}: ${tc.description}`);
-    console.log(`  Input: tasks=[${tc.tasks}], n=${tc.n}`);
-    console.log(`  Expected: ${tc.expected}, Got: ${result}`);
-    console.log(`  Status: ${passed ? "✅ PASS" : "❌ FAIL"}`);
-    console.log('-----------------------------------');
-  });
+    console.log(`Test ${index + 1}: ${tc.description}`)
+    console.log(`  Input: tasks=[${tc.tasks}], n=${tc.n}`)
+    console.log(`  Expected: ${tc.expected}, Got: ${result}`)
+    console.log(`  Status: ${passed ? '✅ PASS' : '❌ FAIL'}`)
+    console.log('-----------------------------------')
+  })
 }
 
 // Execution
-runTaskSchedulerTests(leastInterval3);
+runTaskSchedulerTests(leastInterval3)

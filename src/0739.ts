@@ -39,23 +39,23 @@ function dailyTemperatures(temperatures: number[]): number[] {
  * T: O(n); S: O(1);
  */
 function dailyTemperatures2(temperatures: number[]): number[] {
-  const n = temperatures.length;
+  const n = temperatures.length
   // Result array with default 0 waiting day
-  const res: number[] = new Array(n).fill(0);
+  const res: number[] = new Array(n).fill(0)
 
   // Last day will always wait zero day 
   // Iterate backwards from the second-to-last day
   for (let i = n - 2; i >= 0; i--) {
     // Index of the day we check against. Starting from the next day.
-    let j = i + 1;
+    let j = i + 1
 
     // Find a warmer day
     while (j < n && temperatures[j]! <= temperatures[i]!) {
       // If `res[j]` is 0, it means day 'j' never found a warmer day.
       // Since `temperatures[i] >= temperatures[j]`, day `i` won't find one either.
       if (res[j] === 0) {
-        j = n;
-        break;
+        j = n
+        break
       }
 
       // "THE JUMP"
@@ -66,17 +66,17 @@ function dailyTemperatures2(temperatures: number[]): number[] {
       // [?, 3, 2, 1, 0]
       // i = 0
       // j = 1 + 3 = 4
-      j += res[j]!;
+      j += res[j]!
     }
 
     // `temps[j] > temps[i]` if `j` is within boundary
     // Calculate diff as waiting days
     if (j < n) {
-      res[i] = j - i;
+      res[i] = j - i
     }
   }
 
-  return res;
+  return res
 };
 
 const temperatures = [73, 74, 75, 71, 69, 72, 76, 73]

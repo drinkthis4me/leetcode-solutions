@@ -151,7 +151,7 @@ function copyRandomList4(head: _Node | null): _Node | null {
     curr = curr.next
   }
 
-  let newHead = head.random
+  const newHead = head.random
 
   // Fix random pointers of copies
   curr = head
@@ -177,9 +177,9 @@ function copyRandomList4(head: _Node | null): _Node | null {
  * Helper to build the list from LeetCode array format: [[val, random_index], ...]
  */
 function buildList(data: [number, number | null][]): _Node | null {
-  if (data.length === 0) return null;
+  if (data.length === 0) return null
 
-  const nodes: _Node[] = data.map(([val]) => new _Node(val));
+  const nodes: _Node[] = data.map(([val]) => new _Node(val))
 
   // for (let i = 0; i < data.length; i++) {
   //   const [_, randomIndex] = data[i]!;
@@ -187,73 +187,73 @@ function buildList(data: [number, number | null][]): _Node | null {
   //   nodes[i]!.random = randomIndex !== null ? nodes[randomIndex] : null;
   // }
   for (const [i, [_val, randomIndex]] of data.entries()) {
-    nodes[i]!.next = nodes[i + 1] || null;
-    nodes[i]!.random = randomIndex !== null ? nodes[randomIndex]! : null;
+    nodes[i]!.next = nodes[i + 1] || null
+    nodes[i]!.random = randomIndex !== null ? nodes[randomIndex]! : null
   }
 
-  return nodes[0] ?? null;
+  return nodes[0] ?? null
 }
 
 /**
  * Deep copy validator
  */
 function validateCopy(original: _Node | null, copy: _Node | null): boolean {
-  let currOld = original;
-  let currNew = copy;
+  let currOld = original
+  let currNew = copy
 
-  const oldNodes: _Node[] = [];
-  const newNodes: _Node[] = [];
+  const oldNodes: _Node[] = []
+  const newNodes: _Node[] = []
 
   // 1. Check structure and collect nodes for reference check
   while (currOld !== null && currNew !== null) {
     if (currOld === currNew) {
-      console.error("Failure: Node reference is identical (not a deep copy).");
-      return false;
+      console.error('Failure: Node reference is identical (not a deep copy).')
+      return false
     }
     if (currOld.val !== currNew.val) {
-      console.error(`Failure: Value mismatch. Expected ${currOld.val}, got ${currNew.val}`);
-      return false;
+      console.error(`Failure: Value mismatch. Expected ${currOld.val}, got ${currNew.val}`)
+      return false
     }
-    oldNodes.push(currOld);
-    newNodes.push(currNew);
-    currOld = currOld.next;
-    currNew = currNew.next;
+    oldNodes.push(currOld)
+    newNodes.push(currNew)
+    currOld = currOld.next
+    currNew = currNew.next
   }
 
   if (currOld !== currNew) {
-    console.error("Failure: Lists have different lengths.");
-    return false;
+    console.error('Failure: Lists have different lengths.')
+    return false
   }
 
   // 2. Check random pointers
   for (let i = 0; i < oldNodes.length; i++) {
-    const oldRandom = oldNodes[i]!.random;
-    const newRandom = newNodes[i]!.random;
+    const oldRandom = oldNodes[i]!.random
+    const newRandom = newNodes[i]!.random
 
     if (oldRandom === null) {
-      if (newRandom !== null) return false;
+      if (newRandom !== null) return false
     } else {
-      const randomIndex = oldNodes.indexOf(oldRandom);
+      const randomIndex = oldNodes.indexOf(oldRandom)
       if (newNodes[randomIndex] !== newRandom) {
-        console.error(`Failure: Random pointer at index ${i} points to wrong node.`);
-        return false;
+        console.error(`Failure: Random pointer at index ${i} points to wrong node.`)
+        return false
       }
     }
   }
 
-  return true;
+  return true
 }
 
 /**
  * Test Runner
  */
 function runTest(testCase: [number, number | null][]) {
-  const head = buildList(testCase);
+  const head = buildList(testCase)
   // Replace 'copyRandomList' with your function name
-  const result = copyRandomList4(head);
+  const result = copyRandomList4(head)
 
-  const isValid = validateCopy(head, result);
-  console.log(isValid ? "✅ Passed" : "❌ Failed");
+  const isValid = validateCopy(head, result)
+  console.log(isValid ? '✅ Passed' : '❌ Failed')
 }
 
 const testData: [number, number | null][][] = [
@@ -261,9 +261,9 @@ const testData: [number, number | null][][] = [
   [[1, 1], [2, 1]],
   [[3, null], [3, 0], [3, null]],
   []
-];
+]
 
 testData.forEach((data, i) => {
-  console.log(`Running Test Case ${i + 1}...`);
-  runTest(data);
-});
+  console.log(`Running Test Case ${i + 1}...`)
+  runTest(data)
+})

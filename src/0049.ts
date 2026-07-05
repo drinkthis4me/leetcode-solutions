@@ -38,8 +38,8 @@ function groupAnagrams(strs: string[]): string[][] {
   return [...map.values()]
 };
 
-const strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
-const expected = [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
+const strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
+const expected = [['bat'], ['nat', 'tan'], ['ate', 'eat', 'tea']]
 
 const ans = groupAnagrams(strs)
 

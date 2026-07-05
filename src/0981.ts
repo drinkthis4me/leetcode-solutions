@@ -8,7 +8,7 @@ class TimeMap {
   keyStore: Map<string, [number, string][]>
 
   constructor() {
-    this.keyStore = new Map();
+    this.keyStore = new Map()
   }
 
   /**
@@ -93,18 +93,18 @@ class TimeMap {
  */
 
 function runLeetCodeTest(commands: string[], args: any[][], expected: (string | null)[]) {
-  let instance: TimeMap | null = null;
-  const results: (number | null)[] = [];
+  let instance: TimeMap | null = null
+  const results: (number | null)[] = []
 
   commands.forEach((cmd, i) => {
-    if (cmd === "TimeMap") {
-      instance = new TimeMap();
-      results.push(null);
+    if (cmd === 'TimeMap') {
+      instance = new TimeMap()
+      results.push(null)
     } else {
-      const res = (instance as any)[cmd](...args[i] ?? []);
-      results.push(res !== undefined ? res : null);
+      const res = (instance as any)[cmd](...args[i] ?? [])
+      results.push(res !== undefined ? res : null)
     }
-  });
+  })
 
   // ---Print to console---
   console.log('Input:')
@@ -112,14 +112,14 @@ function runLeetCodeTest(commands: string[], args: any[][], expected: (string | 
   console.log(args)
   console.log('expected:')
   console.log(expected)
-  console.log("Output:")
+  console.log('Output:')
   console.log(results)
 }
 
 runLeetCodeTest(
-  ["TimeMap", "set", "get", "get", "set", "get", "get"],
-  [[], ["foo", "bar", 1], ["foo", 1], ["foo", 3], ["foo", "bar2", 4], ["foo", 4], ["foo", 5]],
-  [null, null, "bar", "bar", null, "bar2", "bar2"]
+  ['TimeMap', 'set', 'get', 'get', 'set', 'get', 'get'],
+  [[], ['foo', 'bar', 1], ['foo', 1], ['foo', 3], ['foo', 'bar2', 4], ['foo', 4], ['foo', 5]],
+  [null, null, 'bar', 'bar', null, 'bar2', 'bar2']
 
   // ["TimeMap", "set", "get", "get", "get"],
   // [[], ["key1", "value1", 10], ["key1", 1], ["key1", 10], ["key1", 11]],

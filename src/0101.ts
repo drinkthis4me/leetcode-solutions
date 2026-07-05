@@ -1,6 +1,6 @@
 // 101. Symmetric Tree
 
-import { Queue } from "@datastructures-js/queue"
+import { Queue } from '@datastructures-js/queue'
 
 /**
  * Definition for a binary tree node.
@@ -67,77 +67,77 @@ function isSymmetric2(root: TreeNode | null): boolean {
 
 // --- Test Helper ---
 function createTree(arr: (number | null)[]): TreeNode | null {
-  if (arr.length === 0 || arr[0] === null) return null;
+  if (arr.length === 0 || arr[0] === null) return null
 
-  const root = new TreeNode(arr[0]);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  const root = new TreeNode(arr[0])
+  const queue: TreeNode[] = [root]
+  let i = 1
 
   while (queue.length > 0 && i < arr.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
 
     // Left child
     if (arr[i] !== null) {
-      curr.left = new TreeNode(arr[i]!);
-      queue.push(curr.left);
+      curr.left = new TreeNode(arr[i]!)
+      queue.push(curr.left)
     }
-    i++;
+    i++
 
     // Right child
     if (i < arr.length && arr[i] !== null) {
-      curr.right = new TreeNode(arr[i]!);
-      queue.push(curr.right);
+      curr.right = new TreeNode(arr[i]!)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
 
-  return root;
+  return root
 }
 
 // --- Tester Runner ---
 function runTests() {
   const testCases = [
     {
-      name: "Symmetric Tree",
+      name: 'Symmetric Tree',
       array: [1, 2, 2, 3, 4, 4, 3],
       expected: true
     },
     {
-      name: "Asymmetric Tree (Values mismatch)",
+      name: 'Asymmetric Tree (Values mismatch)',
       array: [1, 2, 2, null, 3, null, 3],
       expected: false
     },
     {
-      name: "Empty Tree",
+      name: 'Empty Tree',
       array: [],
       expected: true
     },
     {
-      name: "Single Node Tree",
+      name: 'Single Node Tree',
       array: [1],
       expected: true
     },
     {
-      name: "Asymmetric Outer Subtrees",
+      name: 'Asymmetric Outer Subtrees',
       array: [1, 2, 2, 3, null, null, 4],
       expected: false
     }
-  ];
+  ]
 
-  console.log("=== RUNNING LEETCODE 101 TESTS ===\n");
+  console.log('=== RUNNING LEETCODE 101 TESTS ===\n')
 
   testCases.forEach((tc, idx) => {
-    const treeRootRecursive = createTree(tc.array);
+    const treeRootRecursive = createTree(tc.array)
 
-    const result = isSymmetric2(treeRootRecursive);
+    const result = isSymmetric2(treeRootRecursive)
 
-    const resultPassed = result === tc.expected;
+    const resultPassed = result === tc.expected
 
-    console.log(`Test Case #${idx + 1}: ${tc.name}`);
-    console.log(`Input Array: [${tc.array.join(", ")}]`);
-    console.log(`Result: ${result} (${resultPassed ? "PASSED" : "FAILED"})`);
-    console.log("---------------------------------------");
-  });
+    console.log(`Test Case #${idx + 1}: ${tc.name}`)
+    console.log(`Input Array: [${tc.array.join(', ')}]`)
+    console.log(`Result: ${result} (${resultPassed ? 'PASSED' : 'FAILED'})`)
+    console.log('---------------------------------------')
+  })
 }
 
-runTests();
+runTests()

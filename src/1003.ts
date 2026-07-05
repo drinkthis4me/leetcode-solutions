@@ -38,7 +38,7 @@ function isValid(s: string): boolean {
   return stack.length === 0
 };
 
-const s = "aabcbc"
+const s = 'aabcbc'
 
 const expected = true
 

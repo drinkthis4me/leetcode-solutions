@@ -1,6 +1,6 @@
 // 543. Diameter of Binary Tree
 
-import { Queue } from "@datastructures-js/queue"
+import { Queue } from '@datastructures-js/queue'
 
 /**
  * Definition for a binary tree node.
@@ -29,7 +29,7 @@ function diameterOfBinaryTree(root: TreeNode | null): number {
 
   // Passing an object/array allows all recursive frames to point to the exact same reference in memory,
   // mimicking a global variable without polluting the global scope.
-  let res = [0]
+  const res = [0]
 
   const dfs = (node: TreeNode | null, res: number[]): number => {
     if (node === null) return 0
@@ -70,7 +70,7 @@ function diameterOfBinaryTree2(root: TreeNode | null): number {
 
   while (stack.length > 0) {
     // Peak the top. Only pop when both children are processed.
-    let node = stack.at(-1)!;
+    let node = stack.at(-1)!
 
     // Traverse left
     if (node.left !== null && !map.has(node.left)) {
@@ -82,10 +82,10 @@ function diameterOfBinaryTree2(root: TreeNode | null): number {
     }
     // Both children processed. Pop and calculate max height.
     else {
-      node = stack.pop()!;
+      node = stack.pop()!
 
-      const leftHeight = map.get(node.left) || 0;
-      const rightHeight = map.get(node.right) || 0;
+      const leftHeight = map.get(node.left) || 0
+      const rightHeight = map.get(node.right) || 0
 
       // Store max height for parent
       const height = Math.max(leftHeight, rightHeight) + 1
@@ -105,31 +105,31 @@ function diameterOfBinaryTree2(root: TreeNode | null): number {
  * Builds a binary tree from a LeetCode array representation (level-order).
  */
 function buildTree(arr: (number | null)[]): TreeNode | null {
-  if (arr.length === 0 || arr[0] === null) return null;
+  if (arr.length === 0 || arr[0] === null) return null
 
-  const root = new TreeNode(arr[0]);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  const root = new TreeNode(arr[0])
+  const queue: TreeNode[] = [root]
+  let i = 1
 
   while (queue.length > 0 && i < arr.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
 
     // Left child
     if (i < arr.length && arr[i] !== null) {
-      curr.left = new TreeNode(arr[i]!);
-      queue.push(curr.left);
+      curr.left = new TreeNode(arr[i]!)
+      queue.push(curr.left)
     }
-    i++;
+    i++
 
     // Right child
     if (i < arr.length && arr[i] !== null) {
-      curr.right = new TreeNode(arr[i]!);
-      queue.push(curr.right);
+      curr.right = new TreeNode(arr[i]!)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
 
-  return root;
+  return root
 }
 
 interface TestCase {
@@ -143,57 +143,57 @@ const testCases: TestCase[] = [
   {
     input: [1, 2, 3, 4, 5],
     expected: 3,
-    description: "Standard tree (Diameter passes through root)"
+    description: 'Standard tree (Diameter passes through root)'
   },
   {
     input: [1, 2],
     expected: 1,
-    description: "Simple two-node tree"
+    description: 'Simple two-node tree'
   },
   {
     input: [1],
     expected: 0,
-    description: "Single node tree"
+    description: 'Single node tree'
   },
   {
     input: [],
     expected: 0,
-    description: "Empty tree"
+    description: 'Empty tree'
   },
   {
     input: [1, 2, null, 3, null, 4, null, 5],
     expected: 4,
-    description: "Skewed left tree (linear path)"
+    description: 'Skewed left tree (linear path)'
   },
   {
     input: [1, 2, 3, 4, null, null, 5, 6, null, null, 7],
     expected: 6,
-    description: "Longest path does NOT pass through the root node"
+    description: 'Longest path does NOT pass through the root node'
   }
-];
+]
 
 function runTests() {
-  console.log("=== Running LeetCode 543 Tester ===\n");
-  let passedCount = 0;
+  console.log('=== Running LeetCode 543 Tester ===\n')
+  let passedCount = 0
 
   testCases.forEach((tc, index) => {
-    const tree = buildTree(tc.input);
-    const result = diameterOfBinaryTree(tree);
-    const passed = result === tc.expected;
+    const tree = buildTree(tc.input)
+    const result = diameterOfBinaryTree(tree)
+    const passed = result === tc.expected
 
     if (passed) {
-      passedCount++;
-      console.log(`✅ Test ${index + 1} Passed: ${tc.description}`);
+      passedCount++
+      console.log(`✅ Test ${index + 1} Passed: ${tc.description}`)
     } else {
-      console.log(`❌ Test ${index + 1} Failed: ${tc.description}`);
-      console.log(`   Input array:  ${JSON.stringify(tc.input)}`);
-      console.log(`   Expected:     ${tc.expected}`);
-      console.log(`   Got:          ${result}\n`);
+      console.log(`❌ Test ${index + 1} Failed: ${tc.description}`)
+      console.log(`   Input array:  ${JSON.stringify(tc.input)}`)
+      console.log(`   Expected:     ${tc.expected}`)
+      console.log(`   Got:          ${result}\n`)
     }
-  });
+  })
 
-  console.log(`\n=== Results: ${passedCount}/${testCases.length} Passed ===`);
+  console.log(`\n=== Results: ${passedCount}/${testCases.length} Passed ===`)
 }
 
 // Execute the tests
-runTests();
+runTests()

@@ -13,7 +13,7 @@ class ListNode {
 }
 
 function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
-  let dummy = new ListNode()
+  const dummy = new ListNode()
   let curr = dummy
   let carryover = 0
 
@@ -38,40 +38,40 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
 };
 
 function arrayToList(arr: number[]): ListNode | null {
-  const dummy = new ListNode(0);
-  let curr = dummy;
+  const dummy = new ListNode(0)
+  let curr = dummy
   for (const val of arr) {
-    curr.next = new ListNode(val);
-    curr = curr.next;
+    curr.next = new ListNode(val)
+    curr = curr.next
   }
-  return dummy.next;
+  return dummy.next
 }
 
 function listToArray(node: ListNode | null): number[] {
-  const result: number[] = [];
+  const result: number[] = []
   while (node) {
-    result.push(node.val);
-    node = node.next;
+    result.push(node.val)
+    node = node.next
   }
-  return result;
+  return result
 }
 
 function runTest(arr1: number[], arr2: number[], expected: number[]) {
-  const l1 = arrayToList(arr1);
-  const l2 = arrayToList(arr2);
-  const result = addTwoNumbers(l1, l2);
-  const resultArr = listToArray(result);
+  const l1 = arrayToList(arr1)
+  const l2 = arrayToList(arr2)
+  const result = addTwoNumbers(l1, l2)
+  const resultArr = listToArray(result)
 
-  const passed = JSON.stringify(resultArr) === JSON.stringify(expected);
-  console.log(`${passed ? "✅ PASSED" : "❌ FAILED"}`);
-  console.log(`   Input: ${JSON.stringify(arr1)} + ${JSON.stringify(arr2)}`);
-  console.log(`   Expected: ${JSON.stringify(expected)} | Got: ${JSON.stringify(resultArr)}\n`);
+  const passed = JSON.stringify(resultArr) === JSON.stringify(expected)
+  console.log(`${passed ? '✅ PASSED' : '❌ FAILED'}`)
+  console.log(`   Input: ${JSON.stringify(arr1)} + ${JSON.stringify(arr2)}`)
+  console.log(`   Expected: ${JSON.stringify(expected)} | Got: ${JSON.stringify(resultArr)}\n`)
 }
 
 // --- Execution ---
 
-console.log("Running LeetCode 2 Tests...\n");
+console.log('Running LeetCode 2 Tests...\n')
 
-runTest([2, 4, 3], [5, 6, 4], [7, 0, 8]); // 342 + 465 = 807
-runTest([0], [0], [0]);
-runTest([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9], [8, 9, 9, 9, 0, 0, 0, 1]);
+runTest([2, 4, 3], [5, 6, 4], [7, 0, 8]) // 342 + 465 = 807
+runTest([0], [0], [0])
+runTest([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9], [8, 9, 9, 9, 0, 0, 0, 1])

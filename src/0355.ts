@@ -1,17 +1,17 @@
 // 355. Design Twitter
 
-import { MaxPriorityQueue } from "@datastructures-js/priority-queue";
+import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 
 // Set of followeeId
-type FolloweeIds = Set<number>;
+type FolloweeIds = Set<number>
 // Map of followerId - followees
-type FollowMap = Map<number, FolloweeIds>;
+type FollowMap = Map<number, FolloweeIds>
 
 // Array of (time counter, tweetId)
 // (timeCounter in asc order for max heap)
-type Tweet = [number, number];
+type Tweet = [number, number]
 // Map of userId - tweets
-type TweetMap = Map<number, Tweet[]>;
+type TweetMap = Map<number, Tweet[]>
 
 interface TwitterInterface {
   postTweet(userId: number, tweetId: number): void;
@@ -21,13 +21,13 @@ interface TwitterInterface {
 }
 
 class Twitter implements TwitterInterface {
-  tweetMap: TweetMap;
-  followMap: FollowMap;
+  tweetMap: TweetMap
+  followMap: FollowMap
   timeCount = 0
 
   constructor() {
-    this.tweetMap = new Map();
-    this.followMap = new Map();
+    this.tweetMap = new Map()
+    this.followMap = new Map()
   }
 
   getNewTimeCount() {
@@ -43,7 +43,7 @@ class Twitter implements TwitterInterface {
     }
 
     const newTweet = [this.getNewTimeCount(), tweetId] as Tweet
-    const tweets = this.tweetMap.get(userId)!;
+    const tweets = this.tweetMap.get(userId)!
     tweets.push(newTweet)
 
     // Store top 10 latest tweets per user.
@@ -66,8 +66,8 @@ class Twitter implements TwitterInterface {
       tweet: Tweet,
       followeeId: number,
       index: number
-    }>((x) => x.tweet[0]);
-    const followeeIds = this.followMap.get(userId)!;
+    }>((x) => x.tweet[0])
+    const followeeIds = this.followMap.get(userId)!
 
     // K-way merge:
     // Don't push all tweets to maxHeap at once.
@@ -92,7 +92,7 @@ class Twitter implements TwitterInterface {
         tweet,
         followeeId,
         index
-      } = maxHeap.pop()!;
+      } = maxHeap.pop()!
 
       res.push(tweet[1])
 
@@ -139,43 +139,43 @@ function runTests(
 ) {
   const testCases = [
     {
-      name: "Basic Operations",
+      name: 'Basic Operations',
       steps: [
-        { op: "postTweet", args: [1, 5] },
-        { op: "getNewsFeed", args: [1], expected: [5] },
-        { op: "follow", args: [1, 2] },
-        { op: "postTweet", args: [2, 6] },
-        { op: "getNewsFeed", args: [1], expected: [6, 5] },
-        { op: "unfollow", args: [1, 2] },
-        { op: "getNewsFeed", args: [1], expected: [5] }
+        { op: 'postTweet', args: [1, 5] },
+        { op: 'getNewsFeed', args: [1], expected: [5] },
+        { op: 'follow', args: [1, 2] },
+        { op: 'postTweet', args: [2, 6] },
+        { op: 'getNewsFeed', args: [1], expected: [6, 5] },
+        { op: 'unfollow', args: [1, 2] },
+        { op: 'getNewsFeed', args: [1], expected: [5] }
       ]
     },
     {
-      name: "Edge Cases (Empty feed, self-follow)",
+      name: 'Edge Cases (Empty feed, self-follow)',
       steps: [
-        { op: "getNewsFeed", args: [1], expected: [] },
-        { op: "follow", args: [1, 1] },
-        { op: "postTweet", args: [1, 10] },
-        { op: "getNewsFeed", args: [1], expected: [10] }
+        { op: 'getNewsFeed', args: [1], expected: [] },
+        { op: 'follow', args: [1, 1] },
+        { op: 'postTweet', args: [1, 10] },
+        { op: 'getNewsFeed', args: [1], expected: [10] }
       ]
     }
-  ];
+  ]
 
-  console.log(`--- Running Suite: ${name} ---`);
+  console.log(`--- Running Suite: ${name} ---`)
 
   for (const tc of testCases) {
-    const twitter = new TwitterClass();
-    console.log(`Test Case: ${tc.name}`);
+    const twitter = new TwitterClass()
+    console.log(`Test Case: ${tc.name}`)
 
     for (const step of tc.steps) {
-      // @ts-ignore - dynamic method calling
-      const result = twitter[step.op](...step.args);
+      // @ts-expect-error - dynamic method calling
+      const result = twitter[step.op](...step.args)
 
       if (step.expected !== undefined) {
-        const passed = JSON.stringify(result) === JSON.stringify(step.expected);
-        console.log(`  [${passed ? "PASS" : "FAIL"}] ${step.op}(${step.args.join(", ")})`);
+        const passed = JSON.stringify(result) === JSON.stringify(step.expected)
+        console.log(`  [${passed ? 'PASS' : 'FAIL'}] ${step.op}(${step.args.join(', ')})`)
         if (!passed) {
-          console.log(`    Expected: ${JSON.stringify(step.expected)}, Got: ${JSON.stringify(result)}`);
+          console.log(`    Expected: ${JSON.stringify(step.expected)}, Got: ${JSON.stringify(result)}`)
         }
       }
     }
@@ -183,4 +183,4 @@ function runTests(
 }
 
 
-runTests("Twitter Implementation", Twitter);
+runTests('Twitter Implementation', Twitter)

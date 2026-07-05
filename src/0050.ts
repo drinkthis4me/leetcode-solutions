@@ -11,7 +11,7 @@ function myPow(x: number, n: number): number {
   // Convert `n` to BigInt for safe calculation
   let N: bigint = BigInt(n)
   // Check negative `n`
-  const isNegative = N < 0n;
+  const isNegative = N < 0n
   // Use `|n|` to calculate pow
   N = isNegative ? -N : N
 
@@ -44,7 +44,7 @@ function myPow(x: number, n: number): number {
   // Calculate `x ^ |n|` then adjust answer accordingly:
   // n >= 0: ans = x ^ n
   // n < 0: ans = 1 / (x ^ n)
-  let ans = calculatePow(x, N)
+  const ans = calculatePow(x, N)
 
   return isNegative ? (1 / ans) : ans
 };

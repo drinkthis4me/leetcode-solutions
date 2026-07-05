@@ -1,6 +1,6 @@
 // 973. K Closest Points to Origin
 
-import { MaxPriorityQueue, MinPriorityQueue } from "@datastructures-js/priority-queue"
+import { MaxPriorityQueue, MinPriorityQueue } from '@datastructures-js/priority-queue'
 
 /**
  * Sort
@@ -124,10 +124,10 @@ function runAllTests(fn: (points: number[][], k: number) => number[][]) {
   const testCases = [
     { points: [[1, 3], [-2, 2]], k: 1, expected: [[-2, 2]] },
     { points: [[3, 3], [5, -1], [-2, 4]], k: 2, expected: [[3, 3], [-2, 4]] }
-  ];
+  ]
 
   function normalize(points: number[][]): number[][] {
-    return [...points].sort((a, b) => a[0]! - b[0]! || a[1]! - b[1]!);
+    return [...points].sort((a, b) => a[0]! - b[0]! || a[1]! - b[1]!)
   }
 
   function runTest(
@@ -135,25 +135,25 @@ function runAllTests(fn: (points: number[][], k: number) => number[][]) {
     k: number,
     expected: number[][]
   ) {
-    const result = fn(points, k);
+    const result = fn(points, k)
 
-    const normalizedResult = normalize(result);
-    const normalizedExpected = normalize(expected);
+    const normalizedResult = normalize(result)
+    const normalizedExpected = normalize(expected)
 
-    const isMatch = JSON.stringify(normalizedResult) === JSON.stringify(normalizedExpected);
+    const isMatch = JSON.stringify(normalizedResult) === JSON.stringify(normalizedExpected)
 
-    console.log(`Test with k=${k}, points=${JSON.stringify(points)}`);
+    console.log(`Test with k=${k}, points=${JSON.stringify(points)}`)
     if (isMatch) {
-      console.log("✅ Passed");
+      console.log('✅ Passed')
     } else {
-      console.error("❌ Failed");
-      console.error(`   Expected: ${JSON.stringify(normalizedExpected)}`);
-      console.error(`   Got:      ${JSON.stringify(normalizedResult)}`);
+      console.error('❌ Failed')
+      console.error(`   Expected: ${JSON.stringify(normalizedExpected)}`)
+      console.error(`   Got:      ${JSON.stringify(normalizedResult)}`)
     }
   }
 
 
-  testCases.forEach(t => runTest(t.points, t.k, t.expected));
+  testCases.forEach(t => runTest(t.points, t.k, t.expected))
 }
 
 runAllTests(kClosest4)

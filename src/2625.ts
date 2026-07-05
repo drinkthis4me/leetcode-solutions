@@ -2,13 +2,13 @@ import { Stack } from '@datastructures-js/stack'
 
 // 2625. Flatten Deeply Nested Array
 
-type MultiDimensionalArray = (number | MultiDimensionalArray)[];
+type MultiDimensionalArray = (number | MultiDimensionalArray)[]
 
 /**
  * Recursion 
  * T: O(n); S: O(n);
  */
-var flat = function (arr: MultiDimensionalArray, n: number): MultiDimensionalArray {
+const flat = function (arr: MultiDimensionalArray, n: number): MultiDimensionalArray {
   const res: (number | MultiDimensionalArray)[] = []
 
   // Helper function to flatten in-place without creating intermediate arrays
@@ -26,13 +26,13 @@ var flat = function (arr: MultiDimensionalArray, n: number): MultiDimensionalArr
   flatten(arr, n)
 
   return res
-};
+}
 
 /**
  * Stack 
  * T: O(n + k); S: O(n);
  */
-var flat2 = function (arr: MultiDimensionalArray, n: number): MultiDimensionalArray {
+const flat2 = function (arr: MultiDimensionalArray, n: number): MultiDimensionalArray {
   // Stack<[(number | MultiDimensionalArray), number]>
   // [1, [2, 3], 4], n = 1
   // stack = [[1, 1], [[2, 3], 1], [4, 1]] ->push 4 to res
@@ -65,7 +65,7 @@ var flat2 = function (arr: MultiDimensionalArray, n: number): MultiDimensionalAr
 
   // Return reversed result
   return res.reverse()
-};
+}
 
 // const arr = [1, 2, 3, [4, 5, 6], [7, 8, [9, 10, 11], 12], [13, 14, 15]], n = 0
 // const expected = [1, 2, 3, [4, 5, 6], [7, 8, [9, 10, 11], 12], [13, 14, 15]]

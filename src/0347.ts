@@ -1,4 +1,4 @@
-import { MinPriorityQueue } from "@datastructures-js/priority-queue";
+import { MinPriorityQueue } from '@datastructures-js/priority-queue'
 
 // 347. Top K Frequent Elements
 
@@ -73,7 +73,7 @@ function topKFrequent2(nums: number[], k: number): number[] {
   // -> 2 has count fo 2, and is put into index 2 array
   // -> 3 has count fo 1, and is put into index 1 array
 
-  const buckets: number[][] = Array.from({ length: nums.length + 1 }, () => []);
+  const buckets: number[][] = Array.from({ length: nums.length + 1 }, () => [])
 
   for (const [n, count] of counts.entries()) {
     buckets[count]!.push(n)

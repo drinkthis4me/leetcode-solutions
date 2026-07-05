@@ -86,7 +86,7 @@ function combinationSum2(candidates: number[], target: number): number[][] {
 /**
  * Type definition for the LeetCode 39 solution function.
  */
-type CombinationSumFn = (candidates: number[], target: number) => number[][];
+type CombinationSumFn = (candidates: number[], target: number) => number[][]
 
 
 /**
@@ -119,42 +119,42 @@ function runTests(solution: CombinationSumFn) {
       target: 2,
       expected: [[1, 1]]
     }
-  ];
+  ]
 
   /**
    * Utility to compare two arrays of arrays (order-insensitive).
    */
   function areResultsEqual(res1: number[][], res2: number[][]): boolean {
-    if (res1.length !== res2.length) return false;
+    if (res1.length !== res2.length) return false
 
-    const serialize = (arr: number[]) => [...arr].sort((a, b) => a - b).join(',');
-    const sortedRes1 = res1.map(serialize).sort();
-    const sortedRes2 = res2.map(serialize).sort();
+    const serialize = (arr: number[]) => [...arr].sort((a, b) => a - b).join(',')
+    const sortedRes1 = res1.map(serialize).sort()
+    const sortedRes2 = res2.map(serialize).sort()
 
-    return sortedRes1.every((val, idx) => val === sortedRes2[idx]);
+    return sortedRes1.every((val, idx) => val === sortedRes2[idx])
   }
 
-  console.log(`--- Testing Solution: ${solution.name || 'Anonymous Function'} ---`);
+  console.log(`--- Testing Solution: ${solution.name || 'Anonymous Function'} ---`)
 
   testCases.forEach((tc, index) => {
-    const start = performance.now();
-    const result = solution(tc.candidates, tc.target);
-    const end = performance.now();
+    const start = performance.now()
+    const result = solution(tc.candidates, tc.target)
+    const end = performance.now()
 
-    const passed = areResultsEqual(result, tc.expected);
+    const passed = areResultsEqual(result, tc.expected)
 
     console.log(
       `Test Case ${index + 1}: ${passed ? 'PASSED' : 'FAILED'} ` +
       `(${(end - start).toFixed(4)}ms)`
-    );
+    )
 
     if (!passed) {
-      console.error(`  Input: [${tc.candidates}] target=${tc.target}`);
-      console.error(`  Expected: ${JSON.stringify(tc.expected)}`);
-      console.error(`  Received: ${JSON.stringify(result)}`);
+      console.error(`  Input: [${tc.candidates}] target=${tc.target}`)
+      console.error(`  Expected: ${JSON.stringify(tc.expected)}`)
+      console.error(`  Received: ${JSON.stringify(result)}`)
     }
-  });
-  console.log('\n');
+  })
+  console.log('\n')
 }
 
-runTests(combinationSum2);
+runTests(combinationSum2)

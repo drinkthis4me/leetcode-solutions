@@ -35,16 +35,14 @@ function subsetsWithDup(nums: number[]): number[][] {
 function subsetsWithDup2(nums: number[]): number[][] {
   const n = nums.length
   const res: number[][] = [[]]
-  let startIdx = 0
   let endIdx = 0
 
   nums.sort((a, b) => a - b)
 
   for (let i = 0; i < n; i++) {
-
     // If current number is duplicate,
     // only add to subsets created in the last iteration
-    startIdx = (i > 0 && nums[i] === nums[i - 1])
+    const startIdx = (i > 0 && nums[i] === nums[i - 1])
       ? endIdx
       : 0
 
@@ -57,7 +55,7 @@ function subsetsWithDup2(nums: number[]): number[][] {
   }
 
   return res
-};
+}
 
 /**
  * Test Runner for LeetCode 90: Subsets II
@@ -66,56 +64,56 @@ function subsetsWithDup2(nums: number[]): number[][] {
 function runTests(solutionFn: (nums: number[]) => number[][]) {
   const testCases = [
     {
-      name: "Example 1: Standard input",
+      name: 'Example 1: Standard input',
       nums: [1, 2, 2],
       expected: [[], [1], [1, 2], [1, 2, 2], [2], [2, 2]]
     },
     {
-      name: "Example 2: Single element",
+      name: 'Example 2: Single element',
       nums: [0],
       expected: [[], [0]]
     },
     {
-      name: "Empty input",
+      name: 'Empty input',
       nums: [],
       expected: [[]]
     },
     {
-      name: "All duplicates",
+      name: 'All duplicates',
       nums: [4, 4, 4],
       expected: [[], [4], [4, 4], [4, 4, 4]]
     }
-  ];
+  ]
 
   /**
 * Helper to compare two sets of subsets regardless of order.
 * Sorts subsets internally to ensure deep comparison works.
 */
   function compareSubsets(result: number[][], expected: number[][]): boolean {
-    if (result.length !== expected.length) return false;
+    if (result.length !== expected.length) return false
 
     const serialize = (arr: number[][]) =>
-      arr.map(sub => [...sub].sort((a, b) => a - b).join(',')).sort().join('|');
+      arr.map(sub => [...sub].sort((a, b) => a - b).join(',')).sort().join('|')
 
-    return serialize(result) === serialize(expected);
+    return serialize(result) === serialize(expected)
   }
 
 
-  console.log(`--- Running Tests for: ${solutionFn.name} ---`);
+  console.log(`--- Running Tests for: ${solutionFn.name} ---`)
 
   for (const { name, nums, expected } of testCases) {
-    const result = solutionFn(nums);
-    const passed = compareSubsets(result, expected);
+    const result = solutionFn(nums)
+    const passed = compareSubsets(result, expected)
 
-    console.log(`${passed ? "✅" : "❌"} ${name}`);
+    console.log(`${passed ? '✅' : '❌'} ${name}`)
     if (!passed) {
-      console.log(`   Input:    [${nums}]`);
-      console.log(`   Expected: ${JSON.stringify(expected)}`);
-      console.log(`   Received: ${JSON.stringify(result)}`);
+      console.log(`   Input:    [${nums}]`)
+      console.log(`   Expected: ${JSON.stringify(expected)}`)
+      console.log(`   Received: ${JSON.stringify(result)}`)
     }
   }
-  console.log("");
+  console.log('')
 }
 
 
-runTests(subsetsWithDup2);
+runTests(subsetsWithDup2)

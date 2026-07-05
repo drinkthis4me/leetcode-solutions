@@ -171,23 +171,23 @@ function reorderList4(head: ListNode | null): void {
     if (curr === null) return root
 
     // Pass root down, but update it based on what the deeper call returns
-    root = recursion(root, curr.next);
+    root = recursion(root, curr.next)
 
     // If we've already finished (reached the middle), stop processing
-    if (root === null) return null;
+    if (root === null) return null
 
-    let tmp: ListNode | null = null;
+    let tmp: ListNode | null = null
     if (root === curr || root.next === curr) {
       // Middle reached: terminate the list
-      curr.next = null;
+      curr.next = null
     } else {
       // Interleave: root -> cur -> tmp
-      tmp = root.next;
-      root.next = curr;
-      curr.next = tmp;
+      tmp = root.next
+      root.next = curr
+      curr.next = tmp
     }
 
-    return tmp; // Return the new 'root' for the next stack frame
+    return tmp // Return the new 'root' for the next stack frame
   }
 
   recursion(head, head.next)
@@ -199,27 +199,27 @@ function reorderList4(head: ListNode | null): void {
  * Helper: Converts an array to a linked list
  */
 function arrayToList(arr: number[]): ListNode | null {
-  if (arr.length === 0) return null;
-  const head = new ListNode(arr[0]);
-  let current = head;
+  if (arr.length === 0) return null
+  const head = new ListNode(arr[0])
+  let current = head
   for (let i = 1; i < arr.length; i++) {
-    current.next = new ListNode(arr[i]);
-    current = current.next;
+    current.next = new ListNode(arr[i])
+    current = current.next
   }
-  return head;
+  return head
 }
 
 /**
  * Helper: Converts a linked list back to an array for verification
  */
 function listToArray(head: ListNode | null): number[] {
-  const result: number[] = [];
-  let current = head;
+  const result: number[] = []
+  let current = head
   while (current) {
-    result.push(current.val);
-    current = current.next;
+    result.push(current.val)
+    current = current.next
   }
-  return result;
+  return result
 }
 
 /**
@@ -247,21 +247,21 @@ function runTests(reorderList: (head: ListNode | null) => void) {
       input: [1, 2],
       expected: [1, 2]
     }
-  ];
+  ]
 
   testCases.forEach(({ input, expected }, index) => {
-    const head = arrayToList(input);
-    reorderList(head);
-    const result = listToArray(head);
+    const head = arrayToList(input)
+    reorderList(head)
+    const result = listToArray(head)
 
-    const passed = JSON.stringify(result) === JSON.stringify(expected);
-    console.log(`Test Case ${index + 1}: ${passed ? 'PASSED' : 'FAILED'}`);
+    const passed = JSON.stringify(result) === JSON.stringify(expected)
+    console.log(`Test Case ${index + 1}: ${passed ? 'PASSED' : 'FAILED'}`)
     if (!passed) {
-      console.log(`   Input:    ${JSON.stringify(input)}`);
-      console.log(`   Expected: ${JSON.stringify(expected)}`);
-      console.log(`   Actual:   ${JSON.stringify(result)}`);
+      console.log(`   Input:    ${JSON.stringify(input)}`)
+      console.log(`   Expected: ${JSON.stringify(expected)}`)
+      console.log(`   Actual:   ${JSON.stringify(result)}`)
     }
-  });
+  })
 }
 
-runTests(reorderList);
+runTests(reorderList)

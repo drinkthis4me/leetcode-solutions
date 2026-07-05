@@ -1,13 +1,13 @@
 // 146. LRU Cache
 
 class DLLNode {
-  key: number;
-  val: number;
-  prev: DLLNode | null = null;
-  next: DLLNode | null = null;
+  key: number
+  val: number
+  prev: DLLNode | null = null
+  next: DLLNode | null = null
   constructor(key: number, val: number) {
-    this.key = key;
-    this.val = val;
+    this.key = key
+    this.val = val
   }
 }
 
@@ -83,28 +83,28 @@ class LRUCache {
 
 // Test
 function runLeetCodeStyleTest(commands: string[], values: number[][]) {
-  let lru: LRUCache | null = null;
-  const output: (number | null)[] = [];
+  let lru: LRUCache | null = null
+  const output: (number | null)[] = []
 
   for (let i = 0; i < commands.length; i++) {
-    if (commands[i] === "LRUCache") {
-      lru = new LRUCache(values[i]![0]!);
-      output.push(null);
-    } else if (commands[i] === "put") {
-      lru?.put(values[i]![0]!, values[i]![1]!);
-      output.push(null);
-    } else if (commands[i] === "get") {
-      output.push(lru?.get(values[i]![0]!) ?? -1);
+    if (commands[i] === 'LRUCache') {
+      lru = new LRUCache(values[i]![0]!)
+      output.push(null)
+    } else if (commands[i] === 'put') {
+      lru?.put(values[i]![0]!, values[i]![1]!)
+      output.push(null)
+    } else if (commands[i] === 'get') {
+      output.push(lru?.get(values[i]![0]!) ?? -1)
     }
   }
-  return output;
+  return output
 }
 
 const result = runLeetCodeStyleTest(
-  ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"],
+  ['LRUCache', 'put', 'put', 'get', 'put', 'get', 'put', 'get', 'get', 'get'],
   [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
-);
+)
 console.log('Expected:')
 console.log([null, null, null, 1, null, -1, null, -1, 3, 4])
-console.log("Dynamic Test Result:")
+console.log('Dynamic Test Result:')
 console.log(result)

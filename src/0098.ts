@@ -48,39 +48,39 @@ function isValidBST(root: TreeNode | null): boolean {
 function runTests() {
   const tests = [
     {
-      name: "Example 1: Valid BST",
+      name: 'Example 1: Valid BST',
       root: new TreeNode(2, new TreeNode(1), new TreeNode(3)),
       expected: true
     },
     {
-      name: "Example 2: Invalid BST",
+      name: 'Example 2: Invalid BST',
       root: new TreeNode(5, new TreeNode(1), new TreeNode(4, new TreeNode(3), new TreeNode(6))),
       expected: false
     },
     {
-      name: "Empty Tree: Valid",
+      name: 'Empty Tree: Valid',
       root: null,
       expected: true
     },
     {
-      name: "Single Node: Valid",
+      name: 'Single Node: Valid',
       root: new TreeNode(1),
       expected: true
     },
     {
-      name: "Invalid BST with Duplicate Values",
+      name: 'Invalid BST with Duplicate Values',
       root: new TreeNode(1, new TreeNode(1)),
       expected: false
     }
-  ];
+  ]
 
   tests.forEach(({ name, root, expected }) => {
-    const result = isValidBST(root);
-    console.log(`${result === expected ? "✅" : "❌"} ${name}`);
+    const result = isValidBST(root)
+    console.log(`${result === expected ? '✅' : '❌'} ${name}`)
     if (result !== expected) {
-      console.log(`   Expected: ${expected}, Got: ${result}`);
+      console.log(`   Expected: ${expected}, Got: ${result}`)
     }
-  });
+  })
 }
 
-runTests();
+runTests()

@@ -46,7 +46,7 @@ function isValid(s: string): boolean {
 // const expected = false
 // const s = "))"
 // const expected = false
-const s = "(("
+const s = '(('
 const expected = false
 
 const ans = isValid(s)

@@ -16,9 +16,9 @@ function findClosestElements(arr: number[], k: number, x: number): number[] {
     // Compare the distances of the two ends of the window from x
     // If left element is farther, move window right
     if (x - arr[mid]! > arr[mid + k]! - x) {
-      left = mid + 1;
+      left = mid + 1
     } else {
-      right = mid;
+      right = mid
     }
   }
 

@@ -6,7 +6,7 @@
  * T: O(n); S: O(1);
  */
 function twoSum(nums: number[], target: number, startIndex: number): number[][] {
-  let res: number[][] = []
+  const res: number[][] = []
 
   const n = nums.length
   let l = startIndex
@@ -42,8 +42,8 @@ function twoSum(nums: number[], target: number, startIndex: number): number[][] 
  * T: O(n); S: O(n);
  */
 function twoSum2(nums: number[], start: number, target: number): number[][] {
-  let res: number[][] = [];
-  let s = new Set<number>();
+  const res: number[][] = []
+  const s = new Set<number>()
 
   for (let i = start; i < nums.length; i++) {
     const curr = nums[i]!
@@ -53,14 +53,14 @@ function twoSum2(nums: number[], start: number, target: number): number[][] {
       res[res.length - 1]![1] !== curr // Skip duplicate
     ) {
       if (s.has(target - curr)) {
-        res.push([target - curr, curr]);
+        res.push([target - curr, curr])
       }
     }
 
-    s.add(curr);
+    s.add(curr)
   }
 
-  return res;
+  return res
 }
 
 /**
@@ -77,7 +77,7 @@ function kSum(nums: number[], target: number, startIndex: number, k: number): nu
   // 3Sum to 2Sum.
 
   const n = nums.length
-  let res: number[][] = []
+  const res: number[][] = []
 
   // Edge case: Ran out of numbers
   if (startIndex === nums.length) return res
@@ -104,7 +104,7 @@ function kSum(nums: number[], target: number, startIndex: number, k: number): nu
       // Divide and conquer
       const kSumResult = kSum(nums, target - nums[i]!, i + 1, k - 1)
       // Rebuild result
-      for (let subResult of kSumResult) {
+      for (const subResult of kSumResult) {
         res.push([nums[i]!, ...subResult])
       }
     }

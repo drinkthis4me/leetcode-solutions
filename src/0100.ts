@@ -34,7 +34,7 @@ function isSameTree2(p: TreeNode | null, q: TreeNode | null): boolean {
   const stack: (TreeNode | null)[][] = [[p, q]]
 
   while (stack.length > 0) {
-    const [n1, n2] = stack.pop()!;
+    const [n1, n2] = stack.pop()!
 
     if (n1 === null && n2 === null) continue
 
@@ -53,31 +53,31 @@ function isSameTree2(p: TreeNode | null, q: TreeNode | null): boolean {
  * Builds a binary tree from a LeetCode array representation (level-order).
  */
 function buildTree(arr: (number | null)[]): TreeNode | null {
-  if (arr.length === 0 || arr[0] === null) return null;
+  if (arr.length === 0 || arr[0] === null) return null
 
-  const root = new TreeNode(arr[0]);
-  const queue: TreeNode[] = [root];
-  let i = 1;
+  const root = new TreeNode(arr[0])
+  const queue: TreeNode[] = [root]
+  let i = 1
 
   while (queue.length > 0 && i < arr.length) {
-    const curr = queue.shift()!;
+    const curr = queue.shift()!
 
     // Left child
     if (i < arr.length && arr[i] !== null) {
-      curr.left = new TreeNode(arr[i]!);
-      queue.push(curr.left);
+      curr.left = new TreeNode(arr[i]!)
+      queue.push(curr.left)
     }
-    i++;
+    i++
 
     // Right child
     if (i < arr.length && arr[i] !== null) {
-      curr.right = new TreeNode(arr[i]!);
-      queue.push(curr.right);
+      curr.right = new TreeNode(arr[i]!)
+      queue.push(curr.right)
     }
-    i++;
+    i++
   }
 
-  return root;
+  return root
 }
 
 interface TestCase {
@@ -94,43 +94,43 @@ const testCases: TestCase[] = [
   {
     input: { p: [1, 2, 3], q: [1, 2, 3] },
     expected: true,
-    description: "Same Tree"
+    description: 'Same Tree'
   },
   {
     input: { p: [1, 2], q: [1, null, 2] },
     expected: false,
-    description: "Diff Tree Nodes"
+    description: 'Diff Tree Nodes'
   },
   {
     input: { p: [1, 2, 1], q: [1, 1, 2] },
     expected: false,
-    description: "Tree With Diff Values"
+    description: 'Tree With Diff Values'
   },
 ]
 
 function runTests() {
-  console.log("=== Running LeetCode 543 Tester ===\n");
-  let passedCount = 0;
+  console.log('=== Running LeetCode 543 Tester ===\n')
+  let passedCount = 0
 
   testCases.forEach((tc, index) => {
-    const p = buildTree(tc.input.p);
-    const q = buildTree(tc.input.q);
-    const result = isSameTree2(p, q);
-    const passed = result === tc.expected;
+    const p = buildTree(tc.input.p)
+    const q = buildTree(tc.input.q)
+    const result = isSameTree2(p, q)
+    const passed = result === tc.expected
 
     if (passed) {
-      passedCount++;
-      console.log(`✅ Test ${index + 1} Passed: ${tc.description}`);
+      passedCount++
+      console.log(`✅ Test ${index + 1} Passed: ${tc.description}`)
     } else {
-      console.log(`❌ Test ${index + 1} Failed: ${tc.description}`);
-      console.log(`   Input array:  ${JSON.stringify(tc.input)}`);
-      console.log(`   Expected:     ${tc.expected}`);
-      console.log(`   Got:          ${result}\n`);
+      console.log(`❌ Test ${index + 1} Failed: ${tc.description}`)
+      console.log(`   Input array:  ${JSON.stringify(tc.input)}`)
+      console.log(`   Expected:     ${tc.expected}`)
+      console.log(`   Got:          ${result}\n`)
     }
-  });
+  })
 
-  console.log(`\n=== Results: ${passedCount}/${testCases.length} Passed ===`);
+  console.log(`\n=== Results: ${passedCount}/${testCases.length} Passed ===`)
 }
 
 // Execute the tests
-runTests();
+runTests()

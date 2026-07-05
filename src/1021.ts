@@ -25,7 +25,7 @@ function removeOuterParentheses(s: string): string {
   //  123210
   // result = "(())"
 
-  let result: string[] = []
+  const result: string[] = []
   // Count of primitives
   let openCount = 0
 
@@ -52,9 +52,9 @@ function removeOuterParentheses(s: string): string {
   return result.join('')
 };
 
-const s = "(()())(())"
+const s = '(()())(())'
 
-const expected = "()()()"
+const expected = '()()()'
 
 const output = removeOuterParentheses(s)
 

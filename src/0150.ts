@@ -1,5 +1,5 @@
 // 150. Evaluate Reverse Polish Notation
-import { Stack } from '@datastructures-js/stack';
+import { Stack } from '@datastructures-js/stack'
 
 /**
  * Stack
@@ -17,21 +17,21 @@ function evalRPN(tokens: string[]): number {
         const num2 = stack.pop()!
         const num1 = stack.pop()!
         stack.push(num1 + num2)
-        break;
+        break
       }
       case '-': {
         // Get the top 2 element from stack and calculate
         const num2 = stack.pop()!
         const num1 = stack.pop()!
         stack.push(num1 - num2)
-        break;
+        break
       }
       case '*': {
         // Get the top 2 element from stack and calculate
         const num2 = stack.pop()!
         const num1 = stack.pop()!
         stack.push(num1 * num2)
-        break;
+        break
       }
       case '/': {
         // Get the top 2 element from stack and calculate
@@ -39,21 +39,21 @@ function evalRPN(tokens: string[]): number {
         const num1 = stack.pop()!
         // Truncate toward zero
         stack.push(Math.trunc(num1 / num2))
-        break;
+        break
       }
 
       default:
         // Token is an operand (0 ~ 9)
         // Push to stack for processing
         stack.push(parseInt(token, 10))
-        break;
+        break
     }
   }
 
   return stack.peek()!
 }
 
-const tokens = ["2", "1", "+", "3", "*"]
+const tokens = ['2', '1', '+', '3', '*']
 const expected = 9
 // const tokens = ["4", "13", "5", "/", "+"]
 // const expected = 6

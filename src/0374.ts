@@ -8,7 +8,7 @@
  */
 const TARGET = 6
 
-var guess = function (num: number): number {
+const guess = function (num: number): number {
   if (num > TARGET) {
     return -1
   } else if (num < TARGET) {

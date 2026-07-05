@@ -27,10 +27,10 @@ function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
 
   // First node in pre-order is always the root
   // [root, (left subtree), (right subtree)]
-  let root = new TreeNode(preorder[0])
+  const root = new TreeNode(preorder[0])
   // Index of root in inorder is the partition point
   // [(left subtree), root, (right subtree)]
-  let mid = inorder.indexOf(preorder[0]!)
+  const mid = inorder.indexOf(preorder[0]!)
 
   root.left = buildTree(
     preorder.slice(1, mid + 1),
@@ -54,7 +54,7 @@ function buildTree2(preorder: number[], inorder: number[]): TreeNode | null {
   // Current root index in preorder
   let currentRootIdx = 0
   // Inorder map of value-index pairs
-  let map = new Map<number, number>()
+  const map = new Map<number, number>()
   for (let i = 0; i < inorder.length; i++) {
     map.set(inorder[i]!, i)
   }
@@ -121,22 +121,22 @@ function buildTree3(preorder: number[], inorder: number[]): TreeNode | null {
 
 // --- Helper: Convert Tree to Array (Level Order) for verification ---
 function treeToArray(root: TreeNode | null): (number | null)[] {
-  if (!root) return [];
-  const result: (number | null)[] = [];
-  const queue: (TreeNode | null)[] = [root];
+  if (!root) return []
+  const result: (number | null)[] = []
+  const queue: (TreeNode | null)[] = [root]
   while (queue.length > 0) {
-    const node = queue.shift();
+    const node = queue.shift()
     if (node) {
-      result.push(node.val);
-      queue.push(node.left);
-      queue.push(node.right);
+      result.push(node.val)
+      queue.push(node.left)
+      queue.push(node.right)
     } else {
-      result.push(null);
+      result.push(null)
     }
   }
   // Trim trailing nulls
-  while (result[result.length - 1] === null) result.pop();
-  return result;
+  while (result[result.length - 1] === null) result.pop()
+  return result
 }
 
 // --- Test Runner --- 
@@ -160,23 +160,23 @@ function runTest() {
   ]
 
   testCases.forEach(({ preorder, inorder, expected }, index) => {
-    const root = buildTree3(preorder, inorder);
-    const result = treeToArray(root);
-    const passed = JSON.stringify(result) === JSON.stringify(expected);
+    const root = buildTree3(preorder, inorder)
+    const result = treeToArray(root)
+    const passed = JSON.stringify(result) === JSON.stringify(expected)
 
     if (passed) {
       console.log('✅ Test case 1 passed')
     } else {
       console.log(`❌ Test Case ${index + 1} failed`)
-      console.log(`Pre=[${preorder}], In=[${inorder}]`);
-      console.log(`Result:   ${JSON.stringify(result)}`);
-      console.log(`Expected: ${JSON.stringify(expected)}`);
+      console.log(`Pre=[${preorder}], In=[${inorder}]`)
+      console.log(`Result:   ${JSON.stringify(result)}`)
+      console.log(`Expected: ${JSON.stringify(expected)}`)
     }
 
-    console.log("---");
+    console.log('---')
 
-  });
+  })
 }
 
 // --- Test Cases ---
-runTest();
+runTest()

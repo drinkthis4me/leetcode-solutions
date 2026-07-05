@@ -12,7 +12,7 @@ function maxSlidingWindow(nums: number[], k: number): number[] {
   // Pop from back: While the deque’s last element is less than current, remove it
   // Push current index to the deque
   // Pop from front: If it’s out of the window, remove it
-  // Add front of deque to result once i ≥ k − 1
+  // Add front of deque to result once i ≥ k − 1
 
   const n = nums.length
   const res: number[] = []
@@ -70,7 +70,7 @@ function maxSlidingWindow2(nums: number[], k: number): number[] {
 
     // Add to result once the first window is complete
     if (i >= k - 1) {
-      res.push(heap.front()![0]);
+      res.push(heap.front()![0])
     }
   }
 

@@ -46,51 +46,51 @@ function reverseList(head: ListNode | null): ListNode | null {
  * Converts an array into a Linked List.
  */
 function arrayToList(arr: number[]): ListNode | null {
-  if (arr.length === 0) return null;
-  const head = new ListNode(arr[0]);
-  let current = head;
+  if (arr.length === 0) return null
+  const head = new ListNode(arr[0])
+  let current = head
   for (let i = 1; i < arr.length; i++) {
-    current.next = new ListNode(arr[i]);
-    current = current.next;
+    current.next = new ListNode(arr[i])
+    current = current.next
   }
-  return head;
+  return head
 }
 
 /**
  * Converts a Linked List back into an array for easy comparison.
  */
 function listToArray(head: ListNode | null): number[] {
-  const result: number[] = [];
-  let current = head;
+  const result: number[] = []
+  let current = head
   while (current !== null) {
-    result.push(current.val);
-    current = current.next;
+    result.push(current.val)
+    current = current.next
   }
-  return result;
+  return result
 }
 
 /**
  * Runs a test case and logs the result.
  */
 function runTest(input: number[], expected: number[]) {
-  const head = arrayToList(input);
-  const reversedHead = reverseList(head);
-  const result = listToArray(reversedHead);
+  const head = arrayToList(input)
+  const reversedHead = reverseList(head)
+  const result = listToArray(reversedHead)
 
-  const passed = JSON.stringify(result) === JSON.stringify(expected);
+  const passed = JSON.stringify(result) === JSON.stringify(expected)
 
-  console.log(`Input: [${input}]`);
-  console.log(`Expected: [${expected}]`);
-  console.log(`Result:   [${result}]`);
-  console.log(passed ? "✅ Test Passed" : "❌ Test Failed");
-  console.log("---");
+  console.log(`Input: [${input}]`)
+  console.log(`Expected: [${expected}]`)
+  console.log(`Result:   [${result}]`)
+  console.log(passed ? '✅ Test Passed' : '❌ Test Failed')
+  console.log('---')
 }
 
 // --- Running Tests ---
 
-console.log("Running LeetCode 206: Reverse Linked List Tests...\n");
+console.log('Running LeetCode 206: Reverse Linked List Tests...\n')
 
-runTest([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]); // Standard case
-runTest([1, 2], [2, 1]);                   // Short list
-runTest([1], [1]);                         // Single node
-runTest([], []);                           // Empty list
+runTest([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]) // Standard case
+runTest([1, 2], [2, 1])                   // Short list
+runTest([1], [1])                         // Single node
+runTest([], [])                           // Empty list

@@ -96,24 +96,24 @@ function removeNthFromEnd2(head: ListNode | null, n: number): ListNode | null {
 
 // Helper to convert Array to Linked List
 function arrayToList(arr: number[]): ListNode | null {
-  if (arr.length === 0) return null;
-  let head = new ListNode(arr[0]);
-  let current = head;
+  if (arr.length === 0) return null
+  const head = new ListNode(arr[0])
+  let current = head
   for (let i = 1; i < arr.length; i++) {
-    current.next = new ListNode(arr[i]);
-    current = current.next;
+    current.next = new ListNode(arr[i])
+    current = current.next
   }
-  return head;
+  return head
 }
 
 // Helper to convert Linked List back to Array for easy comparison
 function listToArray(head: ListNode | null): number[] {
-  let result: number[] = [];
+  const result: number[] = []
   while (head) {
-    result.push(head.val);
-    head = head.next;
+    result.push(head.val)
+    head = head.next
   }
-  return result;
+  return result
 }
 
 function runTests(removeNthFromEnd: (head: ListNode | null, n: number) => ListNode | null) {
@@ -122,22 +122,22 @@ function runTests(removeNthFromEnd: (head: ListNode | null, n: number) => ListNo
     { input: [1], n: 1, expected: [] },
     { input: [1, 2], n: 1, expected: [1] },
     { input: [1, 2], n: 2, expected: [2] }, // Removing the head
-  ];
+  ]
 
   testCases.forEach(({ input, n, expected }, index) => {
-    const head = arrayToList(input);
-    const resultList = removeNthFromEnd(head, n);
-    const resultArr = listToArray(resultList);
+    const head = arrayToList(input)
+    const resultList = removeNthFromEnd(head, n)
+    const resultArr = listToArray(resultList)
 
-    const passed = JSON.stringify(resultArr) === JSON.stringify(expected);
+    const passed = JSON.stringify(resultArr) === JSON.stringify(expected)
 
-    console.log(`Test Case ${index + 1}: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
+    console.log(`Test Case ${index + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}`)
     if (!passed) {
-      console.log(`   Input: ${input}, n: ${n}`);
-      console.log(`   Expected: ${expected}`);
-      console.log(`   Actual:   ${resultArr}`);
+      console.log(`   Input: ${input}, n: ${n}`)
+      console.log(`   Expected: ${expected}`)
+      console.log(`   Actual:   ${resultArr}`)
     }
-  });
+  })
 }
 
-runTests(removeNthFromEnd2);
+runTests(removeNthFromEnd2)

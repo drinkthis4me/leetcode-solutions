@@ -215,37 +215,37 @@ function testNQueensII(solutionFn: (n: number) => number): void {
     { n: 4, expected: 2 },
     { n: 5, expected: 10 },
     { n: 8, expected: 92 },
-  ];
+  ]
 
-  console.log(`Running tests for: ${solutionFn.name || 'Anonymous Function'}\n`);
-  console.log("--------------------------------------------------");
-  console.log("| Input (n) | Expected | Actual | Result         |");
-  console.log("--------------------------------------------------");
+  console.log(`Running tests for: ${solutionFn.name || 'Anonymous Function'}\n`)
+  console.log('--------------------------------------------------')
+  console.log('| Input (n) | Expected | Actual | Result         |')
+  console.log('--------------------------------------------------')
 
-  let passed = 0;
+  let passed = 0
 
   for (const { n, expected } of testCases) {
-    const start = performance.now();
-    const actual = solutionFn(n);
-    const end = performance.now();
+    const start = performance.now()
+    const actual = solutionFn(n)
+    const end = performance.now()
 
-    const isCorrect = actual === expected;
-    if (isCorrect) passed++;
+    const isCorrect = actual === expected
+    if (isCorrect) passed++
 
-    const status = isCorrect ? "✅ PASS" : "❌ FAIL";
+    const status = isCorrect ? '✅ PASS' : '❌ FAIL'
 
     console.log(
       `| ${n.toString().padEnd(9)} | ` +
       `${expected.toString().padEnd(8)} | ` +
       `${actual.toString().padEnd(6)} | ` +
       `${status.padEnd(14)} |`
-    );
+    )
   }
 
-  console.log("--------------------------------------------------");
-  console.log(`\nSummary: ${passed}/${testCases.length} tests passed.`);
+  console.log('--------------------------------------------------')
+  console.log(`\nSummary: ${passed}/${testCases.length} tests passed.`)
 }
 
 // Example usage:
-testNQueensII(totalNQueens4);
+testNQueensII(totalNQueens4)
 

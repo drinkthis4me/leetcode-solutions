@@ -16,8 +16,8 @@ function combine(n: number, k: number): number[][] {
 
     // Pruning: j <= n - (k - option.length) + 1
     // This stops the loop when there are not enough elements left to fill 'option'
-    const remainingNeeded = k - solution.length;
-    const end = n - remainingNeeded + 1;
+    const remainingNeeded = k - solution.length
+    const end = n - remainingNeeded + 1
 
     for (let j = i; j <= end; j++) {
       solution.push(j)
@@ -75,30 +75,30 @@ function runTests(solutionFn: (n: number, k: number) => number[][]) {
     { n: 1, k: 1, expected: [[1]] },
     { n: 4, k: 4, expected: [[1, 2, 3, 4]] },
     { n: 5, k: 1, expected: [[1], [2], [3], [4], [5]] }
-  ];
+  ]
 
-  console.log(`--- Starting tests for: ${solutionFn.name || 'Solution'} ---`);
+  console.log(`--- Starting tests for: ${solutionFn.name || 'Solution'} ---`)
 
   testCases.forEach(({ n, k, expected }, index) => {
-    const result = solutionFn(n, k);
+    const result = solutionFn(n, k)
 
     // Helper to normalize results for comparison (sort inner arrays and outer array)
     const normalize = (arr: number[][]) =>
       arr.map(sub => sub.sort((a, b) => a - b))
-        .sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+        .sort((a, b) => a[0] - b[0] || a[1] - b[1])
 
-    const passed = JSON.stringify(normalize(result)) === JSON.stringify(normalize(expected));
+    const passed = JSON.stringify(normalize(result)) === JSON.stringify(normalize(expected))
 
     if (passed) {
-      console.log(`Test Case ${index + 1}: PASSED (n=${n}, k=${k})`);
+      console.log(`Test Case ${index + 1}: PASSED (n=${n}, k=${k})`)
     } else {
-      console.error(`Test Case ${index + 1}: FAILED (n=${n}, k=${k})`);
-      console.error(`  Expected: ${JSON.stringify(expected)}`);
-      console.error(`  Received: ${JSON.stringify(result)}`);
+      console.error(`Test Case ${index + 1}: FAILED (n=${n}, k=${k})`)
+      console.error(`  Expected: ${JSON.stringify(expected)}`)
+      console.error(`  Received: ${JSON.stringify(result)}`)
     }
-  });
+  })
 
-  console.log('--- Tests Complete ---\n');
+  console.log('--- Tests Complete ---\n')
 }
 
-runTests(combine2);
+runTests(combine2)

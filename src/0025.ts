@@ -47,7 +47,7 @@ function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
     // Otherwise, leave it
     if (!kthNode) break
 
-    let groupNext = kthNode.next!
+    const groupNext = kthNode.next!
 
     // Reverse the current group
     // groupPrev -> [curr -> ... -> kthNode] -> groupNext
@@ -75,23 +75,23 @@ function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
 // --- Test Helper ---
 // Convert an array to a linked list
 function arrayToList(arr: number[]): ListNode | null {
-  let dummy = new ListNode();
-  let curr = dummy;
-  for (let val of arr) {
-    curr.next = new ListNode(val);
-    curr = curr.next;
+  const dummy = new ListNode()
+  let curr = dummy
+  for (const val of arr) {
+    curr.next = new ListNode(val)
+    curr = curr.next
   }
-  return dummy.next;
+  return dummy.next
 }
 
 // Convert a linked list back to an array for easy comparison
 function listToArray(node: ListNode | null): number[] {
-  let result: number[] = [];
+  const result: number[] = []
   while (node) {
-    result.push(node.val);
-    node = node.next;
+    result.push(node.val)
+    node = node.next
   }
-  return result;
+  return result
 }
 
 // --- Test Suite ---
@@ -103,21 +103,21 @@ function runTests() {
     { input: [1], k: 1, expected: [1] },
     { input: [1, 2], k: 2, expected: [2, 1] },
     { input: [], k: 1, expected: [] }
-  ];
+  ]
 
   tests.forEach(({ input, k, expected }, index) => {
-    const head = arrayToList(input);
-    const resultHead = reverseKGroup(head, k);
-    const resultArr = listToArray(resultHead);
-    const passed = JSON.stringify(resultArr) === JSON.stringify(expected);
+    const head = arrayToList(input)
+    const resultHead = reverseKGroup(head, k)
+    const resultArr = listToArray(resultHead)
+    const passed = JSON.stringify(resultArr) === JSON.stringify(expected)
 
-    console.log(`Test ${index + 1}: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
+    console.log(`Test ${index + 1}: ${passed ? '✅ PASSED' : '❌ FAILED'}`)
     if (!passed) {
-      console.log(`   Input: ${input}, k: ${k}`);
-      console.log(`   Expected: ${expected}`);
-      console.log(`   Actual:   ${resultArr}`);
+      console.log(`   Input: ${input}, k: ${k}`)
+      console.log(`   Expected: ${expected}`)
+      console.log(`   Actual:   ${resultArr}`)
     }
-  });
+  })
 }
 
-runTests();
+runTests()

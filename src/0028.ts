@@ -266,45 +266,45 @@ function strStr5(haystack: string, needle: string): number {
 function runTests() {
   const tests = [
     {
-      name: "Standard",
-      haystack: "sadbutsad",
-      needle: "sad",
+      name: 'Standard',
+      haystack: 'sadbutsad',
+      needle: 'sad',
       expected: 0
     },
     {
-      name: "Not Found",
-      haystack: "leetcode",
-      needle: "leeto",
+      name: 'Not Found',
+      haystack: 'leetcode',
+      needle: 'leeto',
       expected: -1
     },
     {
-      name: "Empty needle",
-      haystack: "leetcode",
-      needle: "",
+      name: 'Empty needle',
+      haystack: 'leetcode',
+      needle: '',
       expected: 0
     },
     {
-      name: "Empty haystack and long needle",
-      haystack: "",
-      needle: "leetcode",
+      name: 'Empty haystack and long needle',
+      haystack: '',
+      needle: 'leetcode',
       expected: -1
     },
     {
-      name: "Empty haystack and needle",
-      haystack: "",
-      needle: "",
+      name: 'Empty haystack and needle',
+      haystack: '',
+      needle: '',
       expected: -1
     },
 
-  ];
+  ]
 
   tests.forEach(({ name, haystack, needle, expected }) => {
-    const result = strStr5(haystack, needle);
-    console.log(`[${result === expected ? 'PASS' : 'FAIL'}] ${name}`);
+    const result = strStr5(haystack, needle)
+    console.log(`[${result === expected ? 'PASS' : 'FAIL'}] ${name}`)
     if (result !== expected) {
-      console.log(`   Expected ${expected}, got ${result}`);
+      console.log(`   Expected ${expected}, got ${result}`)
     }
-  });
+  })
 }
 
 runTests()
