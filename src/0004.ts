@@ -51,7 +51,6 @@ function findMedianSortedArrays2(nums1: number[], nums2: number[]): number {
     return -1
   }
 
-
   if (n % 2 === 0) {
     // Even length
     // Return the mean of middle two numbers
@@ -90,7 +89,7 @@ function findMedianSortedArrays3(nums1: number[], nums2: number[]): number {
   const half = Math.floor((n + 1) / 2)
   // Pointers for `nums1` to calculate mid index with binary search
   // NOTE: We don't need to do binary search for `nums1` because
-  // (Total left half elements) = (Left half elements from `nums1`) + (Left half elements from `nums2`) 
+  // (Total left half elements) = (Left half elements from `nums1`) + (Left half elements from `nums2`)
   let left = 0
   let right = n1
 
@@ -115,7 +114,7 @@ function findMedianSortedArrays3(nums1: number[], nums2: number[]): number {
     // number at index `i` should be less or equal to number at index `(j+ 1)` (and `(i+ 1)`, but we already knew that).
     // Vise versa for `nums2`.
     if (left1 <= right2 && left2 <= right1) {
-      // Partition is correct. 
+      // Partition is correct.
       // The elements in the left half are all smaller than the elements in the right half.
       // End binary search.
       // Return median based on total length

@@ -2,7 +2,7 @@
 
 /**
  * Two Pointer
- * T: O(n); S: O(1); 
+ * T: O(n); S: O(1);
  */
 function maxArea(height: number[]): number {
   // For two given line at index x and y

@@ -3,7 +3,7 @@
 import { MaxPriorityQueue } from '@datastructures-js/priority-queue'
 import { Queue } from '@datastructures-js/queue'
 
-// Always process the most frequent task 
+// Always process the most frequent task
 // because they need to cool down and require more overall time to complete.
 
 /**
@@ -29,7 +29,6 @@ function leastInterval(tasks: string[], n: number): number {
 
   // Batch process task in cycle of (n + 1) time
   while (!maxHeap.isEmpty()) {
-
     let taskCount = 0
     let cycle = n + 1
 
@@ -91,8 +90,7 @@ function leastInterval2(tasks: string[], n: number): number {
       // Currently idle
       // Fast-forward to the next task cycle
       time = q.front()![1]
-    }
-    else {
+    } else {
       // Process task
       const top = maxHeap.pop()!
       const remainingCount = top - 1
@@ -150,7 +148,7 @@ function leastInterval3(tasks: string[], n: number): number {
 
   for (let i = 24; i >= 0; i--) {
     if (freq[i] === 0) {
-      // Optimize: All subsequent counts are zero 
+      // Optimize: All subsequent counts are zero
       break
     }
     idleSlots -= Math.min(maxFreq, freq[i])

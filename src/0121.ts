@@ -2,10 +2,10 @@
 
 /**
  * Precompute Selling Prices
- * T: O(n); S: O(n); 
+ * T: O(n); S: O(n);
  */
 function maxProfit(prices: number[]): number {
-  // prices = 
+  // prices =
   // [7, 1, 5, 3, 6, 4]
   // (Best selling price i) = max(prices to the right)
   // [0, 6, 6, 6, 6, 4]
@@ -27,7 +27,7 @@ function maxProfit(prices: number[]): number {
   for (let i = 0; i < n; i++) {
     // (Profit i) = maxRight[i] - prices[i]
     const currentProfit = maxRight[i]! - prices[i]!
-    // Update `maxP` if larger profit found 
+    // Update `maxP` if larger profit found
     maxP = Math.max(maxP, currentProfit)
   }
 
@@ -36,7 +36,7 @@ function maxProfit(prices: number[]): number {
 
 /**
  * Two Pointers
- * T: O(n); S: O(1); 
+ * T: O(n); S: O(1);
  */
 function maxProfit2(prices: number[]): number {
   // Pointers
@@ -67,7 +67,7 @@ function maxProfit2(prices: number[]): number {
 
 /**
  * DP - Kadane's Algorithm
- * T: O(n); S: O(1); 
+ * T: O(n); S: O(1);
  */
 function maxProfit3(prices: number[]): number {
   // Edge Case

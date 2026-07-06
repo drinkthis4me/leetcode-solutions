@@ -60,7 +60,7 @@ const input = ['neet', 'code', 'love', 'you']
 
 const expected = input
 
-const solution = new Solution
+const solution = new Solution()
 const encoded = solution.encode(input)
 const decoded = solution.decode(encoded)
 

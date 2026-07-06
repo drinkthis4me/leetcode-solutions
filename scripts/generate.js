@@ -39,7 +39,6 @@ function generateTemplateFile() {
     fs.writeFileSync(fullPath, defaultTemplate, 'utf8')
 
     console.log(`✅ Successfully generated template file: ${fullPath}`)
-
   } catch (error) {
     console.error(`❌ Error generating file: ${fullPath}`, error)
   }

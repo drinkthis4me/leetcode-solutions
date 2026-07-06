@@ -43,7 +43,7 @@ function dailyTemperatures2(temperatures: number[]): number[] {
   // Result array with default 0 waiting day
   const res: number[] = new Array(n).fill(0)
 
-  // Last day will always wait zero day 
+  // Last day will always wait zero day
   // Iterate backwards from the second-to-last day
   for (let i = n - 2; i >= 0; i--) {
     // Index of the day we check against. Starting from the next day.

@@ -12,7 +12,6 @@
  * T: O(log n); S: O(1);
  */
 const solution = function (isBadVersion: any) {
-
   return function (n: number): number {
     // Binary Search
 

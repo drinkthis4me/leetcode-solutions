@@ -92,9 +92,9 @@ function maxSlidingWindow3(nums: number[], k: number): number[] {
   // rightMax = [3, 3, -1, 5, 5, 3, 7 ,7]
 
   // res[i] = max(rightMax[i], leftMax(i + k - 1))
-  // Example window (1, 3): 
+  // Example window (1, 3):
   // res[1] = max(rightMax[1], leftMax[3])
-  //        = max(3, -3) 
+  //        = max(3, -3)
   //        = 3
 
   const n = nums.length

@@ -75,13 +75,11 @@ function diameterOfBinaryTree2(root: TreeNode | null): number {
     // Traverse left
     if (node.left !== null && !map.has(node.left)) {
       stack.push(node.left)
-    }
-    // Traverse right
-    else if (node.right !== null && !map.has(node.right)) {
+    } else if (node.right !== null && !map.has(node.right)) {
+      // Traverse right
       stack.push(node.right)
-    }
-    // Both children processed. Pop and calculate max height.
-    else {
+    } else {
+      // Both children processed. Pop and calculate max height.
       node = stack.pop()!
 
       const leftHeight = map.get(node.left) || 0
@@ -133,9 +131,9 @@ function buildTree(arr: (number | null)[]): TreeNode | null {
 }
 
 interface TestCase {
-  input: (number | null)[];
-  expected: number;
-  description: string;
+  input: (number | null)[]
+  expected: number
+  description: string
 }
 
 // --- TEST SUITE ---

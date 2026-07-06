@@ -40,7 +40,7 @@ function searchMatrix2(matrix: number[][], target: number): boolean {
 
   const m = matrix.length
   const n = matrix[0]!.length
-  // Pointers 
+  // Pointers
   let l = 0
   let r = m * n - 1
 

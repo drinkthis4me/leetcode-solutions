@@ -14,14 +14,14 @@ class TreeNode {
   }
 }
 
-// Brute force: For every node, total sum = sum(node.val + Max left path sum + Max right path sum)  
+// Brute force: For every node, total sum = sum(node.val + Max left path sum + Max right path sum)
 
 /**
  * DFS
  * T: O(n); S: O(n);
  */
 function maxPathSum(root: TreeNode | null): number {
-  // Global max so far 
+  // Global max so far
   // (start with -Inf for single tree node with negative value)
   let max = -Infinity
 

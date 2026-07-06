@@ -81,9 +81,8 @@ function findMin2(nums: number[]): number {
   return Math.min(nums[left]!, nums[right]!)
 }
 
-
 const nums = [0, 1, 2, 3, 4, 5, 6]
-// const nums = [4, 5, 6, 7, 0, 1, 2] 
+// const nums = [4, 5, 6, 7, 0, 1, 2]
 // const nums = [6, 0, 1, 2, 3, 4, 5]
 
 const expected = 0

@@ -17,7 +17,7 @@ function smallestDistancePair(nums: number[], k: number): number {
       const distance = Math.abs(nums[i]! - nums[j]!)
 
       // Increment the count for this distance in the bucket
-      distanceBucket[distance]! ++
+      distanceBucket[distance]!++
     }
   }
 
@@ -123,7 +123,7 @@ function smallestDistancePair3(nums: number[], k: number): number {
 
   const n = nums.length
 
-  // Get the max possible distance 
+  // Get the max possible distance
   const maxDistance = nums[n - 1]! - nums[0]!
 
   // Helper fn
@@ -137,7 +137,7 @@ function smallestDistancePair3(nums: number[], k: number): number {
       while (nums[right]! - nums[left]! > maxDistance) {
         left++
       }
-      // For the current `nums[right]`, all elements from 
+      // For the current `nums[right]`, all elements from
       // `nums[left]` up to `nums[right - 1]` form a valid pair distance (<= maxDistance)
       count += right - left
     }

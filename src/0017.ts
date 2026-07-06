@@ -8,14 +8,14 @@ function letterCombinations(digits: string): string[] {
   if (!digits || digits.length === 0) return []
 
   const DIGIT_MAP: Record<string, string> = {
-    '2': 'abc',
-    '3': 'def',
-    '4': 'ghi',
-    '5': 'jkl',
-    '6': 'mno',
-    '7': 'pqrs',
-    '8': 'tuv',
-    '9': 'wxyz'
+    2: 'abc',
+    3: 'def',
+    4: 'ghi',
+    5: 'jkl',
+    6: 'mno',
+    7: 'pqrs',
+    8: 'tuv',
+    9: 'wxyz'
   }
 
   const res: string[] = []
@@ -46,7 +46,7 @@ function letterCombinations(digits: string): string[] {
 
 /**
  * Test Runner for LeetCode 17
- * 
+ *
  * @param solutionFn - The function to test (takes string, returns string[])
  */
 function runTests(solutionFn: (digits: string) => string[]) {
@@ -62,7 +62,7 @@ function runTests(solutionFn: (digits: string) => string[]) {
   testCases.forEach(({ digits, expected }, index) => {
     const result = solutionFn(digits)
 
-    // Helper to check array equality (order independent if needed, 
+    // Helper to check array equality (order independent if needed,
     // but typically LC expects specific order for this problem)
     const passed = JSON.stringify(result.sort()) === JSON.stringify(expected.sort())
 

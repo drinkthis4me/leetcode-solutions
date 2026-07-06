@@ -2,7 +2,7 @@
 
 /**
  * Binary Search
- * T: O(log n); S: O(1); 
+ * T: O(log n); S: O(1);
  */
 function searchRange(nums: number[], target: number): number[] {
   // Do Binary search twice to find the lower bound and upper bound
@@ -73,7 +73,7 @@ function searchRange(nums: number[], target: number): number[] {
 
 /**
  * Binary Search
- * T: O(log n); S: O(1); 
+ * T: O(log n); S: O(1);
  */
 function searchRange2(nums: number[], target: number): number[] {
   // Find lower bound of `target` and `target + 1`.
@@ -86,10 +86,10 @@ function searchRange2(nums: number[], target: number): number[] {
 
   /**
    * Helper function to find the index of the lower bound.
-   * 
+   *
    * If the element is not found, it returns `nums.length`.
-   * @param nums 
-   * @param target 
+   * @param nums
+   * @param target
    * @returns Index
    */
   const lowerBound = (nums: number[], target: number): number => {
@@ -130,7 +130,7 @@ function searchRange2(nums: number[], target: number): number[] {
 
 /**
  * Binary Search (template III)
- * T: O(log n); S: O(1); 
+ * T: O(log n); S: O(1);
  */
 function searchRange3(nums: number[], target: number): number[] {
   // Edge Case
@@ -186,7 +186,6 @@ function searchRange3(nums: number[], target: number): number[] {
   }
 
   const rightIndex = findBoundary(nums, target, false)
-
 
   return [leftIndex, rightIndex - 1]
 }

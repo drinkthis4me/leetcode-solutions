@@ -19,7 +19,6 @@ class TreeNode {
  * T: O(n); S: O(n);
  */
 function isValidBST(root: TreeNode | null): boolean {
-
   // A per-level dynamic check is needed.
   // Start value boundary of root: [-Infinity, Infinity]
   // For a left node, update upper boundary:

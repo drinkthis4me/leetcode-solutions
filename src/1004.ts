@@ -28,7 +28,7 @@ function longestOnes(nums: number[], k: number): number {
 
   // L = 2. Invalid.
 
-  // L = 3. 
+  // L = 3.
   // `nums[L] === 0`
   // Update zero count.
   // Window is valid again.

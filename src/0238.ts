@@ -3,7 +3,7 @@
 /**
  * All Product
  * T: O(n); S: O(1);
- * 
+ *
  * Error: Division used; Wrong answer when zero exists;
  */
 function productExceptSelf(nums: number[]): number[] {
@@ -15,7 +15,7 @@ function productExceptSelf(nums: number[]): number[] {
 /**
  * All Product w/ Zero Handling
  * T: O(n); S: O(1);
- * 
+ *
  * Error: Division used;
  */
 function productExceptSelf2(nums: number[]): number[] {
@@ -60,7 +60,7 @@ function productExceptSelf2(nums: number[]): number[] {
 /**
  * Brute Force
  * T: O(n^2); S: O(n);
- * 
+ *
  * Error: O(n^2) time complexity;
  */
 function productExceptSelf3(nums: number[]): number[] {

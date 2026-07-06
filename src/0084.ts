@@ -37,9 +37,9 @@ function largestRectangleArea(heights: number[]): number {
 
     // Set left boundary to index of the bar first shorter than the current bar.
     // If no left bar shorter than the current bar (out of bound), set boundary to -1.
-    leftBoundaries[i] = stack.length === 0
-      ? -1
-      : stack[stack.length - 1]!
+    leftBoundaries[i] = stack.length === 0 ?
+      -1 :
+      stack[stack.length - 1]!
 
     stack.push(i)
   }
@@ -56,13 +56,12 @@ function largestRectangleArea(heights: number[]): number {
       stack.pop()
     }
 
-    rightBoundaries[i] = stack.length === 0
-      ? n
-      : stack[stack.length - 1]!
+    rightBoundaries[i] = stack.length === 0 ?
+      n :
+      stack[stack.length - 1]!
 
     stack.push(i)
   }
-
 
   // Calculate max area
   let maxArea = 0
@@ -104,9 +103,9 @@ function largestRectangleArea2(heights: number[]): number {
       const height = heights[top]!
       // Width boundary if stack is empty: [-1, i]
       // Width boundary if stack is not empty: [i, top]
-      const width = stack.length === 0
-        ? i
-        : i - stack[stack.length - 1]! - 1
+      const width = stack.length === 0 ?
+        i :
+        i - stack[stack.length - 1]! - 1
 
       maxArea = Math.max(maxArea, height * width)
     }
@@ -117,7 +116,6 @@ function largestRectangleArea2(heights: number[]): number {
 
   return maxArea
 }
-
 
 const heights = [2, 1, 5, 6, 2, 3]
 const expected = 10

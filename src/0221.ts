@@ -98,7 +98,7 @@ function maximalSquare3(matrix: string[][]): number {
       dp[i]![j]! = Math.min(
         dp[i + 1]![j]!, // down
         dp[i]![j + 1]!, // right
-        dp[i + 1]![j + 1]!, // diagonal
+        dp[i + 1]![j + 1]! // diagonal
       ) + 1
       maxSquare = Math.max(maxSquare, dp[i]![j]!)
     }
@@ -121,7 +121,6 @@ function maximalSquare4(matrix: string[][]): number {
   const dp: number[] = Array(n + 1).fill(0)
   let prevDiag = 0
   let maxSquare = 0
-
 
   for (let i = m - 1; i >= 0; i--) {
     for (let j = n - 1; j >= 0; j--) {
@@ -159,7 +158,7 @@ function runTests(maximalSquareFn: (matrix: string[][]) => number) {
     {
       input: [['1', '1'], ['1', '1']],
       expected: 4
-    },
+    }
   ]
   testCases.forEach((test, index) => {
     const result = maximalSquareFn(test.input)

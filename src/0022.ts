@@ -100,6 +100,35 @@ function generateParenthesis3(n: number): string[] {
 }
 
 /**
+ * Backtrack w/ Stack
+ * T: O(4 ^ n / (n ^ (1/2))); S: O(n);
+ */
+function generateParenthesis4(n: number): string[] {
+  const res: string[] = []
+  // Stack of [currentString, openCount, closeCount]
+  const stack: [string, number, number][] = [['', 0, 0]]
+
+  while (stack.length > 0) {
+    const [str, open, close] = stack.pop()!
+
+    if (str.length === 2 * n) {
+      res.push(str)
+      continue
+    }
+
+    if (open > close) {
+      stack.push([str + ')', open, close + 1])
+    }
+
+    if (open < n) {
+      stack.push([str + '(', open + 1, close])
+    }
+  }
+
+  return res
+};
+
+/**
  * Tester for LeetCode 22: Generate Parentheses
  * @param fn The function to test (takes number n, returns string[])
  */
@@ -133,4 +162,4 @@ function runTests(fn: (n: number) => string[]) {
   console.log('------------------------------------------\n')
 }
 
-runTests(generateParenthesis2)
+runTests(generateParenthesis3)

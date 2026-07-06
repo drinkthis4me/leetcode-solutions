@@ -14,10 +14,10 @@ type Tweet = [number, number]
 type TweetMap = Map<number, Tweet[]>
 
 interface TwitterInterface {
-  postTweet(userId: number, tweetId: number): void;
-  getNewsFeed(userId: number): number[];
-  follow(followerId: number, followeeId: number): void;
-  unfollow(followerId: number, followeeId: number): void;
+  postTweet(userId: number, tweetId: number): void
+  getNewsFeed(userId: number): number[]
+  follow(followerId: number, followeeId: number): void
+  unfollow(followerId: number, followeeId: number): void
 }
 
 class Twitter implements TwitterInterface {
@@ -63,10 +63,10 @@ class Twitter implements TwitterInterface {
 
     // Max heap to store top tweets
     const maxHeap = new MaxPriorityQueue<{
-      tweet: Tweet,
-      followeeId: number,
+      tweet: Tweet
+      followeeId: number
       index: number
-    }>((x) => x.tweet[0])
+    }>(x => x.tweet[0])
     const followeeIds = this.followMap.get(userId)!
 
     // K-way merge:
@@ -135,7 +135,7 @@ class Twitter implements TwitterInterface {
  */
 function runTests(
   name: string,
-  TwitterClass: new () => TwitterInterface,
+  TwitterClass: new () => TwitterInterface
 ) {
   const testCases = [
     {
@@ -181,6 +181,5 @@ function runTests(
     }
   }
 }
-
 
 runTests('Twitter Implementation', Twitter)

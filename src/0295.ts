@@ -3,8 +3,8 @@
 import { PriorityQueue } from '@datastructures-js/priority-queue'
 
 interface IMedianFinder {
-  addNum(num: number): void;
-  findMedian(): number;
+  addNum(num: number): void
+  findMedian(): number
 }
 
 /**
@@ -32,9 +32,9 @@ class MedianFinder implements IMedianFinder {
    * T: O(m * n log n); S: O(n)
    */
   findMedian(): number {
-    return this.small.length > this.large.length
-      ? this.small[0]
-      : (this.small[0] + this.large[0]) / 2
+    return this.small.length > this.large.length ?
+      this.small[0] :
+      (this.small[0] + this.large[0]) / 2
   }
 }
 
@@ -63,9 +63,8 @@ class MedianFinder2 implements IMedianFinder {
    * T: O(log n); O(n);
    */
   addNum(num: number): void {
-    // Push new number 
+    // Push new number
     this.left.push(num)
-
 
     // Balance heap sizes
     this.right.push(this.left.pop()!)
@@ -149,7 +148,6 @@ function runTests(Implementation: new () => IMedianFinder) {
   })
   console.log('')
 }
-
 
 // Execution
 runTests(MedianFinder2)

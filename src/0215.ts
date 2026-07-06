@@ -24,7 +24,6 @@ function findKthLargest(nums: number[], k: number): number {
  * T: O(n) worst O(n ^ 2); S: O(1);
  */
 function findKthLargest2(nums: number[], k: number): number {
-
   const partition = (nums: number[], l: number, r: number): number => {
     // Randomize pivot to maintain O(n) average time complexity
     const randomIndex = Math.floor(Math.random() * (r - l + 1)) + l;
@@ -69,7 +68,6 @@ function findKthLargest2(nums: number[], k: number): number {
  * T: O(n) worst O(n ^ 2); S: O(1);
  */
 function findKthLargest3(nums: number[], k: number): number {
-
   const swap = (i: number, j: number): void => {
     [nums[i], nums[j]] = [nums[j], nums[i]]
   }

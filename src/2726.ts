@@ -49,15 +49,14 @@ class Calculator implements CalculatorInstance {
   }
 }
 
-
 // -----------------------------------------------------------------------------
 // Test Runner Engine
 // -----------------------------------------------------------------------------
 interface TestCase {
-  name: string;
-  actions: ['Calculator', ...ValidAction[]];
-  values: number[];
-  expected: number | string; // string to handle error messages like "Division by zero is not allowed"
+  name: string
+  actions: ['Calculator', ...ValidAction[]]
+  values: number[]
+  expected: number | string // string to handle error messages like "Division by zero is not allowed"
 }
 
 type CalculatorConstructor = new (value: number) => CalculatorInstance
@@ -117,7 +116,7 @@ function runTests(CalculatorClass: CalculatorConstructor) {
       // Step 1: Initialize the class with the first value
       calcInstance = new CalculatorClass(tc.values[0]!)
       let valueIdx = 1
-      
+
       // Step 2: Loop through operations (skipping the constructor)
       const methodsToRun = tc.actions.slice(1) as ValidAction[]
       for (const action of methodsToRun) {

@@ -69,7 +69,6 @@ function minWindow(s: string, t: string): string {
     right++
   }
 
-
   return minLength === Infinity ? '' : s.slice(minStart, minStart + minLength)
 };
 
@@ -103,7 +102,7 @@ function minWindow2(s: string, t: string): string {
       map.set(rightChar, map.get(rightChar)! - 1)
 
       // Check if the required count is met.
-      // - The count goes from 1 to 0: 
+      // - The count goes from 1 to 0:
       //   We have exactly matched the required quantity.
       // - The Count goes from 0 to -1:
       //   We have an excess of the required quantity.

@@ -3,7 +3,7 @@
 /**
  * Filter and Sort
  * T: O(n log n); S: O(n);
- * 
+ *
  * Violation: O(n log n) time complexity
  */
 function longestConsecutive(nums: number[]): number {

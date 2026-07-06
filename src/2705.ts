@@ -94,11 +94,10 @@ function compactObject2(obj: JSONValue): JSONValue {
 
 // const obj = [null, 0, false, 1]
 // const expected = [1]
-const obj = { 'a': null, 'b': [false, 1] }
-const expected = { 'b': [1] }
+const obj = { a: null, b: [false, 1] }
+const expected = { b: [1] }
 // const obj = [null, 0, 5, [0], [false, 16]]
 // const expected = [5, [], [16]]
-
 
 const ans = compactObject2(obj)
 

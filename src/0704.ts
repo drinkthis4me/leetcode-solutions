@@ -112,7 +112,6 @@ function search4(nums: number[], target: number): number {
   }
 }
 
-
 const nums = [1, 2, 4, 4, 4, 5, 6, 7]
 const target = 4
 

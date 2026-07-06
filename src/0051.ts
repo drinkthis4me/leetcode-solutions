@@ -80,7 +80,6 @@ function solveNQueens2(n: number): string[][] {
       cols[c] = false
       posDiag[posDiagIdx] = false
       negDiag[negDiagIdx] = false
-
     }
   }
 
@@ -130,7 +129,6 @@ function solveNQueens3(n: number): string[][] {
       cols ^= colMask
       posDiag ^= posDiagMask
       negDiag ^= negDiagMask
-
     }
   }
 

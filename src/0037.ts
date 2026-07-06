@@ -28,7 +28,6 @@ function solveSudoku(board: string[][]): void {
       cols[c].has(value) ||
       boxes[boxIdx].has(value)
     )
-
   }
 
   // Helper fn to add value to board and conditions
@@ -205,8 +204,8 @@ function solveSudoku2(board: string[][]): void {
 
 /**
  * Tester for LeetCode 37: Sudoku Solver
- * 
- * @param solveSudoku - The function to be tested. 
+ *
+ * @param solveSudoku - The function to be tested.
  * It should modify the board in-place and return void.
  */
 function runTests(solveSudoku: (board: string[][]) => void): void {

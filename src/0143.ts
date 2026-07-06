@@ -16,7 +16,6 @@ class ListNode {
  Do not return anything, modify head in-place instead.
  */
 
-
 /**
  * Reverse And Merge
  * T: O(n); S: O(1);

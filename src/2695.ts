@@ -1,8 +1,8 @@
 // 2695. Array Wrapper
 
 interface ArrayWrapperInterface {
-  valueOf(): number;
-  toString(): string;
+  valueOf(): number
+  toString(): string
 }
 
 class ArrayWrapper implements ArrayWrapperInterface {

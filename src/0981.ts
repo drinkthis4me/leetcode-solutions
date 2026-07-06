@@ -16,7 +16,7 @@ class TimeMap {
    * @param {string} value
    * @param {number} timestamp
    * @return {void}
-   * 
+   *
    * T: O(1); S: O(m * n);
    */
   set(key: string, value: string, timestamp: number): void {
@@ -34,7 +34,7 @@ class TimeMap {
    * @param {string} key
    * @param {number} timestamp
    * @return {string}
-   * 
+   *
    * T: O(log n)
    */
   get(key: string, timestamp: number): string {
@@ -44,7 +44,7 @@ class TimeMap {
     if (
       !timeStore ||
       timeStore.length === 0 || // No entry
-      timestamp < timeStore[0]![0] // First timestamp is grater than target 
+      timestamp < timeStore[0]![0] // First timestamp is grater than target
     ) {
       return ''
     }
@@ -85,7 +85,7 @@ class TimeMap {
   }
 }
 
-/** 
+/**
  * Your TimeMap object will be instantiated and called as such:
  * var obj = new TimeMap()
  * obj.set(key,value,timestamp)

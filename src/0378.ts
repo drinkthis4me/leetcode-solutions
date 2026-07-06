@@ -26,13 +26,12 @@ function kthSmallest(matrix: number[][], k: number): number {
       }
       // For current row `r`, add number of valid elements to `count`
       count += c + 1
-      // We don't need to reset `c` here, 
+      // We don't need to reset `c` here,
       // because next row's possible valid range will always be in [0, (new `c`)]
     }
 
     return count
   }
-
 
   // Min possible value: most top-left number
   let left = matrix[0]![0]!
@@ -72,7 +71,7 @@ function kthSmallest2(matrix: number[][], k: number): number {
 
   const minHeap = new MinPriorityQueue<MatrixElement>(
     // Priority fn compares value
-    (el) => el.val
+    el => el.val
   )
 
   // Add the 1st element from every row

@@ -7,7 +7,7 @@
 function minDays(bloomDay: number[], m: number, k: number): number {
   // Find the smallest day in range: [1, (Max bloom day)]
 
-  // Edge Case: 
+  // Edge Case:
   // Total number of flowers is less than the required number of flowers
   if ((m * k) > bloomDay.length) return -1
 

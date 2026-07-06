@@ -42,9 +42,9 @@ function subsetsWithDup2(nums: number[]): number[][] {
   for (let i = 0; i < n; i++) {
     // If current number is duplicate,
     // only add to subsets created in the last iteration
-    const startIdx = (i > 0 && nums[i] === nums[i - 1])
-      ? endIdx
-      : 0
+    const startIdx = (i > 0 && nums[i] === nums[i - 1]) ?
+      endIdx :
+      0
 
     endIdx = res.length
     for (let j = startIdx; j < endIdx; j++) {
@@ -98,7 +98,6 @@ function runTests(solutionFn: (nums: number[]) => number[][]) {
     return serialize(result) === serialize(expected)
   }
 
-
   console.log(`--- Running Tests for: ${solutionFn.name} ---`)
 
   for (const { name, nums, expected } of testCases) {
@@ -114,6 +113,5 @@ function runTests(solutionFn: (nums: number[]) => number[][]) {
   }
   console.log('')
 }
-
 
 runTests(subsetsWithDup2)

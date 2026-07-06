@@ -22,7 +22,7 @@ function findMin(nums: number[]): number {
       // Discard left and mid
       left = mid + 1
     } else if (midNum < rightNum) {
-      // Discard right 
+      // Discard right
       right = mid
     } else {
       // `midNum === rightNum`

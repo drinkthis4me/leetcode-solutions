@@ -14,9 +14,9 @@ function maxVowels(s: string, k: number): number {
   // R = 1
   // R = 2
   // max = current = 1 ('abc')
-  // L = 1 
+  // L = 1
   // current = 0 ('bc')
-  // R = 3 
+  // R = 3
   // max = current = 1 ('bci')
   // L = 2
   // current = 1 ('ci')
@@ -35,10 +35,9 @@ function maxVowels(s: string, k: number): number {
   // R = 7
   // current = 2 ('ide') < max
 
-
   // Look up map for vowels
   const VOWELS = new Set(['a', 'e', 'i', 'o', 'u'])
-  // Pointers for window 
+  // Pointers for window
   let left = 0
   // Max vowel count
   let maxVowels = 0

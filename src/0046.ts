@@ -2,7 +2,7 @@
 
 /**
  * Backtrack
- * T: O(n * n!); S: O(n * n!) 
+ * T: O(n * n!); S: O(n * n!)
  */
 function permute(nums: number[]): number[][] {
   const n = nums.length
@@ -38,7 +38,7 @@ function permute(nums: number[]): number[][] {
 
 /**
  * Backtrack w/ Bit Mask
- * T: O(n * n!); S: O(n * n!) 
+ * T: O(n * n!); S: O(n * n!)
  */
 function permute2(nums: number[]): number[][] {
   const n = nums.length
@@ -70,7 +70,7 @@ function permute2(nums: number[]): number[][] {
 
 /**
  * Backtrack w/ Swap In-place
- * T: O(n * n!); S: O(n) 
+ * T: O(n * n!); S: O(n)
  */
 function permute3(nums: number[]): number[][] {
   const n = nums.length
@@ -138,7 +138,6 @@ function runTests(solution: (nums: number[]) => number[][]) {
 
     return seen.size === expectedCount
   }
-
 
   console.log(`--- Testing: ${solution.name || 'Anonymous Function'} ---`)
 

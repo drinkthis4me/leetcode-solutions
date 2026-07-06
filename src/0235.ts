@@ -21,7 +21,7 @@ class TreeNode {
 function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
   if (root === null || p === null || q === null) return null
 
-  // Base case: 
+  // Base case:
   //  - Current node is the split point of two nodes.
   // Recursion:
   //  - Both values are smaller than current value -> Both nodes are in left subtree.
@@ -30,8 +30,7 @@ function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: Tree
   if (root.val > p.val && root.val > q.val) {
     // Check root.left
     return lowestCommonAncestor(root.left, p, q)
-  }
-  else if (root.val < p.val && root.val < p.val) {
+  } else if (root.val < p.val && root.val < p.val) {
     // Check root.right
     return lowestCommonAncestor(root.right, p, q)
   } else {
@@ -54,11 +53,9 @@ function lowestCommonAncestor2(root: TreeNode | null, p: TreeNode | null, q: Tre
   while (curr !== null) {
     if (curr.val > p.val && curr.val > q.val) {
       curr = curr.left
-    }
-    else if (curr.val < p.val && curr.val < q.val) {
+    } else if (curr.val < p.val && curr.val < q.val) {
       curr = curr.right
-    }
-    else {
+    } else {
       return curr
     }
   }
@@ -68,11 +65,11 @@ function lowestCommonAncestor2(root: TreeNode | null, p: TreeNode | null, q: Tre
 
 // --- TEST RUNNER ---
 interface TestCase {
-  name: string;
-  root: TreeNode | null;
-  p: TreeNode;
-  q: TreeNode;
-  expected: number;
+  name: string
+  root: TreeNode | null
+  p: TreeNode
+  q: TreeNode
+  expected: number
 }
 
 const testCases: TestCase[] = [

@@ -88,7 +88,7 @@ function topKFrequent2(nums: number[], k: number): number[] {
   ) {
     for (const n of buckets[i]!) {
       res.push(n)
-      // Return immediately if top k found. 
+      // Return immediately if top k found.
       // (Even though there still might be numbers in the same bucket.)
       if (res.length === k) {
         return res

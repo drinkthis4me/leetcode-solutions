@@ -2,7 +2,7 @@
 
 /**
  * Arrays of Sets
- * T: O(1); S: O(1); 
+ * T: O(1); S: O(1);
  */
 function isValidSudoku(board: string[][]): boolean {
   // Three conditions to check: rows, columns, and boxes
@@ -43,7 +43,7 @@ function isValidSudoku(board: string[][]): boolean {
 
 /**
  * Bitmask
- * T: O(1); S: O(1); 
+ * T: O(1); S: O(1);
  */
 function isValidSudoku2(board: string[][]): boolean {
   // 1. Convert string to number to bit.

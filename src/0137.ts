@@ -44,7 +44,6 @@ function partition(s: string): string[][] {
         solution.pop()
       }
     }
-
   }
 
   backtrack(0)

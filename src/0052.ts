@@ -37,7 +37,6 @@ function totalNQueens(n: number): number {
       if (board[i][j] === 'Q') return false
     }
 
-
     return true
   }
 
@@ -69,7 +68,7 @@ function totalNQueens2(n: number): number {
   // Use hash set to record the details of unsafe cells
 
   let res = 0
-  // Set of col index 
+  // Set of col index
   const cols = new Set<number>()
   // Set of index i + j
   const posDiag = new Set<number>()
@@ -214,7 +213,7 @@ function testNQueensII(solutionFn: (n: number) => number): void {
     { n: 3, expected: 0 },
     { n: 4, expected: 2 },
     { n: 5, expected: 10 },
-    { n: 8, expected: 92 },
+    { n: 8, expected: 92 }
   ]
 
   console.log(`Running tests for: ${solutionFn.name || 'Anonymous Function'}\n`)
@@ -248,4 +247,3 @@ function testNQueensII(solutionFn: (n: number) => number): void {
 
 // Example usage:
 testNQueensII(totalNQueens4)
-

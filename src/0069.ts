@@ -26,7 +26,7 @@ function mySqrt(x: number): number {
 
   // Square root is fraction
   // Return nearest integer rounded down
-  // Notice here `left > right` 
+  // Notice here `left > right`
   return right
 };
 
@@ -52,7 +52,6 @@ function mySqrt2(x: number): number {
 
   return r
 }
-
 
 const x = 4
 

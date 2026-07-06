@@ -16,7 +16,7 @@ class TreeNode {
 
 /**
  * DFS w/ Recursion
- * T: O(n); S: O(n) 
+ * T: O(n); S: O(n)
  */
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
   if (p === null && q === null) return true
@@ -28,7 +28,7 @@ function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 
 /**
  * DFS w/ Stack
- * T: O(n); S: O(n) 
+ * T: O(n); S: O(n)
  */
 function isSameTree2(p: TreeNode | null, q: TreeNode | null): boolean {
   const stack: (TreeNode | null)[][] = [[p, q]]
@@ -84,9 +84,9 @@ interface TestCase {
   input: {
     p: (number | null)[]
     q: (number | null)[]
-  };
-  expected: boolean;
-  description: string;
+  }
+  expected: boolean
+  description: string
 }
 
 // --- TEST SUITE ---
@@ -105,7 +105,7 @@ const testCases: TestCase[] = [
     input: { p: [1, 2, 1], q: [1, 1, 2] },
     expected: false,
     description: 'Tree With Diff Values'
-  },
+  }
 ]
 
 function runTests() {

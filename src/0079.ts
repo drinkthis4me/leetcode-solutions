@@ -124,7 +124,7 @@ function exist2(board: string[][], word: string): boolean {
 
 /**
  * Tester for LeetCode 79: Word Search
- * 
+ *
  * @param solve - The function to test.
  * Expected signature: (board: string[][], word: string) => boolean
  */

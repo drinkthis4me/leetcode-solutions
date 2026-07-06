@@ -64,7 +64,6 @@ function combine2(n: number, k: number): number[][] {
   return res
 };
 
-
 /**
  * Test Runner for LeetCode 77: Combinations
  * @param solutionFn - The function to test (n: number, k: number) => number[][]

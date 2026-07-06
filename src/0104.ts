@@ -87,7 +87,7 @@ function maxDepth3(root: TreeNode | null): number {
     )
   }
 
-  // 
+  //
   return findDepth(root, 0)
 };
 

@@ -141,9 +141,9 @@ function strStr3(haystack: string, needle: string): number {
     const badCharIdx = map.get(mismatch)
 
     // Calculate shift
-    const shift = badCharIdx !== undefined
-      ? Math.max(1, j - badCharIdx) // standard shift. At least 1.
-      : j + 1 // Mismatch doesn't exist in needle
+    const shift = badCharIdx !== undefined ?
+      Math.max(1, j - badCharIdx) : // standard shift. At least 1.
+      j + 1 // Mismatch doesn't exist in needle
 
     i += shift
   }
@@ -257,7 +257,6 @@ function strStr5(haystack: string, needle: string): number {
   }
 
   return -1
-
 };
 
 /**
@@ -294,7 +293,7 @@ function runTests() {
       haystack: '',
       needle: '',
       expected: -1
-    },
+    }
 
   ]
 

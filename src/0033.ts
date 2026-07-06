@@ -122,7 +122,6 @@ function search2(nums: number[], target: number): number {
   return -1
 };
 
-
 const nums = [4, 5, 6, 7, 0, 1, 2]
 const target = 0
 const expected = 4

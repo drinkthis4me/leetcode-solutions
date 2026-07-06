@@ -41,7 +41,6 @@ class KthLargest implements IKthLargest {
   }
 }
 
-
 // Constructor type
 type KthLargestConstructor = new (k: number, nums: number[]) => IKthLargest
 

@@ -2,7 +2,7 @@
 
 /**
  * Hash Map
- * T: O(m * n); S: O(1); 
+ * T: O(m * n); S: O(1);
  */
 function checkInclusion(s1: string, s2: string): any {
   // Frequency map for `s1`
@@ -125,7 +125,6 @@ function checkInclusion3(s1: string, s2: string): any {
     s2Count[s2.charCodeAt(i) - CHAR_CODE_A]++
   }
 
-
   // A counter to keep track of matches between `s1Count` and `s2Count`
   let matches = 0
   for (let i = 0; i < 26; i++) {
@@ -219,7 +218,6 @@ function checkInclusion4(s1: string, s2: string): any {
 
   return false
 }
-
 
 const s1 = 'ab', s2 = 'eidbaooo'
 const expected = true

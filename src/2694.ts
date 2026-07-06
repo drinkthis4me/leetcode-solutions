@@ -6,7 +6,6 @@ type Subscription = {
 }
 
 class EventEmitter {
-
   events: Map<string, Map<Subscription, Callback>> = new Map()
 
   subscribe(eventName: string, callback: Callback): Subscription {
@@ -59,7 +58,6 @@ class EventEmitter {
  * emitter.emit('onClick'); // []
  */
 
-
 function runTests(): void {
   console.log('🚀 Starting TypeScript EventEmitter Tests...\n')
   let passed = 0
@@ -81,7 +79,7 @@ function runTests(): void {
   try {
     const emitter = new EventEmitter()
     let count = 0
-    emitter.subscribe('firstEvent', () => { count++ })
+    emitter.subscribe('firstEvent', () => count++)
 
     emitter.emit('firstEvent')
     assert(count === 1, 'Should call the callback once when event is emitted')
@@ -117,8 +115,8 @@ function runTests(): void {
     const emitter = new EventEmitter()
     let sum = 0
 
-    emitter.subscribe('add', (x: any) => { sum += x })
-    emitter.subscribe('add', (x: any) => { sum += (x * 2) })
+    emitter.subscribe('add', (x: any) => sum += x)
+    emitter.subscribe('add', (x: any) => sum += (x * 2))
 
     const outputs = emitter.emit('add', [5]) // 5 + 10 = 15
     assert(sum === 15, 'Both callbacks should execute in order of subscription')
@@ -134,7 +132,7 @@ function runTests(): void {
   try {
     const emitter = new EventEmitter()
     let count = 0
-    const cb = () => { count++ }
+    const cb = () => count++
 
     const sub = emitter.subscribe('click', cb)
     emitter.emit('click') // count = 1
@@ -167,7 +165,7 @@ function runTests(): void {
   try {
     const emitter = new EventEmitter()
     let count = 0
-    const cb = () => { count++ }
+    const cb = () => count++
 
     const sub1 = emitter.subscribe('test', cb)
     const sub2 = emitter.subscribe('test', cb)

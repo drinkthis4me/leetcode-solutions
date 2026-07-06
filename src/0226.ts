@@ -157,9 +157,9 @@ function treeToArray(root: TreeNode | null): (number | null)[] {
 // ==========================================
 
 interface TestCase {
-  input: (number | null)[];
-  expected: (number | null)[];
-  description: string;
+  input: (number | null)[]
+  expected: (number | null)[]
+  description: string
 }
 
 const testCases: TestCase[] = [

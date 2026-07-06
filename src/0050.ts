@@ -62,10 +62,10 @@ function myPow2(x: number, n: number): number {
   // x ^ (2k+1) = x * (x^2) ^ k
 
   // 2^12 = (2) ^ (2 * 6)
-  //      = (4) ^ 6 
+  //      = (4) ^ 6
   //      = (4) ^ (2 * 3)
-  //      = (16) ^ 3 
-  //      = 16 * (16) ^ 2 
+  //      = (16) ^ 3
+  //      = 16 * (16) ^ 2
   //      = 16 * (256) ^ 1
 
   // Convert `n` to BigInt for safe calculation

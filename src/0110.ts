@@ -16,10 +16,9 @@ class TreeNode {
 
 /**
  * DFS w/ Recursion
- * T: O(n); S: O(height) 
+ * T: O(n); S: O(height)
  */
 function isBalanced(root: TreeNode | null): boolean {
-
   // Recursion fn
   //  - If balanced, return max tree height.
   //  - Else return -1
@@ -43,7 +42,7 @@ function isBalanced(root: TreeNode | null): boolean {
 
 /**
  * DFS w/ Stack
- * T: O(n); S: O(n) 
+ * T: O(n); S: O(n)
  */
 function isBalanced2(root: TreeNode | null): boolean {
   if (root === null) return true
@@ -126,9 +125,9 @@ function buildTree(arr: (number | null)[]): TreeNode | null {
 }
 
 interface TestCase {
-  input: (number | null)[];
-  expected: boolean;
-  description: string;
+  input: (number | null)[]
+  expected: boolean
+  description: string
 }
 
 // --- TEST SUITE ---
@@ -167,7 +166,7 @@ const testCases: TestCase[] = [
     input: [1, 2, 3, 4, null, null, 5],
     expected: true,
     description: 'Balanced Deep Tree'
-  },
+  }
 ]
 
 function runTests() {

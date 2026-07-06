@@ -31,7 +31,7 @@ function generate(numRows: number): number[][] {
 /**
  * Recursion
  * T: O(n ^ 2): S: O(n ^ 2);
- * 
+ *
  * (Possible stack overflow with large rows)
  */
 function generate2(numRows: number): number[][] {

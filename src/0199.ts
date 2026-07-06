@@ -44,7 +44,6 @@ function rightSideView(root: TreeNode | null): number[] {
         q.push(node.right)
       }
     }
-
   }
 
   return res

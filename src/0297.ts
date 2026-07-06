@@ -34,6 +34,7 @@ class Codec implements ICodec {
     this.dfsSerialize(root, res)
     return res.join(',')
   }
+
   dfsSerialize(node: TreeNode | null, res: string[]): void {
     if (node === null) {
       res.push('N')
@@ -52,6 +53,7 @@ class Codec implements ICodec {
     const pointer = { i: 0 }
     return this.dfsDeserialize(values, pointer)
   }
+
   dfsDeserialize(values: string[], pointer: { i: number }): TreeNode | null {
     const curr = values[pointer.i]!
     if (curr === 'N') {
@@ -133,7 +135,7 @@ class Codec2 implements ICodec {
  */
 function runAllTests(CodecClass: new () => ICodec) {
   // Define an array of test scenarios
-  const testCases: { name: string; root: TreeNode | null }[] = [
+  const testCases: { name: string, root: TreeNode | null }[] = [
     {
       name: 'Standard Tree [1,2,3,null,null,4,5]',
       root: new TreeNode(1, new TreeNode(2), new TreeNode(3, new TreeNode(4), new TreeNode(5)))

@@ -152,7 +152,6 @@ function runAllTests(fn: (points: number[][], k: number) => number[][]) {
     }
   }
 
-
   testCases.forEach(t => runTest(t.points, t.k, t.expected))
 }
 

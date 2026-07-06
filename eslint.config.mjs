@@ -12,19 +12,24 @@ export default defineConfig([
     languageOptions: { globals: globals.node }
   },
   tseslint.configs.recommended,
+  stylistic.configs.recommended,
   {
     plugins: {
-      '@stylistic': stylistic,
+      '@stylistic': stylistic
     },
     rules: {
       '@stylistic/linebreak-style': ['error', 'unix'],
       '@stylistic/indent': ['error', 2],
       '@stylistic/quotes': ['error', 'single'],
       '@stylistic/semi': ['error', 'never'],
+      '@stylistic/no-multi-spaces': ['error', { ignoreEOLComments: true }],
+      '@stylistic/operator-linebreak': ['error', 'after'],
+      '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
+      '@stylistic/comma-dangle': ['error', 'never'],
 
       '@typescript-eslint/no-explicit-any': 'off',
       // Allow different solutions that are unused
       '@typescript-eslint/no-unused-vars': 'off'
     }
-  },
+  }
 ])

@@ -5,7 +5,7 @@ import { Stack } from '@datastructures-js/stack'
 type MultiDimensionalArray = (number | MultiDimensionalArray)[]
 
 /**
- * Recursion 
+ * Recursion
  * T: O(n); S: O(n);
  */
 const flat = function (arr: MultiDimensionalArray, n: number): MultiDimensionalArray {
@@ -29,7 +29,7 @@ const flat = function (arr: MultiDimensionalArray, n: number): MultiDimensionalA
 }
 
 /**
- * Stack 
+ * Stack
  * T: O(n + k); S: O(n);
  */
 const flat2 = function (arr: MultiDimensionalArray, n: number): MultiDimensionalArray {

@@ -9,7 +9,7 @@ function threeSumClosest(nums: number[], target: number): number {
   nums.sort((a, b) => a - b)
 
   // [-4, -1, 1, 2]
-  //   i (fixed)   
+  //   i (fixed)
   //       L     R
 
   const n = nums.length

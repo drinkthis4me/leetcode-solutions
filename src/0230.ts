@@ -71,7 +71,7 @@ function kthSmallest2(root: TreeNode | null, k: number): number {
       return curr.val
     }
 
-    // Go right    
+    // Go right
     curr = curr.right
   }
 
@@ -95,7 +95,7 @@ function kthSmallest3(root: TreeNode | null, k: number): number {
       // Go right
       curr = curr.right
     } else {
-      // Find the in-order predecessor 
+      // Find the in-order predecessor
       // In the left subtree, go as right as possible.
       let pre = curr.left
       while (pre.right !== null && pre.right !== curr) {

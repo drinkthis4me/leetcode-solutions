@@ -81,7 +81,7 @@ function runTests(fn: (stones: number[]) => number) {
     { stones: [2, 2], expected: 0 },
     { stones: [1, 3], expected: 2 },
     { stones: [7, 6, 7, 6, 9], expected: 3 },
-    { stones: [3, 7, 2], expected: 2 },
+    { stones: [3, 7, 2], expected: 2 }
   ]
 
   console.log('--- Running Tests ---')

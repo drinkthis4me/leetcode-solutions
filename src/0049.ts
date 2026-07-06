@@ -7,7 +7,7 @@
 function groupAnagrams(strs: string[]): string[][] {
   // Character Count Array
 
-  // "eat", "tea", and "ate" have the same character count array: 
+  // "eat", "tea", and "ate" have the same character count array:
   // [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]
 
   // We can use joined array value as the key for map:

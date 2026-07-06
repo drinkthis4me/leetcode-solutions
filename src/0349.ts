@@ -28,7 +28,7 @@ function intersection(nums1: number[], nums2: number[]): number[] {
       // The smaller one cannot appear in the other array
       p2++
     } else {
-      // `nums1[p1] < nums2[p2]`    
+      // `nums1[p1] < nums2[p2]`
       p1++
     }
   }

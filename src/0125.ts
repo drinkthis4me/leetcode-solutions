@@ -65,8 +65,6 @@ function isPalindrome2(s: string): boolean {
   return true
 };
 
-
-
 // const s = "A man, a plan, a canal: Panama"
 // const expected = true
 // const s = "race a car"

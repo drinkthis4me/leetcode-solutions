@@ -3,7 +3,7 @@
 /**
  * Set
  * T: O(n); S: O(n);
- * 
+ *
  * Failed: Not constant extra space.
  */
 function findDuplicate(nums: number[]): number {
@@ -23,7 +23,7 @@ function findDuplicate(nums: number[]): number {
 /**
  * Sort
  * T: O(n log n); S: O(log n);
- * 
+ *
  * Failed: Input modified.
  */
 function findDuplicate2(nums: number[]): number {
@@ -41,7 +41,7 @@ function findDuplicate2(nums: number[]): number {
 /**
  * Index Sort
  * T: O(n); S: O(1);
- * 
+ *
  * Failed: Input modified
  */
 function findDuplicate3(nums: number[]): number {
@@ -147,7 +147,7 @@ function findDuplicate5(nums: number[]): number {
 /**
  * Negative Marking
  * T: O(n); S: O(1);
- * 
+ *
  * Failed: Input modified
  */
 function findDuplicate6(nums: number[]): number {

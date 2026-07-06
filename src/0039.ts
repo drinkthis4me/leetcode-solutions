@@ -22,7 +22,7 @@ function combinationSum(candidates: number[], target: number): number[][] {
       return
     }
 
-    // Include at i 
+    // Include at i
     const curr = candidates[i]
     solution.push(curr)
     // Stay at i because curr may be reused
@@ -87,7 +87,6 @@ function combinationSum2(candidates: number[], target: number): number[][] {
  * Type definition for the LeetCode 39 solution function.
  */
 type CombinationSumFn = (candidates: number[], target: number) => number[][]
-
 
 /**
  * Runs a suite of test cases against the provided solution function.

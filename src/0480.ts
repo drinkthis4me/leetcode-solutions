@@ -98,9 +98,9 @@ function medianSlidingWindow(nums: number[], k: number): number[] {
   const getMedian = (): number => {
     pruneMax()
     pruneMin()
-    return k % 2 === 1
-      ? maxHeap.front()!
-      : (maxHeap.front()! + minHeap.front()!) / 2
+    return k % 2 === 1 ?
+      maxHeap.front()! :
+      (maxHeap.front()! + minHeap.front()!) / 2
   }
 
   for (let i = 0; i < nums.length; i++) {

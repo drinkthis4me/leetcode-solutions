@@ -2,7 +2,7 @@
 
 /**
  * Two Pointers
- * 
+ *
  * T: O(n); S: O(1);
  */
 function twoSum(nums: number[], target: number, startIndex: number): number[][] {
@@ -38,7 +38,7 @@ function twoSum(nums: number[], target: number, startIndex: number): number[][] 
 
 /**
  * Hash Set
- * 
+ *
  * T: O(n); S: O(n);
  */
 function twoSum2(nums: number[], start: number, target: number): number[][] {
@@ -65,9 +65,9 @@ function twoSum2(nums: number[], start: number, target: number): number[][] {
 
 /**
  * All purpose k sum.
- * 
+ *
  * T: O(n ^ (k - 1)); S: O(n);
- * 
+ *
  * We need O(k) space for the recursion. k -> n in the worst case.
  */
 function kSum(nums: number[], target: number, startIndex: number, k: number): number[][] {

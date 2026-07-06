@@ -56,7 +56,7 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
 function removeNthFromEnd2(head: ListNode | null, n: number): ListNode | null {
   // First iteration:
   // Count list length
-  // (Remove index) = (List length) - n 
+  // (Remove index) = (List length) - n
 
   // Second iteration:
   // Traverse until (Remove index) - 1
@@ -121,7 +121,7 @@ function runTests(removeNthFromEnd: (head: ListNode | null, n: number) => ListNo
     { input: [1, 2, 3, 4, 5], n: 2, expected: [1, 2, 3, 5] },
     { input: [1], n: 1, expected: [] },
     { input: [1, 2], n: 1, expected: [1] },
-    { input: [1, 2], n: 2, expected: [2] }, // Removing the head
+    { input: [1, 2], n: 2, expected: [2] } // Removing the head
   ]
 
   testCases.forEach(({ input, n, expected }, index) => {

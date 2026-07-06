@@ -2,9 +2,9 @@
 
 /**
  * Look-up Map
- * 
+ *
  * T: O(n); S(n);
- * 
+ *
  * Failed: Violate S(1).
  */
 function singleNumber(nums: number[]): number[] {
@@ -23,15 +23,15 @@ function singleNumber(nums: number[]): number[] {
 
 /**
  * Bitwise XOR
- * 
+ *
  * T: O(n); S(1);
  */
 function singleNumber2(nums: number[]): number[] {
   // nums = [1, 2, 1, 3, 2, 5]
-  // 1 = 00001 
-  // 2 = 00010 
-  // 3 = 00011 
-  // 5 = 00101 
+  // 1 = 00001
+  // 2 = 00010
+  // 3 = 00011
+  // 5 = 00101
 
   // 1. Get the XOR of all the numbers
   // diff = 00110

@@ -11,7 +11,7 @@ function longestSubarray(nums: number[]): number {
 
   // R = 0
   // zeroCount = 1
-  // maxLength = R - L + 1 - zeroCount 
+  // maxLength = R - L + 1 - zeroCount
   // = 0 - 0 + 1 - 1 = 0
   // R = 1
   // maxLength = 1

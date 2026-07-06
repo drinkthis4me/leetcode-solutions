@@ -47,7 +47,6 @@ class MinStack {
  * var param_4 = obj.getMin()
  */
 
-
 function runLeetCodeTest(commands: string[], args: any[][], expected: (number | null)[]) {
   let instance: MinStack | null = null
   const results: (number | null)[] = []

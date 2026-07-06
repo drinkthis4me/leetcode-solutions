@@ -1,7 +1,7 @@
 // 3. Longest Substring Without Repeating Characters
 
 /**
- * Sliding Window & Set 
+ * Sliding Window & Set
  * T: O(n); O(m);
  */
 function lengthOfLongestSubstring(s: string): number {
@@ -33,7 +33,7 @@ function lengthOfLongestSubstring(s: string): number {
 };
 
 /**
- * Sliding Window & Map - Optimized 
+ * Sliding Window & Map - Optimized
  * T: O(n); O(m);
  */
 function lengthOfLongestSubstring2(s: string): number {

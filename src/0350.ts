@@ -2,7 +2,7 @@
 
 /**
  * Sorting and Two Pointers
- * T:O(n log n + m log m); S: O(1); 
+ * T:O(n log n + m log m); S: O(1);
  */
 function intersect(nums1: number[], nums2: number[]): number[] {
   // Sort both array
@@ -89,7 +89,7 @@ function intersect3(nums1: number[], nums2: number[]): number[] {
   // Array to record visited index
   const visited: boolean[] = new Array(nums2.length).fill(false)
 
-  // Iterate through `nums1` 
+  // Iterate through `nums1`
   // For each element, do binary search on `nums2`
   for (const n of nums1) {
     let left = 0
@@ -129,7 +129,6 @@ function intersect3(nums1: number[], nums2: number[]): number[] {
       }
     }
   }
-
 
   return res
 }
