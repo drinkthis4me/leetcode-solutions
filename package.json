@@ -6,7 +6,6 @@
   "author": "James Uang",
   "license": "MIT",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "watch": "node scripts/watch.js",
     "start": "tsx",
@@ -15,16 +14,15 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "packageManager": "pnpm@11.6.0+sha512.9a36518224080c6fe5165afdcfe79bfa118c29be703f3f462b1e32efe1e98e47e8750b148e08286250aad4113cc7993ca413c4e2cd447752708c2ee5751bc95f",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/node": "^24.10.0",
     "eslint": "^10.6.0",
     "globals": "^17.7.0",
-    "tsx": "^4.20.6",
-    "typescript": "5.7.3",
-    "typescript-eslint": "^8.62.1"
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1"
   },
   "dependencies": {
     "@datastructures-js/deque": "^1.0.8",
@@ -33,6 +31,16 @@
     "@datastructures-js/stack": "^3.1.6"
   },
   "engines": {
-    "node": ">=22.17.0"
+    "node": "^26"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^26.13.0"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.18.0"
+    }
   }
 }
