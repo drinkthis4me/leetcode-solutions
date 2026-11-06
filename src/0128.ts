@@ -102,15 +102,152 @@ function longestConsecutive3(nums: number[]): number {
   return maxLength
 };
 
-const nums = [100, 4, 200, 1, 3, 2]
-const expected = 4
-// const nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
-// const expected = 9
-// const nums = [1, 0, 1, 2]
-// const expected = 3
+/**
+ * Sequence Boundary w/ map
+ * T:O(n); S: O(n);
+ */
+function longestConsecutive4(nums: number[]): number {
+  // Edge Case
+  if (nums.length <= 1) return nums.length
 
-const output = longestConsecutive3(nums)
+  // Map of [num, length_of_sequence_starting_at_num]
+  const map = new Map<number, number>()
 
-console.log('Input: ', nums)
-console.log('expected: ', expected)
-console.log('output: ', output)
+  let res = 0
+
+  for (const n of nums) {
+    if (map.has(n)) continue
+
+    // Calculate the current length
+    const length = (map.get(n - 1) || 0) + (map.get(n + 1) || 0) + 1
+    map.set(n, length)
+
+    // Update left boundary length
+    const left = n - (map.get(n - 1) || 0)
+    map.set(left, length)
+    // Update right boundary length
+    const right = n + (map.get(n + 1) || 0)
+    map.set(right, length)
+
+    res = Math.max(res, length)
+  }
+
+  return res
+};
+
+/**
+ * Disjoint Set Union
+ * T: O(n); S: O(n);
+ */
+function longestConsecutive5(nums: number[]): number {
+  // 1. Group numbers by disjoint set. Put consecutive numbers under the same root.
+  // 2. Find the size of the largest tree.
+
+  class UnionFind {
+    root = new Map<number, number>()
+    size = new Map<number, number>()
+
+    constructor(set: Set<number>) {
+      for (const n of set) {
+        this.root.set(n, n)
+        this.size.set(n, 1)
+      }
+    }
+
+    find(x: number): number {
+      if (this.root.get(x) === x) {
+        return x
+      }
+
+      const r = this.find(this.root.get(x)!)
+      this.root.set(x, r)
+      return r
+    }
+
+    union(x: number, y: number): boolean {
+      const rootX = this.find(x)
+      const rootY = this.find(y)
+
+      if (rootX === rootY) return false
+
+      const sizeX = this.size.get(rootX)!
+      const sizeY = this.size.get(rootY)!
+
+      if (sizeX < sizeY) {
+        this.root.set(rootX, rootY)
+        this.size.set(rootY, sizeX + sizeY)
+      } else {
+        this.root.set(rootY, rootX)
+        this.size.set(rootX, sizeX + sizeY)
+      }
+
+      return true
+    }
+
+    getMaxSize(): number {
+      let max = 0
+      for (const size of this.size.values()) {
+        max = Math.max(max, size)
+      }
+      return max
+    }
+  }
+
+  const set = new Set<number>(nums)
+
+  const dsu = new UnionFind(set)
+
+  for (const n of set) {
+    if (set.has(n + 1)) {
+      dsu.union(n, n + 1)
+    }
+  }
+
+  return dsu.getMaxSize()
+}
+
+type SolutionFunction = (nums: number[]) => number
+
+interface TestCase {
+  input: number[]
+  expected: number
+}
+
+function runTests(solution: SolutionFunction): void {
+  const testCases: TestCase[] = [
+    { input: [100, 4, 200, 1, 3, 2], expected: 4 },
+    { input: [0, 3, 7, 2, 5, 8, 4, 6, 0, 1], expected: 9 },
+    { input: [], expected: 0 },
+    { input: [5], expected: 1 },
+    { input: [1, 2, 0, 1], expected: 3 },
+    { input: [-1, -2, -3, 10, 5], expected: 3 },
+    { input: [1, 2, 3, 4, 5], expected: 5 },
+    { input: [5, 4, 3, 2, 1], expected: 5 }
+  ]
+
+  let passedCount = 0
+
+  console.log('Running LeetCode 128 Tests...\n')
+
+  testCases.forEach((test, index) => {
+    // Pass a copy of the array to prevent accidental in-place mutations
+    const inputCopy = [...test.input]
+    const result = solution(inputCopy)
+    const passed = result === test.expected
+
+    if (passed) {
+      passedCount++
+      console.log(`✅ Test Case ${index + 1}: PASSED`)
+    } else {
+      console.error(`❌ Test Case ${index + 1}: FAILED`)
+      console.error(`   Input:    [${test.input.join(', ')}]`)
+      console.error(`   Expected: ${test.expected}`)
+      console.error(`   Received: ${result}`)
+    }
+  })
+
+  console.log('\n--- Summary ---')
+  console.log(`Passed: ${passedCount}/${testCases.length} test cases.`)
+}
+
+runTests(longestConsecutive5)

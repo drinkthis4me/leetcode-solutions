@@ -5,7 +5,7 @@
  *
  * T: O(n); S: O(1);
  */
-function twoSum(nums: number[], target: number, startIndex: number): number[][] {
+function twoSum(nums: number[], startIndex: number, target: number): number[][] {
   const res: number[][] = []
 
   const n = nums.length
@@ -13,15 +13,13 @@ function twoSum(nums: number[], target: number, startIndex: number): number[][] 
   let r = n - 1
 
   while (l < r) {
-    const sum = nums[l]! + nums[r]!
+    const sum = nums[l] + nums[r]
 
-    if (sum < target || (l > startIndex && nums[l] === nums[l - 1])) {
+    if (sum < target) {
       // Find a larger left number
-      // Or skip the duplicate left number
       l++
-    } else if (sum > target || (r < n - 1 && nums[r] === nums[r + 1])) {
+    } else if (sum > target) {
       // Find a smaller right number
-      // Or skip the duplicate right number
       r--
     } else {
       // sum === target
@@ -30,6 +28,14 @@ function twoSum(nums: number[], target: number, startIndex: number): number[][] 
       // Move pointers and continue find the next pair
       l++
       r--
+
+      // Skip duplicate numbers
+      while (l < r && nums[l] === nums[l - 1]) {
+        l++
+      }
+      while (l < r && nums[r] === nums[r + 1]) {
+        r--
+      }
     }
   }
 
@@ -70,7 +76,7 @@ function twoSum2(nums: number[], start: number, target: number): number[][] {
  *
  * We need O(k) space for the recursion. k -> n in the worst case.
  */
-function kSum(nums: number[], target: number, startIndex: number, k: number): number[][] {
+function kSum(nums: number[], startIndex: number, target: number, k: number): number[][] {
   // Reduce k sume to (k - 1) sum.
   // (k - 1) sum to (k - 2) sum.
   // ...
@@ -82,31 +88,29 @@ function kSum(nums: number[], target: number, startIndex: number, k: number): nu
   // Edge case: Ran out of numbers
   if (startIndex === nums.length) return res
 
-  // Boundary check:
+  // Edge case: Boundary check
   // Smallest number must be less than avg.
   // Largest number must be greater than avg.
   const avgVal = target / k
-  if (
-    nums[startIndex]! > avgVal ||
-    avgVal > nums[n - 1]!
-  ) {
+  if (nums[startIndex] > avgVal || nums[n - 1] < avgVal) {
     return res
   }
 
+  // Base case
   if (k === 2) {
-    return twoSum2(nums, target, startIndex)
+    return twoSum(nums, startIndex, target)
   }
 
   // Recursively call kSum
-  for (let i = startIndex; i < n; i++) {
+  for (let i = startIndex; i < n - k + 1; i++) {
     // Skip duplicate first number
-    if (i === startIndex || nums[i] !== nums[i - 1]) {
-      // Divide and conquer
-      const kSumResult = kSum(nums, target - nums[i]!, i + 1, k - 1)
-      // Rebuild result
-      for (const subResult of kSumResult) {
-        res.push([nums[i]!, ...subResult])
-      }
+    if (i > startIndex && nums[i] === nums[i - 1]) continue
+
+    // Divide and conquer
+    const kSumResult = kSum(nums, i + 1, target - nums[i], k - 1)
+    // Rebuild result
+    for (const subResult of kSumResult) {
+      res.push([nums[i], ...subResult])
     }
   }
 
@@ -119,16 +123,102 @@ function kSum(nums: number[], target: number, startIndex: number, k: number): nu
 function fourSum(nums: number[], target: number): number[][] {
   nums.sort((a, b) => a - b)
 
-  return kSum(nums, target, 0, 4)
+  return kSum(nums, 0, target, 4)
 };
 
-const nums = [1, 0, -1, 0, -2, 2], target = 0
-const expected = [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
-// const nums = [2, 2, 2, 2, 2], target = 8
-// const expected = [[2, 2, 2, 2]]
+type SolutionFunction = (nums: number[], target: number) => number[][]
 
-const ans = fourSum(nums, target)
+interface TestCase {
+  nums: number[]
+  target: number
+  expected: number[][]
+}
 
-console.log('Input: ', nums, target)
-console.log('expected: ', expected)
-console.log('answer: ', ans)
+function runTests(solution: SolutionFunction): void {
+  const testCases: TestCase[] = [
+    {
+      nums: [1, 0, -1, 0, -2, 2],
+      target: 0,
+      expected: [
+        [-2, -1, 1, 2],
+        [-2, 0, 0, 2],
+        [-1, 0, 0, 1]
+      ]
+    },
+    {
+      nums: [2, 2, 2, 2, 2],
+      target: 8,
+      expected: [
+        [2, 2, 2, 2]
+      ]
+    },
+    {
+      nums: [0, 0, 0, 0],
+      target: 0,
+      expected: [
+        [0, 0, 0, 0]
+      ]
+    },
+    {
+      nums: [-3, -2, -1, 0, 0, 1, 2, 3],
+      target: 0,
+      expected: [
+        [-3, -2, 2, 3],
+        [-3, -1, 1, 3],
+        [-3, 0, 0, 3],
+        [-3, 0, 1, 2],
+        [-2, -1, 0, 3],
+        [-2, -1, 1, 2],
+        [-2, 0, 0, 2],
+        [-1, 0, 0, 1]
+      ]
+    }
+  ]
+
+  // Helper function to normalize 2D arrays so order (outer and inner) doesn't fail comparison
+  const normalize = (arr: number[][]): string[] => {
+    if (!arr || !Array.isArray(arr)) return []
+    return arr
+      .map(sub => [...sub].sort((a, b) => a - b).join(','))
+      .sort()
+  }
+
+  let passedCount = 0
+
+  console.log('Running LeetCode 18 (4Sum) Tests...\n')
+
+  testCases.forEach((tc, index) => {
+    const start = performance.now()
+    let actual: number[][] = []
+    let error: string | null = null
+
+    try {
+      actual = solution(tc.nums, tc.target)
+    } catch (err: any) {
+      error = err.message
+    }
+    const end = performance.now()
+    const duration = (end - start).toFixed(2)
+
+    const normalizedExpected = JSON.stringify(normalize(tc.expected))
+    const normalizedActual = JSON.stringify(normalize(actual))
+
+    const passed = !error && normalizedExpected === normalizedActual
+
+    if (passed) {
+      passedCount++
+      console.log(`✅ Test Case ${index + 1}: PASSED (${duration}ms)`)
+    } else {
+      console.log(`❌ Test Case ${index + 1}: FAILED (${duration}ms)`)
+      console.log(`   Nums:     [${tc.nums.join(', ')}]`)
+      console.log(`   Target:   ${tc.target}`)
+      console.log(`   Expected: ${JSON.stringify(tc.expected)}`)
+      console.log(`   Got:      ${error ? `Error: ${error}` : JSON.stringify(actual)}`)
+      console.log('--------------------------------------------------')
+    }
+  })
+
+  console.log(`\nResult: ${passedCount}/${testCases.length} test cases passed.`)
+}
+
+runTests(fourSum)

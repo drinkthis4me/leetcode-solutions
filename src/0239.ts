@@ -28,7 +28,7 @@ function maxSlidingWindow(nums: number[], k: number): number[] {
     }
 
     // Maintain decreasing order in deque.
-    // Top of the deque will always be max.
+    // Front of the deque will always be max.
     while (
       deque.size() > 0 &&
       nums[deque.back()!]! <= nums[i]!
@@ -88,7 +88,6 @@ function maxSlidingWindow3(nums: number[], k: number): number[] {
   // nums =     [1, 3, -1, -3, 5, 3, 6, 7]
   // Blocks: [1, 3, -1] | [-3, 5, 3] | [6, 7]
   // leftMax =  [1, 3, 3, -3, 5, 5, 6, 7]
-  // rightMax = [1, 3, -1, -3, 6, 6, 6 ,7]
   // rightMax = [3, 3, -1, 5, 5, 3, 7 ,7]
 
   // res[i] = max(rightMax[i], leftMax(i + k - 1))

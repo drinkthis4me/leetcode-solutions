@@ -25,40 +25,46 @@ function majorityElement(nums: number[]): number[] {
 };
 
 /**
- * Boyer-Moore Voting Algorithm
- * @param nums
- * @returns
+ * Boyer-Moore Voting Algorithm (with generalized top k)
+ * T: O(n * k); S: O(k);
  */
 function majorityElement2(nums: number[]): number[] {
-  // Since result can be at most two numbers, we can track the top 2 only to save space.
+  const K = 3
+  const maxCandidates = K - 1
+  const counts = new Map<number, number>()
 
-  // First pass: Find the potential top 2
-  let countMap = new Map<number, number>()
+  // First pass: Find the potential candidates
   for (const num of nums) {
-    countMap.set(num, (countMap.get(num) || 0) + 1)
-
-    if (countMap.size > 2) {
-      // Temp map to avoid altering the countMap size
-      const newCountMap = new Map<number, number>()
-
-      for (const [n, count] of countMap.entries()) {
-        if (count > 1) {
-          newCountMap.set(n, count - 1)
+    if (counts.has(num)) {
+      counts.set(num, counts.get(num)! + 1)
+    } else if (counts.size < maxCandidates) {
+      counts.set(num, 1)
+    } else {
+      // Map is full: decrement counts for all existing candidates
+      for (const [num, count] of counts.entries()) {
+        if (count === 1) {
+          counts.delete((num))
+        } else {
+          counts.set(num, count - 1)
         }
       }
-
-      countMap = newCountMap
     }
   }
 
-  // Second pass: Verify the top 2 counts are over threshold
-  const res: number[] = []
-  const threshold = Math.floor(nums.length / 3)
+  // Second pass: Verify the top k counts are over threshold
+  const trueCounts = new Map<number, number>()
+  for (const num of nums) {
+    if (counts.has(num)) {
+      trueCounts.set(num, (trueCounts.get(num) || 0) + 1)
+    }
+  }
 
-  for (const n of countMap.keys()) {
-    const trueCount = nums.filter(num => num === n).length
-    if (trueCount > threshold) {
-      res.push(n)
+  const res: number[] = []
+  const threshold = Math.floor(nums.length / K)
+
+  for (const [candidate, count] of trueCounts.entries()) {
+    if (count > threshold) {
+      res.push(candidate)
     }
   }
 

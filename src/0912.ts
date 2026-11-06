@@ -137,7 +137,7 @@ function sortArray3(nums: number[]): number[] {
       aux[i] = nums[i]
     }
 
-    // Pinter for left and right subarray
+    // Pointer for left and right subarray
     let i = l
     let j = m
 
@@ -168,7 +168,7 @@ function sortArray3(nums: number[]): number[] {
 
 /**
  * Quick Sort
- * @param nums
+ * T: O(n log n); S: O(n);
  */
 function sortArray4(nums: number[]): number[] {
   const swap = (arr: number[], i: number, j: number) => {
@@ -199,6 +199,51 @@ function sortArray4(nums: number[]): number[] {
   }
 
   quickSort(nums, 0, nums.length - 1)
+
+  return nums
+}
+
+/**
+ * Heap Sort
+ * T: O(n log n); S: O(1);
+ */
+function sortArray5(nums: number[]): number[] {
+  function heapify(arr: number[], heapSize: number, i: number) {
+    let largest = i
+    const l = 2 * i + 1
+    const r = 2 * i + 2
+
+    // Check if left child is greater than current lartest
+    if (l < heapSize && arr[l] > arr[largest]) {
+      largest = l
+    }
+    // Check if right child is greater than current lartest
+    if (r < heapSize && arr[r] > arr[largest]) {
+      largest = r
+    }
+    // If largest is not the root, swap and continue heapifying
+    if (largest !== i) {
+      [arr[i], arr[largest]] = [arr[largest], arr[i]]
+      heapify(arr, heapSize, largest)
+    }
+  }
+
+  function heapSort(arr: number[]) {
+    const n = arr.length
+
+    // Phase 1: Build max heap
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+      heapify(arr, n, i)
+    }
+
+    // Phase 2: Extract elements from the heap
+    for (let i = n - 1; i > 0; i--) {
+      [arr[0], arr[i]] = [arr[i], arr[0]]
+      heapify(arr, i, 0) // Heapify with reduced heap size i
+    }
+  }
+
+  heapSort(nums)
 
   return nums
 }
@@ -238,4 +283,4 @@ function runTests(sortFn: (nums: number[]) => number[]): void {
   console.log('--- Testing Complete ---\n')
 }
 
-runTests(sortArray4)
+runTests(sortArray5)
